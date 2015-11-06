@@ -80,6 +80,16 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WCS.Model\WCS.Model.csproj">
+      <Project>{1aebb298-816e-447d-9294-6be42864e23e}</Project>
+      <Name>WCS.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WCS.View\WCS.View.csproj">
+      <Project>{e5bd3c14-ef60-47ef-b696-a4d058d8d210}</Project>
+      <Name>WCS.View</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
