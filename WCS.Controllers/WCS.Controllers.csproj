@@ -89,37 +89,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Global.asax" />
-    <Content Include="Web.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
+    <Compile Include="HomeController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\WCS.Models\WCS.Models.csproj">
-      <Project>{648d860a-befd-4265-aba4-9f7545539714}</Project>
+      <Project>{c31f4e9d-9b7e-4d80-8335-30dff62c5c40}</Project>
       <Name>WCS.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WCS.Views\WCS.Views.csproj">
-      <Project>{9aa96f52-e30f-4211-a3e4-6b2133e081c3}</Project>
-      <Name>WCS.Views</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
