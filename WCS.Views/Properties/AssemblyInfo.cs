@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Управление общими сведениями о сборке осуществляется с помощью 
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанных с этой сборкой.
-[assembly: AssemblyTitle( "WCS.View" )]
+[assembly: AssemblyTitle( "WCS.Views" )]
 [assembly: AssemblyDescription( "" )]
 [assembly: AssemblyConfiguration( "" )]
 [assembly: AssemblyCompany( "" )]
-[assembly: AssemblyProduct( "WCS.View" )]
+[assembly: AssemblyProduct( "WCS.Views" )]
 [assembly: AssemblyCopyright( "Copyright ©  2015" )]
 [assembly: AssemblyTrademark( "" )]
 [assembly: AssemblyCulture( "" )]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible( false )]
 
 // Следующий GUID служит для идентификации библиотеки типов typelib, если этот проект видим для COM
-[assembly: Guid( "e5bd3c14-ef60-47ef-b696-a4d058d8d210" )]
+[assembly: Guid( "9aa96f52-e30f-4211-a3e4-6b2133e081c3" )]
 
 // Сведения о версии сборки состоят из указанных ниже четырех значений:
 //
