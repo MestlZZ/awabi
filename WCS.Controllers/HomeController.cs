@@ -10,6 +10,7 @@ namespace WCS.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Title = "Домашня сторінка";
             return View();
         }
     }
