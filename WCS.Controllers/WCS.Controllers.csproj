@@ -101,6 +101,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WCS.Database\WCS.Database.csproj">
+      <Project>{badb9d6b-edb5-44f1-a30c-293869525e4c}</Project>
+      <Name>WCS.Database</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WCS.Models\WCS.Models.csproj">
       <Project>{c31f4e9d-9b7e-4d80-8335-30dff62c5c40}</Project>
       <Name>WCS.Models</Name>
