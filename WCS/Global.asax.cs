@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WCS.Database;
 using System.Web.Routing;
+using System.Data.Entity;
 
 namespace WCS
 {
@@ -13,6 +15,7 @@ namespace WCS
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            Database.SetInitializer(new SendFormDbInitializer());
         }
     }
 }
