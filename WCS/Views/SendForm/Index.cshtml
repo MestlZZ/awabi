@@ -3,7 +3,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <form method="post">
-    @Html.EditorForModel()
+    <div id="editor_model">
+        @Html.EditorForModel()
+    </div>
     <input type="submit" title="Отправить" />
+    <div class="clear"></div>
 </form>
 
