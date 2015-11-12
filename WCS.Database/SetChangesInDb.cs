@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using WCS.Models;
 
-namespace WCS.Database
+namespace WCS.Databases
 {
     public class SetChangesInDb
     {

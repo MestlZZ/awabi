@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCS", "WCS\WCS.csproj", "{2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCS.Controllers", "WCS.Controllers\WCS.Controllers.csproj", "{8F050385-5BBA-44C8-B9BF-1A77D574FE66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCS.Database", "WCS.Database\WCS.Database.csproj", "{BADB9D6B-EDB5-44F1-A30C-293869525E4C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCS.Databases", "WCS.Database\WCS.Databases.csproj", "{BADB9D6B-EDB5-44F1-A30C-293869525E4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
