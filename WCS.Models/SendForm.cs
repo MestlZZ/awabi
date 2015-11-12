@@ -13,6 +13,7 @@ namespace WCS.Models
     {
         /// <summary>
         /// ID записи в базе данных
+        [ScaffoldColumn( false )]
         public int Id { get; set; }
         [ScaffoldColumn( false )]
         public string NoteID { private set; get; }

@@ -10,7 +10,6 @@ namespace WCS.Controllers
 {
     public class SendFormController : Controller
     {
-        SendFormContext db = new SendFormContext();
         [HttpGet]
         public ActionResult Index()
         {
@@ -24,8 +23,8 @@ namespace WCS.Controllers
             ///проверка на валидность данных что были переданы моделе
             if (ModelState.IsValid)
             {
-                db.SendForms.Add( send );
-                db.SaveChanges();
+                SetChangesInDb db = new SetChangesInDb();
+                db.SaveInDb( send );
                 return RedirectToAction( "Index" );
             }
             return RedirectToRoute( new { controller = "Home", action = "Index" } );
