@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WCS.Models;
+using WCS.Database;
 
 namespace WCS.Controllers
 {
@@ -22,6 +23,8 @@ namespace WCS.Controllers
             ///проверка на валидность данных что были переданы моделе
             if (ModelState.IsValid)
             {
+                SetChangesInDb db = new SetChangesInDb();
+                db.SaveInDb( send );
                 return RedirectToAction( "Index" );
             }
             return RedirectToRoute( new { controller = "Home", action = "Index" } );
