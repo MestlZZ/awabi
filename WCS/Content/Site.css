@@ -1,4 +1,33 @@
-﻿body {
+﻿
+@media screen and (min-width:1200px){
+    #editor_model{
+        text-align:center;
+    }
+   .editor-label {
+        display:inline;
+        padding: 0px 10px 0px 0px;
+    }
+   .editor-field{
+       display:inline;
+   }
+   label{
+       margin-top: 10px !important;
+       text-overflow: ellipsis;
+       white-space: nowrap;
+       overflow: hidden;
+   }
+   .editor-label:nth-child(n)::before{
+       
+    }
+   .editor-field:nth-child(2n)::after{
+        content: '';
+        width: 100%;
+        height: 1px; 
+        display:inline-block;
+    }
+}
+
+body {
     width:100%;
     margin:0;
     padding-top: 50px;
@@ -23,12 +52,10 @@ label {
     width:40%;
     text-align:left;
     word-wrap: break-word;
-    margin-bottom: 0 !important;
     font-family:Georgia, 'Times New Roman', Times, serif;
     font-weight:200 !important;
     font-size:13pt;
 }
-
 input[type=submit]{
     margin:20px;
     border: medium none;
