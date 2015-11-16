@@ -9,5 +9,6 @@ namespace WCS.Databases
     public class SendFormContext : DbContext
     {
         public DbSet<SendForm> SendForms { get; set; }
+        public DbSet<State> States { get; set; }
     }
 }

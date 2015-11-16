@@ -10,7 +10,10 @@ namespace WCS.Models
     public class State
     {
         [Key]
+        [ScaffoldColumn(false)]
         public int StateID { set; get; }
+        [Required]
+        [Display(Name = "Область")]
         public string Name { get; set; }
     }
 }

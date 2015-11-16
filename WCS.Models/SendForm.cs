@@ -11,63 +11,42 @@ namespace WCS.Models
 {
     public class SendForm
     {
-        /// <summary>
-        /// ID записи в базе данных
+        [Key]
         [ScaffoldColumn( false )]
         public int Id { get; set; }
-        [ScaffoldColumn( false )]
-        public string NoteID { private set; get; }
-        /// ID города
         [Required]
-        [Display(Name = "Область")]
-        public string SityID { set; get; }
-        /// Дата создания записи
+        [Display(Name = "ID Області")]
+        public int StateID { set; get; } // зовнішній ключ
+        public virtual State State { get; set; } // зв'язок з статеІД
         [ScaffoldColumn( false )]
         public DateTime Date { private set; get; }
-        /// ID учебного заведения
         [Required]
         [Display( Name = "Учбовий заклад" )]
         public string InstitutionID { set; get; }
-        /// Плата за обучение
         [Display( Name = "Плата за навчання" )]
         [DataType( DataType.Currency )]
-        public float TaitionFee { set; get; }
-        /// Стипендия (какая? / сколько?)
+        public decimal? TaitionFee { set; get; }
         [Display( Name = "Стипендія" )]
         [DataType( DataType.Currency )]
-        public float Award { get; set; }
-        /// Дополнительные рассходи если живет с семьей!
+        public decimal? Award { get; set; }
         [Display( Name = "Додаткові витрати (за місяць з батьками)" )]
         [DataType( DataType.Currency )]
-        public float ExpensesWithF { get; set; }
-        /// Дополнительные рассходы если снимаю квартиру!
+        public decimal? ExpensesWithF { get; set; }
         [Display( Name = "Додаткові витрати (за місяць знімаючи квартиру)" )]
         [DataType( DataType.Currency )]
-        public float ExpensesWithoutF { get; set; }
-        /// Дополнительные рассходы если живу в общежитии
+        public decimal? ExpensesWithoutF { get; set; }
         [Display( Name = "Додаткові витрати (за місяць живучи в общазі)" )]
         [DataType( DataType.Currency )]
-        public float ExpensesHostel { get; set; }
-        /// Плата за жилье если снимаю квартиру
+        public decimal? ExpensesHostel { get; set; }
         [Display( Name = "Плата за квартиру (в місяць)" )]
         [DataType( DataType.Currency )]
-        public float RentsWithoutF { get; set; }
-        /// Плата за общежитиє
+        public decimal? RentsWithoutF { get; set; }
         [Display( Name = "Плата за кімнату о общазі (в місяць)" )]
         [DataType( DataType.Currency )]
-        public float RentsHostel { get; set; }
-        /// Конструктор. Обнуляет некоторые переменные для удобной работы в базе
+        public decimal? RentsHostel { get; set; }
         public SendForm ()
         {
-            TaitionFee = 0;
-            Award = 0;
-            ExpensesWithF = 0;
-            ExpensesWithoutF = 0;
-            ExpensesHostel = 0;
-            RentsHostel = 0;
-            RentsWithoutF = 0;
             Date = DateTime.UtcNow;
         }
-        /// </summary>
     }
 }

@@ -100,7 +100,6 @@
     <Compile Include="HomeController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SendFormController.cs" />
-    <Compile Include="StateController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WCS.Database\WCS.Databases.csproj">

@@ -19,13 +19,6 @@ namespace WCS
                 url: "sending",
                 defaults: new { controller = "SendForm", action = "Index" }
             );
-
-            routes.MapRoute(
-                name: "State",
-                url: "state",
-                defaults: new { controller = "State", action = "Index" }
-            );
-
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
