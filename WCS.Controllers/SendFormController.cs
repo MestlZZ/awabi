@@ -27,5 +27,10 @@ namespace WCS.Controllers
             }
             return RedirectToAction( "Index" );
         }
+        public void UpdateUniversity()
+        {
+            SetChangesInDb db = new SetChangesInDb();
+            db.AddUniversityToDb();
+        } 
     }
 }

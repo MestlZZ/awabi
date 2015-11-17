@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WCS.Models
 {
-    class City
+    public class City
     {
         [Key, ScaffoldColumn(false)]
         public string CityID { set; get; }

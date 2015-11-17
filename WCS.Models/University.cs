@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WCS.Models
 {
-    class University
+    public class University
     {
         /// [DatabaseGenerated(DatabaseGeneratedOption.Identity)] if it will have int type
         [Key, Display(Name = "ID університету"), ScaffoldColumn( false )]

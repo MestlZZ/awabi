@@ -12,7 +12,7 @@ namespace WCS.Controllers
     {
         public ActionResult Index()
         {
-                return HttpNotFound();
+            return RedirectToRoute( new { controller = "SendForm", action = "Index" } );
             /*ViewBag.Title = "Домашня сторінка";
             GetNoteFromDb db = new GetNoteFromDb();
             SendForm sf = new SendForm();
