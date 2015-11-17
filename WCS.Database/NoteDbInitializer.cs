@@ -7,9 +7,9 @@ using WCS.Models;
 
 namespace WCS.Databases
 {
-    public class SendFormDbInitializer : DropCreateDatabaseIfModelChanges<SendFormContext>
+    public class NoteDbInitializer : DropCreateDatabaseIfModelChanges<NoteContext>
     {
-        protected override void Seed( SendFormContext db )
+        protected override void Seed( NoteContext db )
         {
             base.Seed( db );
         }

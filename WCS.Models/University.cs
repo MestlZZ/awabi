@@ -10,8 +10,9 @@ namespace WCS.Models
     class University
     {
         /// [DatabaseGenerated(DatabaseGeneratedOption.Identity)] if it will have int type
-        [Key, Required, Display(Name = "ID університету")]
+        [Key, Display(Name = "ID університету"), ScaffoldColumn( false )]
         public string UniversityID { set; get; }
+        [ScaffoldColumn( false )]
         public string CityID { get; set; }
         public virtual City City { get; set; }
         [Required, Display(Name = "Університет/Інститут")]

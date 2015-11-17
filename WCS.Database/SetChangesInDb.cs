@@ -10,29 +10,40 @@ namespace WCS.Databases
 {
     public class SetChangesInDb
     {
-        SendFormContext db = new SendFormContext();
-        public void SaveInDb(SendForm form)
+        NoteContext db = new NoteContext();
+        public void SaveDb(Note note)
         {
-            db.SendForms.Add(form);
+            db.Notes.Add(note);
             db.SaveChanges();
         }
-        public void SaveInDb(State form)
+        public void SaveDb(State state)
         {
-            db.States.Add(form);
+            db.States.Add(state);
             db.SaveChanges();
         }
-        public IEnumerable<State> GetStateFromDB()
+        public void UpdateDb(Note note)
         {
-            return db.States.ToList();
-        }
-        public void UpdateInDb(SendForm form)
-        {
-            db.Entry(form).State = EntityState.Modified;
+            db.Entry(note).State = EntityState.Modified;
             db.SaveChanges();
         }
-        public void DeleteInDb(SendForm form)
+        public void UpdateDb( State state )
         {
-            db.SendForms.Remove( form );
+            db.Entry( state ).State = EntityState.Modified;
+            db.SaveChanges();
+        }
+        public void DeleteDb(Note note)
+        {
+            db.Notes.Remove( note );
+            db.SaveChanges();
+        }
+        public void DeleteDb( State state )
+        {
+            db.States.Remove( state );
+            db.SaveChanges();
+        }
+        public void DeleteDb()
+        {
+            db.Database.Delete();
             db.SaveChanges();
         }
     }

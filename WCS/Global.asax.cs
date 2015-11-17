@@ -15,7 +15,7 @@ namespace WCS
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            Database.SetInitializer(new SendFormDbInitializer());
+            Database.SetInitializer(new NoteDbInitializer());
         }
     }
 }

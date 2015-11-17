@@ -14,9 +14,9 @@ namespace WCS.Controllers
         {
                 return HttpNotFound();
             /*ViewBag.Title = "Домашня сторінка";
-            GetDb db = new GetDb();
+            GetNoteFromDb db = new GetNoteFromDb();
             SendForm sf = new SendForm();
-            sf = db.GetForm( id );
+            sf = db.GetNote( id );
             if (sf == null)
                 return HttpNotFound();
             ViewBag.ID = id;

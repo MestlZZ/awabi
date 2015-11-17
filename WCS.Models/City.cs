@@ -11,6 +11,7 @@ namespace WCS.Models
     {
         [Key, ScaffoldColumn(false)]
         public string CityID { set; get; }
+        [ScaffoldColumn( false )]
         public string StateID { set; get; }
         public virtual State State { get; set; }
         [Required, Display(Name = "Місто")]

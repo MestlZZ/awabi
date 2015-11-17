@@ -49,10 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GetDb.cs" />
+    <Compile Include="GetNoteFromDb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SendFormContext.cs" />
-    <Compile Include="SendFormDbInitializer.cs" />
+    <Compile Include="NoteContext.cs" />
+    <Compile Include="NoteDbInitializer.cs" />
     <Compile Include="SetChangesInDb.cs" />
   </ItemGroup>
   <ItemGroup>

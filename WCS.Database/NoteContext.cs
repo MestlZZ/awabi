@@ -6,9 +6,9 @@ using WCS.Models;
 
 namespace WCS.Databases
 {
-    public class SendFormContext : DbContext
+    public class NoteContext : DbContext
     {
-        public DbSet<SendForm> SendForms { get; set; }
+        public DbSet<Note> Notes { get; set; }
         public DbSet<State> States { get; set; }
     }
 }

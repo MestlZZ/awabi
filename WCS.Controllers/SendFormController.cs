@@ -17,16 +17,15 @@ namespace WCS.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Index(SendForm send)
+        public ActionResult Index(Note note)
         {
-            ///проверка на валидность данных что были переданы моделе
             if (ModelState.IsValid)
             {
                 SetChangesInDb db = new SetChangesInDb();
-                db.SaveInDb( send );
-                return RedirectToAction( "Index" );
+                db.SaveDb( note );
+                return RedirectToRoute( new { controller = "Home", action = "Index" } );
             }
-            return RedirectToRoute( new { controller = "Home", action = "Index" } );
+            return RedirectToAction( "Index" );
         }
     }
 }
