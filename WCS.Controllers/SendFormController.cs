@@ -13,7 +13,6 @@ namespace WCS.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            ///Титулка =)
             ViewBag.Title = "Відправка форми";
             return View();
         }

@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace WCS.Models
 {
-    public class State
+    class University
     {
         /// [DatabaseGenerated(DatabaseGeneratedOption.Identity)] if it will have int type
-        [Key, Required, Display(Name = "ID області")]
-        public string StateID { set; get; }
-        [Required, Display(Name = "Область")]
+        [Key, Required, Display(Name = "ID університету")]
+        public string UniversityID { set; get; }
+        public string CityID { get; set; }
+        public virtual City City { get; set; }
+        [Required, Display(Name = "Університет/Інститут")]
         public string Name { get; set; }
     }
 }

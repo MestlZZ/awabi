@@ -11,8 +11,6 @@ namespace WCS.Databases
     {
         protected override void Seed( SendFormContext db )
         {
-            db.States.Add(new State { StateID = 1, Name = "Житомирська" }); 
-            db.SendForms.Add( new SendForm { Id = 1, StateID = 1, Award = 120, TaitionFee=120, RentsHostel=120, RentsWithoutF=120, InstitutionID="non", ExpensesWithoutF=120, ExpensesWithF=120, ExpensesHostel=120 } );
             base.Seed( db );
         }
     }

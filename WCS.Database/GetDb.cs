@@ -11,7 +11,7 @@ namespace WCS.Databases
     public class GetDb
     {
         SendFormContext db = new SendFormContext();
-        public SendForm GetForm(int Id)
+        /*public SendForm GetForm(int Id)
         {
             if (Id == 0)
             {
@@ -23,6 +23,6 @@ namespace WCS.Databases
                 return null;
             }
             return send;
-        }
+        }*/
     }
 }

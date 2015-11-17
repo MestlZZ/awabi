@@ -16,6 +16,15 @@ namespace WCS.Databases
             db.SendForms.Add(form);
             db.SaveChanges();
         }
+        public void SaveInDb(State form)
+        {
+            db.States.Add(form);
+            db.SaveChanges();
+        }
+        public IEnumerable<State> GetStateFromDB()
+        {
+            return db.States.ToList();
+        }
         public void UpdateInDb(SendForm form)
         {
             db.Entry(form).State = EntityState.Modified;

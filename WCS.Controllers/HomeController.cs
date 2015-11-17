@@ -10,18 +10,17 @@ namespace WCS.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index( int id = 1 )
+        public ActionResult Index()
         {
-            if (id < 1)
                 return HttpNotFound();
-            ViewBag.Title = "Домашня сторінка";
+            /*ViewBag.Title = "Домашня сторінка";
             GetDb db = new GetDb();
             SendForm sf = new SendForm();
             sf = db.GetForm( id );
             if (sf == null)
                 return HttpNotFound();
             ViewBag.ID = id;
-            return View(sf);
+            return View(sf);*/
         }
     }
 }
