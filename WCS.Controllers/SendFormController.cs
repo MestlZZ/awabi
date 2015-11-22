@@ -25,7 +25,7 @@ namespace WCS.Controllers
                 db.SaveDb( note );
                 return RedirectToRoute( new { controller = "Home", action = "Index" } );
             }*/
-            return RedirectToAction( "Index" );
+            return View();
         }
     }
 }
