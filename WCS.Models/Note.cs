@@ -28,7 +28,6 @@ namespace WCS.Models
         [
             Display( Name = "Плата за навчання" ), 
             DataType( DataType.Currency ), 
-            RegularExpression( @"[0-9]", ErrorMessage = "Тут повинні бути лише цифри =)" ),
             Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" )
             
         ]
@@ -37,7 +36,6 @@ namespace WCS.Models
         [
             Display( Name = "Стипендія" ), 
             DataType( DataType.Currency ), 
-            RegularExpression( @"[0-9]", ErrorMessage = "Тут повинні бути лише цифри =)" ),
             Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" )
         ]
         public double Award { get; set; }
@@ -45,7 +43,6 @@ namespace WCS.Models
         [
             Display( Name = "Додаткові витрати (за місяць з батьками)" ), 
             DataType( DataType.Currency ), 
-            RegularExpression( @"[0-9]", ErrorMessage = "Тут повинні бути лише цифри =)" ),
             Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" )
         ]
         public double ExpensesWithF { get; set; }
@@ -53,7 +50,6 @@ namespace WCS.Models
         [
             Display( Name = "Додаткові витрати (за місяць знімаючи квартиру)" ), 
             DataType( DataType.Currency ), 
-            RegularExpression( @"[0-9]", ErrorMessage = "Тут повинні бути лише цифри =)" ),
             Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" )
         ]
         public double ExpensesWithoutF { get; set; }
@@ -61,7 +57,6 @@ namespace WCS.Models
         [
             Display( Name = "Додаткові витрати (за місяць живучи в общазі)" ), 
             DataType( DataType.Currency ), 
-            RegularExpression( @"[0-9]", ErrorMessage = "Тут повинні бути лише цифри =)" ),
             Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" )
         ]
         public double ExpensesHostel { get; set; }
@@ -69,7 +64,6 @@ namespace WCS.Models
         [
             Display( Name = "Плата за квартиру (в місяць)" ), 
             DataType( DataType.Currency ), 
-            RegularExpression( @"[0-9]", ErrorMessage = "Тут повинні бути лише цифри =)" ),
             Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" )
         ]
         public double RentsWithoutF { get; set; }
@@ -77,7 +71,6 @@ namespace WCS.Models
         [
             Display( Name = "Плата за кімнату о общазі (в місяць)" ), 
             DataType( DataType.Currency ), 
-            RegularExpression( @"[0-9]", ErrorMessage = "Тут повинні бути лише цифри =)" ),
             Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" )
         ]
         public double RentsHostel { get; set; }

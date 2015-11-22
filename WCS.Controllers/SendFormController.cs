@@ -19,12 +19,13 @@ namespace WCS.Controllers
         [HttpPost]
         public ActionResult Index(Note note)
         {
-           /* if (ModelState.IsValid)
+            /*if (ModelState.IsValid)
             {
                 SetChangesInDb db = new SetChangesInDb();
                 db.SaveDb( note );
                 return RedirectToRoute( new { controller = "Home", action = "Index" } );
             }*/
+            ViewBag.Title = "Відправка форми [ПОМИЛКА!]";
             return View();
         }
     }
