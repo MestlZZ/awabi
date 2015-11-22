@@ -10,5 +10,6 @@ namespace WCS.Databases
     {
         public DbSet<Note> Notes { get; set; }
         public DbSet<State> States { get; set; }
+        public DbSet<University> Universities { get; set; }
     }
 }

@@ -19,18 +19,18 @@ namespace WCS.Controllers
         [HttpPost]
         public ActionResult Index(Note note)
         {
-            if (ModelState.IsValid)
+           /* if (ModelState.IsValid)
             {
                 SetChangesInDb db = new SetChangesInDb();
                 db.SaveDb( note );
                 return RedirectToRoute( new { controller = "Home", action = "Index" } );
-            }
+            }*/
             return RedirectToAction( "Index" );
         }
         public void UpdateUniversity()
         {
-            SetChangesInDb db = new SetChangesInDb();
-            db.AddUniversityToDb();
+           /* SetChangesInDb db = new SetChangesInDb();
+            db.AddUniversityToDb();*/
         } 
     }
 }

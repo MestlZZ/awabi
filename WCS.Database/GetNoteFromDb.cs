@@ -24,9 +24,9 @@ namespace WCS.Databases
             }
             return note;
         }
-        public State GetState( int Id )
+        public State GetState( string Id )
         {
-            if (Id == 0)
+            if (Id == null)
             {
                 return null;
             }
