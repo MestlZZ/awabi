@@ -8,6 +8,14 @@ using WCS.Databases;
 
 namespace WCS.Controllers
 {
+    public class StudentFormController : Controller
+    {
+        public ActionResult Index()
+        {
+            ViewBag.Title = "Форма студента";
+            return View();
+        }
+    }
     public class SendFormController : Controller
     {
         [HttpGet]
