@@ -58,7 +58,7 @@ namespace WCS.Databases
         {
             return db.Notes.ToList();
         }
-        public IEnumerable<University> GetUniversity()
+        public IEnumerable<University> GetUniversityis()
         {
             return db.Universities.ToList();
         }

@@ -31,6 +31,8 @@ namespace WCS.Controllers
         public ActionResult StudentForm()
         {
             ViewBag.Title = "Форма студента";
+            GetNoteFromDb db = new GetNoteFromDb();
+            ViewBag.List = db.GetUniversityis();
             return View();
         }
     }
