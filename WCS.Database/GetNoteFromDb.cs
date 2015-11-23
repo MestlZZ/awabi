@@ -11,9 +11,9 @@ namespace WCS.Databases
     public class GetNoteFromDb
     {
         NoteContext db = new NoteContext();
-        public Note GetNote( int Id )
+        public Note GetNote( string Id )
         {
-            if (Id == 0)
+            if (Id == null)
             {
                 return null;
             }
@@ -37,6 +37,19 @@ namespace WCS.Databases
             }
             return state;
         }
+        public University GetUniversity( string Id )
+        {
+            if (Id == null)
+            {
+                return null;
+            }
+            University univers = db.Universities.Find(Id);
+            if (univers == null)
+            {
+                return null;
+            }
+            return univers;
+        }
         public IEnumerable<State> GetStatesFromDB()
         {
             return db.States.ToList();
@@ -44,6 +57,10 @@ namespace WCS.Databases
         public IEnumerable<Note> GetNotesFromDB()
         {
             return db.Notes.ToList();
+        }
+        public IEnumerable<University> GetUniversity()
+        {
+            return db.Universities.ToList();
         }
     }
 }
