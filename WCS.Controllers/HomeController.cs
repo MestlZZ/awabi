@@ -15,16 +15,23 @@ namespace WCS.Controllers
         {
             string id = Id.ToString();
             GetNoteFromDb db = new GetNoteFromDb();
-            ViewBag.Id = Id;
             Note note = db.GetNote( id );
             if (note == null)
                 return RedirectToRoute("AbiturientForm");
-            if (db.GetNote( (Id + 1).ToString() ) != null)
+            int[] index = db.GetNotesId();
+            int ind = Array.IndexOf(index, Id);
+            if (ind + 1 < index.Length)
+            {
+                ViewBag.NextInd = index[ind + 1];
                 ViewBag.Next = true;
+            }
             else
                 ViewBag.Next = false;
-            if (db.GetNote( (Id - 1).ToString() ) != null)
+            if (ind - 1 != 0)
+            {
                 ViewBag.Past = true;
+                ViewBag.PastInd = index[ind - 1];
+            }
             else
                 ViewBag.Past = false;
             return View( note );

@@ -50,15 +50,28 @@ namespace WCS.Databases
             }
             return univers;
         }
-        public IEnumerable<State> GetStates()
+        public IList<State> GetStates()
         {
             return db.States.ToList();
         }
-        public IEnumerable<Note> GetNotes()
+        public IList<Note> GetNotes()
         {
             return db.Notes.ToList();
         }
-        public IEnumerable<University> GetUniversityis()
+        public int[] GetNotesId()
+        {
+            IList<Note> notes = db.Notes.ToList();
+            int[] indexs = new int[db.Notes.Count() + 1];
+            Array.Clear( indexs, 0, db.Notes.Count() );
+            int i = 1;
+            foreach(Note not in notes)
+            {
+                indexs[i] = Convert.ToInt32( not.Id );
+                i++;
+            }
+            return indexs;
+        }
+        public IList<University> GetUniversityis()
         {
             return db.Universities.ToList();
         }

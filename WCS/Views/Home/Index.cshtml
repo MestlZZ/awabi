@@ -9,7 +9,7 @@
 </form>
 <p> 
         @if (ViewBag.Past) {
-            @Html.ActionLink( "Назад", "Index", "Home", new { id = ViewBag.ID - 1 }, new { @class = "navbar-brand" } );}
+            @Html.ActionLink( "Назад", "Index", "Home", new { id = ViewBag.PastInd }, new { @class = "navbar-brand" } );}
         @if (ViewBag.Next) {
-            @Html.ActionLink( "Вперед", "Index", "Home", new { id = ViewBag.ID + 1 }, new { @class = "navbar-brand" } );}
+            @Html.ActionLink( "Вперед", "Index", "Home", new { id = ViewBag.NextInd }, new { @class = "navbar-brand" } );}
 </p>
