@@ -3,7 +3,13 @@
 }
 @model WCS.Models.Note
 @Html.DisplayForModel()
-<p>
-@Html.ActionLink( "Назад", "Index", "Home", new { id = ViewBag.ID - 1}, new { @class = "navbar-brand" } )
-@Html.ActionLink( "Вперед", "Index", "Home", new { id = ViewBag.ID + 1 }, new { @class = "navbar-brand" } )
+<form method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <input type="submit" alt="Delete" value="Delete"/>
+</form>
+<p> 
+        @if (ViewBag.Past) {
+            @Html.ActionLink( "Назад", "Index", "Home", new { id = ViewBag.ID - 1 }, new { @class = "navbar-brand" } );}
+        @if (ViewBag.Next) {
+            @Html.ActionLink( "Вперед", "Index", "Home", new { id = ViewBag.ID + 1 }, new { @class = "navbar-brand" } );}
 </p>

@@ -15,8 +15,22 @@ namespace WCS.Databases
         NoteContext db = new NoteContext();
         public void Save(Note note)
         {
+            if(note.University == null)
+                note.University = db.Universities.Find( note.UniversityID );
+            note.Id = GetLastID();
             db.Notes.Add(note);
             db.SaveChanges();
+        }
+        private string GetLastID()
+        {
+            Note note;
+            int id = 0;
+            do
+            {
+                id++;
+                note = db.Notes.Find( id.ToString() );
+            } while (note != null);
+            return id.ToString();
         }
         public void Save(State state)
         {
@@ -38,10 +52,14 @@ namespace WCS.Databases
             db.Entry( univers ).State = EntityState.Modified;
             db.SaveChanges();
         }
-        public void Delete(Note note)
+        public void Delete( string Id )
         {
-            db.Notes.Remove( note );
-            db.SaveChanges();
+            Note note = db.Notes.Find( Id );
+            if (note != null)
+            {
+                db.Notes.Remove( note );
+                db.SaveChanges();
+            }
         }
     }
 }

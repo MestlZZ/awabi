@@ -10,10 +10,33 @@ namespace WCS.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Index(int Id = 1)
         {
-            return View();
+            string id = Id.ToString();
+            GetNoteFromDb db = new GetNoteFromDb();
+            ViewBag.Id = Id;
+            Note note = db.GetNote( id );
+            if (note == null)
+                return RedirectToRoute("AbiturientForm");
+            if (db.GetNote( (Id + 1).ToString() ) != null)
+                ViewBag.Next = true;
+            else
+                ViewBag.Next = false;
+            if (db.GetNote( (Id - 1).ToString() ) != null)
+                ViewBag.Past = true;
+            else
+                ViewBag.Past = false;
+            return View( note );
         }
+        [HttpPost]
+        public ActionResult Index( long id )
+        {
+            SetChangesInDb db = new SetChangesInDb();
+            db.Delete( id.ToString() );
+            return RedirectToAction( "Index", "Home", new { Id = (id-1) } );
+        }
+
         [HttpGet]
         public ActionResult AbiturientForm()
         {
@@ -27,7 +50,7 @@ namespace WCS.Controllers
             {
                 SetChangesInDb db = new SetChangesInDb();
                 db.Save( note );
-                return Index();
+                return RedirectToAction( "Index", "Home", new { Id = Convert.ToInt32( note.Id ) } );
             }
             ViewBag.Title = "Відправка форми [ПОМИЛКА!]";
             return View();
