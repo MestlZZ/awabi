@@ -50,11 +50,11 @@ namespace WCS.Databases
             }
             return univers;
         }
-        public IEnumerable<State> GetStatesFromDB()
+        public IEnumerable<State> GetStates()
         {
             return db.States.ToList();
         }
-        public IEnumerable<Note> GetNotesFromDB()
+        public IEnumerable<Note> GetNotes()
         {
             return db.Notes.ToList();
         }

@@ -1,9 +1,9 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model WCS.Models.SendForm
+@model WCS.Models.Note
 @Html.DisplayForModel()
-<div>
+<p>
 @Html.ActionLink( "Назад", "Index", "Home", new { id = ViewBag.ID - 1}, new { @class = "navbar-brand" } )
 @Html.ActionLink( "Вперед", "Index", "Home", new { id = ViewBag.ID + 1 }, new { @class = "navbar-brand" } )
-</div>
+</p>

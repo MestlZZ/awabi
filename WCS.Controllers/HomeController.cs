@@ -12,15 +12,32 @@ namespace WCS.Controllers
     {
         public ActionResult Index()
         {
-            return RedirectToRoute( new { controller = "SendForm", action = "Index" } );
-            /*ViewBag.Title = "Домашня сторінка";
+            return View();
+        }
+        [HttpGet]
+        public ActionResult AbiturientForm()
+        {
+            ViewBag.Title = "Відправка форми";
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AbiturientForm( Note note )
+        {
+            if (ModelState.IsValid)
+            {
+                SetChangesInDb db = new SetChangesInDb();
+                db.Save( note );
+                return Index();
+            }
+            ViewBag.Title = "Відправка форми [ПОМИЛКА!]";
+            return View();
+        }
+        public ActionResult StudentForm()
+        {
+            ViewBag.Title = "Форма студента";
             GetNoteFromDb db = new GetNoteFromDb();
-            SendForm sf = new SendForm();
-            sf = db.GetNote( id );
-            if (sf == null)
-                return HttpNotFound();
-            ViewBag.ID = id;
-            return View(sf);*/
+            ViewBag.List = db.GetUniversityis();
+            return View();
         }
     }
 }

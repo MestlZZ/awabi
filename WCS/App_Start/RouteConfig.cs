@@ -15,10 +15,17 @@ namespace WCS
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "SendForm",
-                url: "sending",
-                defaults: new { controller = "SendForm", action = "Index" }
+                name: "AbiturientForm",
+                url: "abiturient",
+                defaults: new { controller = "Home", action = "AbiturientForm" }
             );
+
+            routes.MapRoute(
+                name: "StudentForm",
+                url: "student",
+                defaults: new { controller = "Home", action = "StudentForm" }
+            );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
