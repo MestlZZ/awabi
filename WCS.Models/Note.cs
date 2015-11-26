@@ -15,7 +15,7 @@ namespace WCS.Models
         public string Id { get; set; }
 
         [
-            Required( ErrorMessage = "Ну і яку інформацію ви шукаєте без цього поля? =)" ),
+            Required( ErrorMessage = "Поле не повинно бути порожнім!" ),
             Display( Name = "Учбовий заклад" )
         ]
         public string UniversityID { set; get; } // зовнішній ключ
@@ -28,50 +28,56 @@ namespace WCS.Models
         [
             Display( Name = "Плата за навчання" ), 
             DataType( DataType.Currency ), 
-            Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" )
-            
+            Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" ),
+            Required( ErrorMessage = "Поле не повинно бути порожнім!" )
         ]
         public double TaitionFee { set; get; }
 
         [
             Display( Name = "Стипендія" ), 
             DataType( DataType.Currency ), 
-            Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" )
+            Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" ),
+            Required( ErrorMessage = "Поле не повинно бути порожнім!" )
         ]
         public double Award { get; set; }
 
         [
-            Display( Name = "Додаткові витрати (за місяць з батьками)" ), 
+            Display( Name = "Додаткові витрати (за місяць проживання з батьками)" ), 
             DataType( DataType.Currency ), 
-            Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" )
+            Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" ),
+            Required( ErrorMessage = "Поле не повинно бути порожнім!" )
         ]
         public double ExpensesWithF { get; set; }
 
         [
             Display( Name = "Додаткові витрати (за місяць знімаючи квартиру)" ), 
             DataType( DataType.Currency ), 
-            Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" )
+            Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" ),
+            Required( ErrorMessage = "Поле не повинно бути порожнім!" )
         ]
         public double ExpensesWithoutF { get; set; }
 
         [
-            Display( Name = "Додаткові витрати (за місяць живучи в общазі)" ), 
+            Display( Name = "Додаткові витрати (за місяць проживаючи у гуртожитку)" ), 
             DataType( DataType.Currency ), 
-            Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" )
+            Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" ),
+            Required( ErrorMessage = "Поле не повинно бути порожнім!" )
         ]
         public double ExpensesHostel { get; set; }
 
         [
-            Display( Name = "Плата за квартиру (в місяць)" ), 
+            Display( Name = "Плата за квартиру (у місяць)" ), 
             DataType( DataType.Currency ), 
-            Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" )
+            Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" ),
+            Required( ErrorMessage = "Поле не повинно бути порожнім!" )
         ]
         public double RentsWithoutF { get; set; }
 
         [
-            Display( Name = "Плата за кімнату о общазі (в місяць)" ), 
+            Display( Name = "Плата за кімнату у гуртожитку (у місяць)" ), 
             DataType( DataType.Currency ), 
-            Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" )
+            Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" ),
+            Required( ErrorMessage = "Поле не повинно бути порожнім!" )
         ]
         public double RentsHostel { get; set; }
         public Note ()
