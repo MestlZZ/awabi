@@ -1,0 +1,11 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="block_404" class="alert-warning text-center">
+    <div class="warning_for_symbol">
+        <div class="glyphicon glyphicon-exclamation-sign animate_for_symbol"></div>
+        <p class="text-danger text-center">Сторінку не знайдено (помилка 404)!</p>
+    </div>
+    <br>
+    @Html.ActionLink(" на головну", "Index", new { @controller = "Home" }, new { @class = "glyphicon glyphicon-home btn btn-danger button_for_symbol", @style = "margin:20px;" })
+</div>
