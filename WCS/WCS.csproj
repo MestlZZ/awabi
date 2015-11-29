@@ -100,7 +100,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -113,28 +113,6 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="packages.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Home\AbiturientForm.cshtml" />
-    <Content Include="Views\Home\StudentForm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -143,13 +121,22 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WCS.Controllers\WCS.Controllers.csproj">
-      <Project>{8f050385-5bba-44c8-b9bf-1a77d574fe66}</Project>
-      <Name>WCS.Controllers</Name>
-    </ProjectReference>
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Home\AbiturientForm.cshtml" />
+    <Content Include="Views\Home\StudentForm.cshtml" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
     <ProjectReference Include="..\WCS.Database\WCS.Databases.csproj">
       <Project>{badb9d6b-edb5-44f1-a30c-293869525e4c}</Project>
       <Name>WCS.Databases</Name>
@@ -157,6 +144,10 @@
     <ProjectReference Include="..\WCS.Models\WCS.Models.csproj">
       <Project>{c31f4e9d-9b7e-4d80-8335-30dff62c5c40}</Project>
       <Name>WCS.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WCS.MVC\WCS.MVC.csproj">
+      <Project>{d868fc68-6204-4247-ba3d-1e1f4a88b95d}</Project>
+      <Name>WCS.MVC</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

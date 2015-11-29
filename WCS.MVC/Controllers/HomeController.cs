@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using WCS.Databases;
 using WCS.Models;
 
-namespace WCS.Controllers
+namespace WCS.MVC
 {
     public class HomeController : Controller
     {
@@ -62,6 +62,7 @@ namespace WCS.Controllers
             ViewBag.Title = "Відправка форми [ПОМИЛКА!]";
             return View();
         }
+
         public ActionResult StudentForm()
         {
             ViewBag.Title = "Форма студента";

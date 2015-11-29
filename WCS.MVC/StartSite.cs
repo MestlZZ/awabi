@@ -7,15 +7,15 @@ using WCS.Databases;
 using System.Web.Routing;
 using System.Data.Entity;
 
-namespace WCS
+namespace WCS.MVC
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class StartSite : System.Web.HttpApplication
     {
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
-            Database.SetInitializer(new NoteDbInitializer());
+            RouteConfig.RegisterRoutes( RouteTable.Routes );
+            Database.SetInitializer( new NoteDbInitializer() );
         }
     }
 }

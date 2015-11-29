@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using WCS.Controllers;
+using WCS.MVC;
 
-namespace WCS
+namespace WCS.MVC
 {
     public class RouteConfig
     {
