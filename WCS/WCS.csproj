@@ -109,7 +109,6 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Views\404\HtmlPage1.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -135,7 +134,9 @@
     <Content Include="Views\Home\AbiturientForm.cshtml" />
     <Content Include="Views\Home\StudentForm.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\404\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WCS.Database\WCS.Databases.csproj">
       <Project>{badb9d6b-edb5-44f1-a30c-293869525e4c}</Project>

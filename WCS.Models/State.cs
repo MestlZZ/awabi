@@ -11,9 +11,12 @@ namespace WCS.Models
     public class State
     {
         /// [DatabaseGenerated(DatabaseGeneratedOption.Identity)] if it will have int type
-        [Key, Display(Name = "ID області"), ScaffoldColumn( false )]
+        [Key]
+        [Display(Name = "ID області")]
+        [ScaffoldColumn( false )]
         public string StateID { set; get; }
-        [Required, Display( Name = "Область" )]
+        [Required]
+        [Display( Name = "Область" )]
         public string Name { get; set; }
     }
 }

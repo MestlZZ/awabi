@@ -10,13 +10,13 @@ namespace WCS.Models
     public class University
     {
         /// [DatabaseGenerated(DatabaseGeneratedOption.Identity)] if it will have int type
-        [Key, Display(Name = "ID університету"), ScaffoldColumn( false )]
+        [Key]
+        [Display(Name = "ID університету")]
+        [ScaffoldColumn( false )]
         public string UniversityID { set; get; }
 
-        [
-            Required( ErrorMessage = "=( Я без області не зможу університет знайти((" ),
-            Display( Name = "ID Області" )
-        ]
+        [Required( ErrorMessage = "=( Я без області не зможу університет знайти((" )]
+        [Display( Name = "ID Області" )]
         public string StateID { set; get; } // зовнішній ключ
 
         public virtual State State { get; set; } // зв'язок з статеІД
