@@ -11,26 +11,23 @@ namespace WCS.Databases
     public class Universiteties
     {
         NoteContext db = new NoteContext();
-        public University GetUniversity( string Id )
+        public University Get( string Id )
         {
             if (Id == null)
             {
                 return null;
             }
-            University univers = db.Universities.Find(Id);
-            if (univers == null)
-            {
-                return null;
-            }
-            return univers;
+            University university = db.Universities.Find(Id);
+            return university;
         }
-        public IList<University> GetUniversityis()
+        public IList<University> GetList()
         {
             return db.Universities.ToList();
         }
         public void Update( University univers )
         {
-            if(univers != null)
+            if (univers == null)
+                return;
             db.Entry( univers ).State = EntityState.Modified;
             db.SaveChanges();
         }

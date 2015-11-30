@@ -11,46 +11,41 @@ namespace WCS.Databases
     public class Notes
     {
         NoteContext db = new NoteContext();
-        public Note GetNote( string Id )
+        public Note Get( string Id )
         {
             if (Id == null)
             {
                 return null;
             }
             Note note = db.Notes.Find(Id);
-            if (note == null)
-            {
-                return null;
-            }
             return note;
         }
-        public IList<Note> GetNotes()
+        public IList<Note> GetList()
         {
             return db.Notes.ToList();
         }
-        public int[] GetNotesId()
+        public string[] GetListId()
         {
             IList<Note> notes = db.Notes.ToList();
-            int[] indexs = new int[db.Notes.Count() + 1];
+            string[] indexs = new string[db.Notes.Count() + 1];
             Array.Clear( indexs, 0, db.Notes.Count() );
             int i = 1;
             foreach(Note not in notes)
             {
-                indexs[i] = Convert.ToInt32( not.Id );
+                indexs[i] =  not.Id;
                 i++;
             }
             return indexs;
         }
         public void Save( Note note )
         {
-            if (note != null)
-            {
-                note.Id = GetLastID();
+            if (note == null)
+                return;
+                note.Id = GetLastId();
                 db.Notes.Add( note );
-            }
-            db.SaveChanges();
+                db.SaveChanges();
         }
-        private string GetLastID()
+        private string GetLastId()
         {
             Note note;
             int id = 0;
@@ -64,14 +59,15 @@ namespace WCS.Databases
         public void Delete( string Id )
         {
             Note note = db.Notes.Find( Id );
-            if (note != null)
-            {
-                db.Notes.Remove( note );
-                db.SaveChanges();
-            }
+            if (note == null)
+                return;
+            db.Notes.Remove( note );
+            db.SaveChanges();
         }
         public void Update( Note note )
         {
+            if (note == null)
+                return;
             db.Entry( note ).State = EntityState.Modified;
             db.SaveChanges();
         }

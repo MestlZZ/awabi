@@ -11,15 +11,24 @@ namespace WCS.MVC
     public class HomeController : Controller
     {
         [HttpGet]
-        public ActionResult Index(int Id = 1)
+        public ActionResult Index(string Id)
         {
-            string id = Id.ToString();
             Notes db = new Notes();
-            Note note = db.GetNote( id );
+            Note note = db.Get( Id );
+            string[] index = db.GetListId();
+
             if (note == null)
-                return RedirectToRoute("AbiturientForm");
-            int[] index = db.GetNotesId();
+            {
+                if (index.Length > 1)
+                    Id = index[1];
+                else
+                    return RedirectToRoute( "AbiturientForm" );
+
+                note = db.Get( Id );
+            }
+
             int ind = Array.IndexOf(index, Id);
+
             if (ind + 1 < index.Length)
             {
                 ViewBag.NextInd = index[ind + 1];
@@ -27,6 +36,7 @@ namespace WCS.MVC
             }
             else
                 ViewBag.Next = false;
+
             if (ind - 1 != 0)
             {
                 ViewBag.Past = true;
@@ -34,15 +44,17 @@ namespace WCS.MVC
             }
             else
                 ViewBag.Past = false;
+
             return View( note );
         }
 
         [HttpPost]
-        public ActionResult Index( long id )
+        public ActionResult Index( string id, int del )
         {
+            del = Convert.ToInt32( id ) - 1;
             Notes db = new Notes();
             db.Delete( id.ToString() );
-            return RedirectToAction( "Index", "Home", new { Id = (id-1) } );
+            return RedirectToAction( "Index", "Home", new { Id = del.ToString() } );
         }
 
         [HttpGet]
@@ -69,8 +81,23 @@ namespace WCS.MVC
         {
             ViewBag.Title = "Форма студента";
             Universiteties db = new Universiteties();
-            ViewBag.List = db.GetUniversityis();
+            ViewBag.List = db.GetList();
             return View();
+        }
+
+        public ActionResult Univers()
+        {
+            string selectedGenreId = this.ControllerContext.ParentActionViewContext.ViewData.Model as string;
+            Universiteties db = new Universiteties();
+
+            var univers = db.GetList();
+
+            var model = new SelectList(univers, "UniversityId", "Name", selectedGenreId);
+
+            this.ViewData.Model = model;
+            this.ViewData.ModelMetadata = this.ControllerContext.ParentActionViewContext.ViewData.ModelMetadata;
+
+            return View( "DropDown" );
         }
     }
 }

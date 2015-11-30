@@ -1,0 +1,13 @@
+﻿@model SelectList
+@{
+    Layout = null;
+    var templateInfo = this.ViewContext.ParentActionViewContext.ViewData.TemplateInfo;
+}
+@Html.DropDownList(
+    templateInfo.GetFullHtmlFieldName( "" ),
+    this.Model,
+    this.ViewData.ModelMetadata.NullDisplayText,
+    new
+    {
+        UniversityID = templateInfo.GetFullHtmlFieldId( "" )
+    } )

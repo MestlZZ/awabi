@@ -120,6 +120,8 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Error\PageNotFound.cshtml" />
+    <Content Include="Views\Home\DropDown.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Search_Univer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
