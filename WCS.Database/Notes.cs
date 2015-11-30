@@ -8,7 +8,7 @@ using WCS.Models;
 
 namespace WCS.Databases
 {
-    public class GetNoteFromDb
+    public class Notes
     {
         NoteContext db = new NoteContext();
         public Note GetNote( string Id )
@@ -23,36 +23,6 @@ namespace WCS.Databases
                 return null;
             }
             return note;
-        }
-        public State GetState( string Id )
-        {
-            if (Id == null)
-            {
-                return null;
-            }
-            State state = db.States.Find(Id);
-            if (state == null)
-            {
-                return null;
-            }
-            return state;
-        }
-        public University GetUniversity( string Id )
-        {
-            if (Id == null)
-            {
-                return null;
-            }
-            University univers = db.Universities.Find(Id);
-            if (univers == null)
-            {
-                return null;
-            }
-            return univers;
-        }
-        public IList<State> GetStates()
-        {
-            return db.States.ToList();
         }
         public IList<Note> GetNotes()
         {
@@ -71,9 +41,39 @@ namespace WCS.Databases
             }
             return indexs;
         }
-        public IList<University> GetUniversityis()
+        public void Save( Note note )
         {
-            return db.Universities.ToList();
+            if (note != null)
+            {
+                note.Id = GetLastID();
+                db.Notes.Add( note );
+            }
+            db.SaveChanges();
+        }
+        private string GetLastID()
+        {
+            Note note;
+            int id = 0;
+            do
+            {
+                id++;
+                note = db.Notes.Find( id.ToString() );
+            } while (note != null);
+            return id.ToString();
+        }
+        public void Delete( string Id )
+        {
+            Note note = db.Notes.Find( Id );
+            if (note != null)
+            {
+                db.Notes.Remove( note );
+                db.SaveChanges();
+            }
+        }
+        public void Update( Note note )
+        {
+            db.Entry( note ).State = EntityState.Modified;
+            db.SaveChanges();
         }
     }
 }

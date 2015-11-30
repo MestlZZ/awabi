@@ -15,11 +15,10 @@ namespace WCS.Models
         [ScaffoldColumn( false )]
         public string UniversityID { set; get; }
 
-        [Required( ErrorMessage = "=( Я без області не зможу університет знайти((" )]
+        [Required( ErrorMessage = "Невідома область!" )]
         [Display( Name = "ID Області" )]
-        public string StateID { set; get; } // зовнішній ключ
+        public string StateID { set; get; }
 
-        public virtual State State { get; set; } // зв'язок з статеІД
         [ScaffoldColumn( false )]
         [Required, Display(Name = "Університет/Інститут")]
         public string Name { get; set; }

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using WCS.Databases;
 using WCS.Models;
 
-namespace WCS.Controllers
+namespace WCS.MVC
 {
     public class ErrorController : Controller
     {

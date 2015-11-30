@@ -16,9 +16,7 @@ namespace WCS.Models
 
         [Required( ErrorMessage = "Поле не повинно бути порожнім!" )]
         [Display( Name = "Учбовий заклад" )]
-        public string UniversityID { set; get; } // зовнішній ключ
-
-        public virtual University University { get; set; } // зв'язок з university
+        public string UniversityID { set; get; }
 
         [ScaffoldColumn( false )]
         public DateTime Date { private set; get; }
@@ -39,31 +37,32 @@ namespace WCS.Models
            [DataType( DataType.Currency )]
            [Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" )]
            [Required( ErrorMessage = "Поле не повинно бути порожнім!" )]
-        public double ExpensesWithF { get; set; }
+        public double ExpensesWithFamily { get; set; }
 
             [Display( Name = "Додаткові витрати (за місяць знімаючи квартиру)" )] 
             [DataType( DataType.Currency )] 
             [Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" )]
             [Required( ErrorMessage = "Поле не повинно бути порожнім!" )]
-        public double ExpensesWithoutF { get; set; }
+        public double ExpensesWithoutFamily { get; set; }
 
             [Display( Name = "Додаткові витрати (за місяць проживаючи у гуртожитку)" )] 
             [DataType( DataType.Currency )] 
             [Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" )]
             [Required( ErrorMessage = "Поле не повинно бути порожнім!" )]
-        public double ExpensesHostel { get; set; }
+        public double ExpensesDormitory { get; set; }
 
             [Display( Name = "Плата за квартиру (у місяць)" )] 
             [DataType( DataType.Currency )] 
             [Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" )]
             [Required( ErrorMessage = "Поле не повинно бути порожнім!" )]
-        public double RentsWithoutF { get; set; }
+        public double RentsWithoutFamily { get; set; }
 
             [Display( Name = "Плата за кімнату у гуртожитку (у місяць)" )] 
             [DataType( DataType.Currency )] 
             [Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" )]
             [Required( ErrorMessage = "Поле не повинно бути порожнім!" )]
-        public double RentsHostel { get; set; }
+        public double RentsDormitory { get; set; }
+
         public Note ()
         {
             Date = DateTime.UtcNow;

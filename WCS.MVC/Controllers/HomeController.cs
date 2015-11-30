@@ -14,7 +14,7 @@ namespace WCS.MVC
         public ActionResult Index(int Id = 1)
         {
             string id = Id.ToString();
-            GetNoteFromDb db = new GetNoteFromDb();
+            Notes db = new Notes();
             Note note = db.GetNote( id );
             if (note == null)
                 return RedirectToRoute("AbiturientForm");
@@ -36,10 +36,11 @@ namespace WCS.MVC
                 ViewBag.Past = false;
             return View( note );
         }
+
         [HttpPost]
         public ActionResult Index( long id )
         {
-            SetChangesInDb db = new SetChangesInDb();
+            Notes db = new Notes();
             db.Delete( id.ToString() );
             return RedirectToAction( "Index", "Home", new { Id = (id-1) } );
         }
@@ -50,12 +51,13 @@ namespace WCS.MVC
             ViewBag.Title = "Відправка форми";
             return View();
         }
+
         [HttpPost]
         public ActionResult AbiturientForm( Note note )
         {
             if (ModelState.IsValid)
             {
-                SetChangesInDb db = new SetChangesInDb();
+                Notes db = new Notes();
                 db.Save( note );
                 return RedirectToAction( "Index", "Home", new { Id = Convert.ToInt32( note.Id ) } );
             }
@@ -66,7 +68,7 @@ namespace WCS.MVC
         public ActionResult StudentForm()
         {
             ViewBag.Title = "Форма студента";
-            GetNoteFromDb db = new GetNoteFromDb();
+            Universiteties db = new Universiteties();
             ViewBag.List = db.GetUniversityis();
             return View();
         }

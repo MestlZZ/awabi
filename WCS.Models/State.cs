@@ -15,6 +15,7 @@ namespace WCS.Models
         [Display(Name = "ID області")]
         [ScaffoldColumn( false )]
         public string StateID { set; get; }
+
         [Required]
         [Display( Name = "Область" )]
         public string Name { get; set; }
