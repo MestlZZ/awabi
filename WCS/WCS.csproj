@@ -120,8 +120,13 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Error\PageNotFound.cshtml" />
-    <Content Include="Views\Home\DropDown.cshtml" />
+    <Content Include="Views\Note\DropDown.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Search_Univer.cshtml" />
+    <Content Include="Views\Note\ListPage.cshtml" />
+    <Content Include="Views\Note\DetailedPage.cshtml" />
+    <Content Include="Views\Note\ComputePage.cshtml" />
+    <Content Include="Views\Home\SearchPage.cshtml" />
+    <Content Include="Views\Home\AboutUsPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -138,11 +143,15 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Home\AbiturientForm.cshtml" />
-    <Content Include="Views\Home\StudentForm.cshtml" />
+    <Content Include="Views\Note\AbiturientPage.cshtml" />
+    <Content Include="Views\Note\StudentPage.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\WCS.Business\WCS.Business.csproj">
+      <Project>{1599108d-88fa-4ebd-99ef-5e43c6ca2a05}</Project>
+      <Name>WCS.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WCS.Database\WCS.Databases.csproj">
       <Project>{badb9d6b-edb5-44f1-a30c-293869525e4c}</Project>
       <Name>WCS.Databases</Name>

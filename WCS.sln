@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCS.Databases", "WCS.Databa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCS.MVC", "WCS.MVC\WCS.MVC.csproj", "{D868FC68-6204-4247-BA3D-1E1F4A88B95D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCS.Business", "WCS.Business\WCS.Business.csproj", "{1599108D-88FA-4EBD-99EF-5E43C6CA2A05}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{D868FC68-6204-4247-BA3D-1E1F4A88B95D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D868FC68-6204-4247-BA3D-1E1F4A88B95D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D868FC68-6204-4247-BA3D-1E1F4A88B95D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1599108D-88FA-4EBD-99EF-5E43C6CA2A05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1599108D-88FA-4EBD-99EF-5E43C6CA2A05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1599108D-88FA-4EBD-99EF-5E43C6CA2A05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1599108D-88FA-4EBD-99EF-5E43C6CA2A05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

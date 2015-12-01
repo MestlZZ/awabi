@@ -1,16 +1,6 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model WCS.Models.Note
-@Html.DisplayForModel()
-<form method="post">
-    <input type="hidden" name="Id" value="@Model.Id" />
-    <input type="hidden" name="del" value="1" />
-    <input type="submit" alt="Delete" value="Delete"/>
-</form>
-<p> 
-        @if (ViewBag.Past) {
-            @Html.ActionLink( "Назад", "Index", "Home", new { id = ViewBag.PastInd }, new { @class = "navbar-brand" } );}
-        @if (ViewBag.Next) {
-            @Html.ActionLink( "Вперед", "Index", "Home", new { id = ViewBag.NextInd }, new { @class = "navbar-brand" } );}
-</p>
+<div style="text-align:center">
+    <h1>Вітаємо на нашому сайті!</h1>
+</div>
