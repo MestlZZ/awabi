@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using WCS.Databases;
 using WCS.Models;
 using WCS.Business;
 
@@ -35,7 +34,7 @@ namespace WCS.MVC.Controllers
         }
         public ActionResult DetailedPage( string id )
         {
-            return View();
+            return View( NotesBusiness.GetNote( id ));
         }
         public ActionResult ComputePage()
         {
@@ -44,9 +43,8 @@ namespace WCS.MVC.Controllers
         public ActionResult Univers()
         {
             string selectedGenreId = this.ControllerContext.ParentActionViewContext.ViewData.Model as string;
-            Universiteties db = new Universiteties();
 
-            var univers = db.GetList();
+            var univers = NotesBusiness.GetUniversityList();
 
             var model = new SelectList(univers, "UniversityId", "Name", selectedGenreId);
 
@@ -54,6 +52,11 @@ namespace WCS.MVC.Controllers
             this.ViewData.ModelMetadata = this.ControllerContext.ParentActionViewContext.ViewData.ModelMetadata;
 
             return View( "DropDown" );
+        }
+        public ActionResult DeleteNote( string id )
+        {
+            NotesBusiness.DelteNote( id );
+            return RedirectToRoute( "List" );
         }
     }
 }

@@ -184,5 +184,23 @@ namespace WCS.Business
             Notes db = new Notes();
             db.Save( note );
         }
+
+        public static Note GetNote( string id )
+        {
+            Notes db = new Notes();
+            return db.Get( id );
+        }
+
+        public static IList<University> GetUniversityList()
+        {
+            Universiteties db = new Universiteties();
+            return db.GetList();
+        }
+
+        public static void DelteNote( string id )
+        {
+            Notes db = new Notes();
+            db.Delete( id );
+        }
     }
 }

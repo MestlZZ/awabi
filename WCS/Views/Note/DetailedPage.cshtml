@@ -1,8 +1,10 @@
-﻿
+﻿@using WCS.Business;
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div style="text-align:center;">
     <h1>Деталі</h1>
+    @Html.DisplayForModel()
+    @Html.ActionLink( "Delete", "DeleteNote", "Note", new { id = Model.Id }, null )
 </div>
