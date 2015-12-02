@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 using WCS.Models;
 using WCS.Databases;
 
@@ -176,6 +177,12 @@ namespace WCS.Business
             var univers = GetUniversity( id );
             var state = GetState( univers.StateID );
             return state.Name;
+        }
+
+        public static void Add( Note note )
+        {
+            Notes db = new Notes();
+            db.Save( note );
         }
     }
 }

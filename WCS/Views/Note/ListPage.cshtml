@@ -25,15 +25,16 @@
             <td>Загальна сумма проживання</td>
             <td></td>
         </tr>
-        <tr>
-            @foreach (var note in Model) {
+        @foreach (var note in Model)
+        {
+            <tr>
                 <td>@note.Id</td>
                 <td>@NotesBusiness.GetStateName( note.UniversityID )</td>
                 <td>@NotesBusiness.GetUniversityName( note.UniversityID )</td>
                 <td>@note.Date</td>
                 <td>@NotesBusiness.GetAverageAll( note.Id )</td>
                 <td>@Html.ActionLink( "Details", "DetailedPage", "Note", new { id = note.Id }, null )</td>
-            }
-        </tr>
-    </table>
+           </tr>
+        }
+</table>
 </div>

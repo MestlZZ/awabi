@@ -15,6 +15,15 @@ namespace WCS.MVC.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult AbiturientPage( Note note )
+        {
+            if(ModelState.IsValid)
+            {
+                NotesBusiness.Add( note );
+            }
+            return View();
+        }
         public ActionResult StudentPage()
         {
             return View();
