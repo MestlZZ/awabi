@@ -1,7 +1,39 @@
-﻿
+﻿@using WCS.Business;
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div style="text-align:center;">
+<style>
+    table{
+        text-align:center;
+    }
+    h1{
+        text-align:center;
+    }
+    td{
+        padding:20px;
+    }
+</style>
+
+<div>
     <h1>Список записів</h1>
+    <table>
+        <tr>
+            <td>№ запису</td>
+            <td>Область / Місто</td>
+            <td>Назва університету</td>
+            <td>Дата створення запису</td>
+            <td>Загальна сумма проживання</td>
+            <td></td>
+        </tr>
+        <tr>
+            @foreach (var note in Model) {
+                <td>@note.Id</td>
+                <td>@NotesBusiness.GetStateName( note.UniversityID )</td>
+                <td>@NotesBusiness.GetUniversityName( note.UniversityID )</td>
+                <td>@note.Date</td>
+                <td>@NotesBusiness.GetAverageAll( note.Id )</td>
+                <td>@Html.ActionLink( "Details", "DetailedPage", "Note", new { id = note.Id }, null )</td>
+            }
+        </tr>
+    </table>
 </div>

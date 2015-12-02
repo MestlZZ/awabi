@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using WCS.Databases;
 using WCS.Models;
+using WCS.Business;
+
 namespace WCS.MVC.Controllers
 {
     public class NoteController : Controller
@@ -19,9 +21,10 @@ namespace WCS.MVC.Controllers
         }
         public ActionResult ListPage()
         {
-            return View();
+            var model = NotesBusiness.GetList();
+            return View( model );
         }
-        public ActionResult DetailedPage()
+        public ActionResult DetailedPage( string id )
         {
             return View();
         }

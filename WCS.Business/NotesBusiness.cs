@@ -10,6 +10,12 @@ namespace WCS.Business
 {
     public static class NotesBusiness
     {
+        public static IList<Note> GetList()
+        {
+            Notes db = new Notes();
+            return db.GetList();
+        }
+
         private static double GetAverage( int ind )
         {
             Notes db = new Notes();
@@ -135,6 +141,41 @@ namespace WCS.Business
                     break;
             }
             return sum;
+        }
+        public static double GetAverageAll( string id )
+        {
+            Notes db = new Notes();
+            var note = db.Get( id );
+            double sum = 0;
+            sum += note.RentsWithoutFamily + note.RentsDormitory;
+            sum += note.ExpensesWithoutFamily + note.ExpensesWithFamily + note.ExpensesDormitory;
+            sum += note.Award - note.TaitionFee;
+            return sum;
+        }
+
+        public static University GetUniversity( string id )
+        {
+            Universiteties db = new Universiteties();
+            return db.Get( id );
+        }
+
+        public static State GetState( string id )
+        {
+            States db = new States();
+            return db.Get( id );
+        }
+
+        public static string GetUniversityName( string id )
+        {
+            var univers = GetUniversity( id );
+            return univers.Name;
+        }
+
+        public static string GetStateName( string id )
+        {
+            var univers = GetUniversity( id );
+            var state = GetState( univers.StateID );
+            return state.Name;
         }
     }
 }
