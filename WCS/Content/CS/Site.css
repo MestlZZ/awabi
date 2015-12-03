@@ -159,6 +159,23 @@ input[type=submit]:focus{
 .text-box:active{
     border: 1px solid #007eff;
 }
+.custom-combobox {
+    position: relative;
+    display: inline-block;
+}
+
+.custom-combobox-toggle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-left: -1px;
+    padding: 0;
+}
+
+.custom-combobox-input {
+    margin: 0;
+    padding: 5px 10px;
+}
 table{
     box-shadow: inset 0px 0px 20px 1px lightgrey;
     text-align:center;
