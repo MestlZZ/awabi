@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using WCS.Databases;
 using WCS.Models;
+using WCS.Business;
 
 namespace WCS.MVC
 {
@@ -16,6 +17,7 @@ namespace WCS.MVC
         }
         public ActionResult AboutUsPage()
         {
+            NotesBusiness.AddUniversityToDb();
             return View();
         }
         public ActionResult SearchPage()

@@ -24,6 +24,11 @@ namespace WCS.Databases
         {
             return db.Universities.ToList();
         }
+        public void AddList( IList<University> univers )
+        {
+            db.Universities.AddRange( univers );
+            db.SaveChanges();
+        }
         public void Update( University univers )
         {
             if (univers == null)
