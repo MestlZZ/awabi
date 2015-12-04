@@ -3,11 +3,12 @@
     Layout = null;
     var templateInfo = this.ViewContext.ParentActionViewContext.ViewData.TemplateInfo;
 }
+<script src="~/Scripts/SelectUniversityID.js"></script>
 @Html.DropDownList(
-    templateInfo.GetFullHtmlFieldName( "" ),
-    this.Model,
-    this.ViewData.ModelMetadata.NullDisplayText,
-    new
-    {
-        UniversityID = templateInfo.GetFullHtmlFieldId( "" )
-    } )
+templateInfo.GetFullHtmlFieldName(""),
+this.Model,
+this.ViewData.ModelMetadata.NullDisplayText,
+new
+{
+    UniversityID = templateInfo.GetFullHtmlFieldId("")
+})

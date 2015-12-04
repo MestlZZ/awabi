@@ -24,6 +24,9 @@
         height: 1px; 
         display:inline-block;
     }
+    .text-box {
+        width:500px !important;
+    }
 }
 
 body {
@@ -32,6 +35,9 @@ body {
     padding-top: 50px;
     padding-bottom: 20px;
     font-family: "OpenSans",Arial,sans-serif;
+}
+h1{
+    text-align:center;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -152,4 +158,45 @@ input[type=submit]:focus{
 
 .text-box:active{
     border: 1px solid #007eff;
+}
+.custom-combobox {
+    position: relative;
+    display: inline-block;
+}
+
+.custom-combobox-toggle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-left: -1px;
+    padding: 0;
+}
+
+.custom-combobox-input {
+    margin: 0;
+    padding: 5px 10px;
+}
+table{
+    box-shadow: inset 0px 0px 20px 1px lightgrey;
+    text-align:center;
+    box-sizing:border-box;
+    background-color: darkgray;
+}
+tr {
+   background-color: white;
+   border:2px solid rgba(243, 234, 234, 0); 
+}
+thead > tr {
+   background-color:whitesmoke;
+   font-family:'Malgun Gothic';
+   font-size:18px;
+}
+tr:nth-child(2n) {
+   background-color:whitesmoke;
+}
+tr:hover {
+   border:2px solid lightblue; 
+}
+td{
+    padding:20px !important;
 }
