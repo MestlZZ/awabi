@@ -17,7 +17,6 @@ namespace WCS.MVC
         }
         public ActionResult AboutUsPage()
         {
-            NotesBusiness.AddUniversityToDb();
             return View();
         }
         public ActionResult SearchPage()
