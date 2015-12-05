@@ -22,7 +22,10 @@ namespace WCS.Business
         public static string GetUniversityName( string id )
         {
             var univers = GetUniversity( id );
-            return univers.Name;
+            if (univers == null)
+                return null;
+            else
+                return univers.Name;
         }
 
         public static IList<University> GetUniversityList()
@@ -55,6 +58,63 @@ namespace WCS.Business
             List<University> univer = new List<University>(univ);
             Universiteties db = new Universiteties();
             db.AddList( univer );
+        }
+
+        public static UniversityInfo GetInfo( string univers, bool budjet, int choose )
+        {
+            UniversityInfo un = new UniversityInfo();
+            un.Result = NotesBusiness.GetAverageNoteForUniversity( univers, budjet, choose );
+            un.IsNaN = Double.IsNaN( un.Result );
+            un.UniversityName = UniversityBusiness.GetUniversityName( univers );
+            un.StateName = StateBusiness.GetStateNameFromUniversity( univers );
+            var notes = NotesBusiness.GetListFromUniversity( univers );
+            if (notes.Count != 0)
+            {
+                foreach (var note in notes)
+                {
+                    if (budjet)
+                        un.Award += note.Award;
+                    else
+                        un.TaitionFee += note.TaitionFee;
+                    switch (choose)
+                    {
+                        case 1:
+                            un.ExpensesWithFamily += note.ExpensesWithFamily;
+                            break;
+                        case 2:
+                            un.ExpensesDormitory += note.ExpensesDormitory;
+                            un.RentsDormitory += note.RentsDormitory;
+                            break;
+                        case 3:
+                            un.ExpensesWithoutFamily += note.ExpensesWithoutFamily;
+                            un.RentsWithoutFamily += note.RentsWithoutFamily;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                if (budjet)
+                    un.Award /= notes.Count;
+                else
+                    un.TaitionFee /= notes.Count;
+                switch (choose)
+                {
+                    case 1:
+                        un.ExpensesWithFamily /= notes.Count;
+                        break;
+                    case 2:
+                        un.ExpensesDormitory /= notes.Count;
+                        un.RentsDormitory /= notes.Count;
+                        break;
+                    case 3:
+                        un.ExpensesWithoutFamily /= notes.Count;
+                        un.RentsWithoutFamily /= notes.Count;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            return un;
         }
     }
 }

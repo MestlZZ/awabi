@@ -1,4 +1,5 @@
-﻿@model WCS.Models.University
+﻿@using WCS.Models;
+@model WCS.Models.UniversityInfo
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -30,62 +31,23 @@
             <input type="submit" value="Дізнатися результат">
         </form>
     }else
-    {if (!ViewBag.isNaN)
+    {if (!Model.IsNaN)
         {
     <table align="center" width="70%" style="text-align:center; border: 2px solid #B0B0B0">
         <tr>
             <td colspan="2">
-                <p>Приблизна оцінка вартості навчання та проживання в "@Model.Name":</p>
-            </td>
-        </tr>
-        <tr>
-            <td style="text-align:right; width:50%">
-                имя
-            </td>
-            <td style="text-align:left; width:50%">
-                значение
+                <p>Приблизна оцінка вартості навчання та проживання в "@Model.UniversityName":</p>
             </td>
         </tr>
         <tr>
             <td colspan="2">
-                Описание
-            </td>
-        </tr>
-        <tr>
-            <td style="text-align:right; width:50%">
-                имя
-            </td>
-            <td style="text-align:left; width:50%">
-                значение
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                Описание
-            </td>
-        </tr>
-        <tr>
-            <td style="text-align:right; width:50%">
-                имя
-            </td>
-            <td style="text-align:left; width:50%">
-                значение
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                Описание
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <p>Навчаючись в цьому університеті ви будете @if (ViewBag.sum > 0)
+                <p>Навчаючись в цьому університеті ви будете @if (Model.Result > 0)
                 {
-                    <span>витрачати приблизно: @ViewBag.sum₴</span>
+                    <span>витрачати приблизно: @Model.Result₴</span>
                 }
                 else
                 {
-                    <span>отримувати приблизно: @(-ViewBag.sum)₴</span>
+                    <span>отримувати приблизно: @(-@Model.Result)₴</span>
                 }</p>
                 <p>Дякую за використання нашого сервісу!</p>
             </td>

@@ -19,7 +19,7 @@ namespace WCS.Business
             return db.Get( id );
         }
 
-        public static string GetStateName( string id )
+        public static string GetStateNameFromUniversity( string id )
         {
             var univers = UniversityBusiness.GetUniversity( id );
             var state = GetState( univers.StateID );

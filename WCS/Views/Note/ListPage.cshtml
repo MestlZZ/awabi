@@ -20,7 +20,7 @@
         {
             <tr>
                 <td>@note.Id</td>
-                <td>@StateBusiness.GetStateName( note.UniversityID )</td>
+                <td>@StateBusiness.GetStateNameFromUniversity( note.UniversityID )</td>
                 <td>@UniversityBusiness.GetUniversityName( note.UniversityID )</td>
                 <td>@note.Date</td>
                 <td>@NotesBusiness.GetAverageNote( note.Id )</td>
