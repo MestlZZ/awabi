@@ -125,9 +125,9 @@ namespace WCS.Business
         {
             double sum = 0;
             if (budjet)
-                sum += GetAverageAward();
+                sum -= GetAverageAward();
             else
-                sum -= GetAverageFee();
+                sum += GetAverageFee();
             switch(choose)
             {
                 case 1:
@@ -151,7 +151,7 @@ namespace WCS.Business
             double sum = 0;
             sum += note.RentsWithoutFamily + note.RentsDormitory;
             sum += note.ExpensesWithoutFamily + note.ExpensesWithFamily + note.ExpensesDormitory;
-            sum += note.Award - note.TaitionFee;
+            sum -= note.Award + note.TaitionFee;
             return sum;
         }
 
