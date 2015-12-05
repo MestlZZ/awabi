@@ -15,7 +15,8 @@ namespace WCS.Models
         public string Id { get; set; }
 
         [UIHint( "Search_Univer" )]
-        [DisplayFormat( NullDisplayText = "---Please Select---" )]
+        [DisplayFormat( NullDisplayText = "" )]
+        [DataType(DataType.Currency)]
         [Required( ErrorMessage = "Поле не повинно бути порожнім!" )]
         [Display( Name = "Учбовий заклад" )]
         public string UniversityID { set; get; }

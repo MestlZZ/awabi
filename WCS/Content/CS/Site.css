@@ -220,3 +220,6 @@ tbody > tr:hover {
 td{
     padding:20px;
 }
+.input-validation-error {
+  border: solid 1px red;
+}
