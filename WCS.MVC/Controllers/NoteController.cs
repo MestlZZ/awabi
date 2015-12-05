@@ -39,17 +39,18 @@ namespace WCS.MVC.Controllers
         [HttpGet]
         public ActionResult ComputePage( string UniversityID = null, int radio = 0, bool chose = false )
         {
-            if(radio == 0 || UniversityID == null)
+            University univer = new University();
+            if (radio == 0 || UniversityID == null)
             {
-                Note note = new Note();
-                note = null;
-                return View( note );
+                univer = null;
+                return View( univer );
             }
             else
             {
-
+                univer = UniversityBusiness.GetUniversity( UniversityID );
+                ViewBag.sum =  NotesBusiness.GetAverageNoteForUniversity( UniversityID, chose, radio );
+                return View( univer );
             }
-            return View();
         }
         public ActionResult Univers()
         {

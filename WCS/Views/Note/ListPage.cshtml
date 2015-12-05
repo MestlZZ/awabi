@@ -23,7 +23,7 @@
                 <td>@StateBusiness.GetStateName( note.UniversityID )</td>
                 <td>@UniversityBusiness.GetUniversityName( note.UniversityID )</td>
                 <td>@note.Date</td>
-                <td>@NotesBusiness.GetAverageAll( note.Id )</td>
+                <td>@NotesBusiness.GetAverageNote( note.Id )</td>
                 <td>@Html.ActionLink( "Details", "DetailedPage", "Note", new { id = note.Id }, null )</td>
            </tr>
         }

@@ -123,7 +123,7 @@ namespace WCS.Business
             return sum;
         }
 
-        public static double GetAverageAll( bool budjet, int choose )
+        public static double GetAverageAllNotes( bool budjet, int choose )
         {
             double sum = 0;
             if (budjet)
@@ -146,7 +146,8 @@ namespace WCS.Business
             }
             return sum;
         }
-        public static double GetAverageAll( string id )
+
+        public static double GetAverageNote( string id )
         {
             Notes db = new Notes();
             var note = db.Get( id );
@@ -154,6 +155,35 @@ namespace WCS.Business
             sum += note.RentsWithoutFamily + note.RentsDormitory;
             sum += note.ExpensesWithoutFamily + note.ExpensesWithFamily + note.ExpensesDormitory;
             sum -= note.Award + note.TaitionFee;
+            return sum;
+        }
+
+        public static double GetAverageNoteForUniversity( string id, bool budjet, int choose )
+        {
+            double sum = 0;
+            var notes = GetListFromUniversity( id );
+            foreach (var note in notes)
+            {
+                if (budjet)
+                    sum -= note.Award;
+                else
+                    sum += note.TaitionFee;
+                switch (choose)
+                {
+                    case 1:
+                        sum += note.ExpensesWithFamily;
+                        break;
+                    case 2:
+                        sum += note.ExpensesWithoutFamily + note.RentsWithoutFamily;
+                        break;
+                    case 3:
+                        sum += note.RentsDormitory + note.ExpensesDormitory;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            sum /= (double)notes.Count;
             return sum;
         }
 
