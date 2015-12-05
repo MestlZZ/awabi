@@ -8,7 +8,7 @@
     }
     $(".editor-field").each(function (index) {
         this_input = $(".text-box")[index];
-        $(this_input).attr("title", 'Значення від 0 до 5000');
+        $(this_input).attr("title", 'Значення від 0 до 50000');
         $(this_input).attr("data-toggle", "tooltip");
         if ($(window).width() > 500)
             $(this_input).attr("data-placement", "right");

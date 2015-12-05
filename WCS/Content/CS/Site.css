@@ -223,3 +223,19 @@ td{
 .input-validation-error {
   border: solid 1px red;
 }
+.img_logo{
+    height:45px;
+    width:45px;
+    float:left;
+    background:url('../Images/logo-min.png');
+    background-size:contain;
+    margin-right:40px;
+    margin-left:10px;
+    transition-timing-function:ease-out;
+    transition-duration:1s;
+}
+.img_logo:hover{
+     background:url('../Images/logo-medium.png');
+     background-size:contain;
+     transform:rotate(380deg) scaleX(1.5); 
+}
