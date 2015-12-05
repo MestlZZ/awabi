@@ -130,4 +130,8 @@
 
 $(function () {
     $("#UniversityID").combobox();
+
+    /*$(".ui-autocomplete").on('height', function () {
+        alert('1');
+    });*/
 });
