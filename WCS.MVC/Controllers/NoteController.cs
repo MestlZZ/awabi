@@ -10,10 +10,12 @@ namespace WCS.MVC.Controllers
 {
     public class NoteController : Controller
     {
-        public ActionResult StudentPage()
+        public ActionResult StudentPage( string UniversityID = null )
         {
             ViewBag.Title = "Відправка форми";
-            return View();
+            Note not = new Note();
+            not.UniversityID = UniversityID;
+            return View( not );
         }
         [HttpPost]
         public ActionResult StudentPage( Note note )

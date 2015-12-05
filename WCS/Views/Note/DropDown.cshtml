@@ -4,6 +4,7 @@
     var templateInfo = this.ViewContext.ParentActionViewContext.ViewData.TemplateInfo;
 }
 <script src="~/Scripts/SelectUniversityID.js"></script>
+@Html.DropDownList(,,,)
 @Html.DropDownList(
 templateInfo.GetFullHtmlFieldName(""),
 this.Model,
