@@ -13,15 +13,15 @@ namespace WCS.Business
 {
     public static class UniversityBusiness
     {
-        public static University GetUniversity( string id )
+        public static University GetUniversity(string id)
         {
             Universiteties db = new Universiteties();
-            return db.Get( id );
+            return db.Get(id);
         }
 
-        public static string GetUniversityName( string id )
+        public static string GetUniversityName(string id)
         {
-            var univers = GetUniversity( id );
+            var univers = GetUniversity(id);
             if (univers == null)
                 return null;
             else
@@ -43,7 +43,7 @@ namespace WCS.Business
         private static void AddUniversityToDb()
         {
             System.Collections.Generic.List<University> univ = new System.Collections.Generic.List<University>();
-            StringBuilder str = new StringBuilder("",100);
+            StringBuilder str = new StringBuilder("", 100);
             int lastID = GetLastId();
             University buf = GetUniversity(lastID.ToString());
             Regex newReg = new Regex(@">+[^<]+</a");
@@ -54,33 +54,33 @@ namespace WCS.Business
             foreach (Match mat in matches)
             {
                 buf.StateID = sId;
-                str.Append( mat.Value );
-                str.Remove( 0, 1 );
+                str.Append(mat.Value);
+                str.Remove(0, 1);
                 b = str.Length;
-                str.Remove( (b - 3), 3 );
+                str.Remove((b - 3), 3);
                 buf.Name = str.ToString();
                 i++;
                 buf.UniversityID = (i + lastID).ToString();
-                str.Remove( 0, str.Length );
-                univ.Add( buf );
+                str.Remove(0, str.Length);
+                univ.Add(buf);
                 buf = new University();
             }
             List<University> univer = new List<University>(univ);
             Universiteties db = new Universiteties();
-            db.AddList( univer );
+            db.AddList(univer);
         }
 
-        public static UniversityInfo GetInfo( string univers, bool budjet, int choose )
+        public static UniversityInfo GetInfo(string univers, bool budjet, int choose)
         {
             UniversityInfo un = new UniversityInfo();
             un.choose = choose;
             un.budjet = budjet;
-            un.Result = NotesBusiness.GetAverageNoteForUniversity( univers, budjet, choose );
-            un.IsNaN = Double.IsNaN( un.Result );
-            un.UniversityName = UniversityBusiness.GetUniversityName( univers );
-            un.StateName = StateBusiness.GetStateNameFromUniversity( univers );
-            var notes = NotesBusiness.GetListFromUniversity( univers );
-            double award = 0, fee = 0, ewf = 0, ewtf = 0,rwtf = 0 ,rd = 0, ed = 0;
+            un.Result = NotesBusiness.GetAverageNoteForUniversity(univers, budjet, choose);
+            un.IsNaN = Double.IsNaN(un.Result);
+            un.UniversityName = UniversityBusiness.GetUniversityName(univers);
+            un.StateName = StateBusiness.GetStateNameFromUniversity(univers);
+            var notes = NotesBusiness.GetListFromUniversity(univers);
+            double award = 0, fee = 0, ewf = 0, ewtf = 0, rwtf = 0, rd = 0, ed = 0;
             if (notes.Count != 0)
             {
                 foreach (var note in notes)

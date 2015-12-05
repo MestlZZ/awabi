@@ -20,7 +20,7 @@ namespace WCS.Business
             return db.GetList();
         }
 
-        private static double GetAverage( int ind )
+        private static double GetAverage(int ind)
         {
             Notes db = new Notes();
             double sum = 0;
@@ -67,37 +67,37 @@ namespace WCS.Business
 
         public static double GetAverageFee()
         {
-            return GetAverage( 1 );
+            return GetAverage(1);
         }
 
         public static double GetAverageAward()
         {
-            return GetAverage( 2 );
+            return GetAverage(2);
         }
 
         public static double GetAverageExpensesWithFamily()
         {
-            return GetAverage( 3 );
+            return GetAverage(3);
         }
 
         public static double GetAverageExpensesWithoutFamily()
         {
-            return GetAverage( 4 );
+            return GetAverage(4);
         }
 
         public static double GetAverageExpensesDormitory()
         {
-            return GetAverage( 5 );
+            return GetAverage(5);
         }
 
         public static double GetAverageRentsWithoutFamily()
         {
-            return GetAverage( 6 );
+            return GetAverage(6);
         }
 
         public static double GetAverageRentsDormitory()
         {
-            return GetAverage( 7 );
+            return GetAverage(7);
         }
 
         public static double GetAverageWithFamily()
@@ -123,14 +123,14 @@ namespace WCS.Business
             return sum;
         }
 
-        public static double GetAverageAllNotes( bool budjet, int choose )
+        public static double GetAverageAllNotes(bool budjet, int choose)
         {
             double sum = 0;
             if (budjet)
                 sum -= GetAverageAward();
             else
                 sum += GetAverageFee();
-            switch(choose)
+            switch (choose)
             {
                 case 1:
                     sum += GetAverageWithFamily();
@@ -147,10 +147,10 @@ namespace WCS.Business
             return sum;
         }
 
-        public static double GetAverageNote( string id )
+        public static double GetAverageNote(string id)
         {
             Notes db = new Notes();
-            var note = db.Get( id );
+            var note = db.Get(id);
             double sum = 0;
             sum += note.RentsWithoutFamily + note.RentsDormitory;
             sum += note.ExpensesWithoutFamily + note.ExpensesWithFamily + note.ExpensesDormitory;
@@ -158,10 +158,10 @@ namespace WCS.Business
             return sum;
         }
 
-        public static double GetAverageNoteForUniversity( string id, bool budjet, int choose )
+        public static double GetAverageNoteForUniversity(string id, bool budjet, int choose)
         {
             double sum = 0;
-            var notes = GetListFromUniversity( id );
+            var notes = GetListFromUniversity(id);
             foreach (var note in notes)
             {
                 if (budjet)
@@ -187,40 +187,40 @@ namespace WCS.Business
             return sum;
         }
 
-        public static void Add( Note note )
+        public static void Add(Note note)
         {
             Notes db = new Notes();
-            db.Save( note );
+            db.Save(note);
         }
 
-        public static Note GetNote( string id )
+        public static Note GetNote(string id)
         {
             Notes db = new Notes();
-            return db.Get( id );
+            return db.Get(id);
         }
 
-        public static void DeleteNote( string id )
+        public static void DeleteNote(string id)
         {
             Notes db = new Notes();
-            db.Delete( id );
+            db.Delete(id);
         }
 
-        public static IList<Note> GetListFromUniversity( string univerID )
+        public static IList<Note> GetListFromUniversity(string univerID)
         {
             Notes db = new Notes();
             var notes = db.GetList();
             System.Collections.Generic.List<Note> uNotes = new System.Collections.Generic.List<Note>();
             foreach (var note in notes)
             {
-                if(note.UniversityID == univerID)
+                if (note.UniversityID == univerID)
                 {
-                    uNotes.Add( note );
+                    uNotes.Add(note);
                 }
             }
             return uNotes;
         }
 
-        public static IList<Note> GetListFromState( string stateID )
+        public static IList<Note> GetListFromState(string stateID)
         {
             Notes db = new Notes();
             var notes = db.GetList();
@@ -228,10 +228,10 @@ namespace WCS.Business
             University univer;
             foreach (var note in notes)
             {
-                univer = UniversityBusiness.GetUniversity( note.UniversityID );
+                univer = UniversityBusiness.GetUniversity(note.UniversityID);
                 if (univer.StateID == stateID)
                 {
-                    uNotes.Add( note );
+                    uNotes.Add(note);
                 }
             }
             return uNotes;
