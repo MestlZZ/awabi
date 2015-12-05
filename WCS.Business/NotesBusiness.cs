@@ -199,7 +199,7 @@ namespace WCS.Business
             return db.Get( id );
         }
 
-        public static void DelteNote( string id )
+        public static void DeleteNote( string id )
         {
             Notes db = new Notes();
             db.Delete( id );

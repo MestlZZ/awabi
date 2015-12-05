@@ -61,7 +61,7 @@ namespace WCS.MVC.Controllers
         }
         public ActionResult DeleteNote( string id )
         {
-            NotesBusiness.DelteNote( id );
+            NotesBusiness.DeleteNote( id );
             return RedirectToRoute( "List" );
         }
     }

@@ -16,7 +16,7 @@
     {
         <form method="get" style="margin: 0px 0">
             <label>
-            Оберіть університет(достатньо вписати 3 символи)<br />
+            Оберіть університет (достатньо вписати 3 символи)<br />
             @Html.EditorFor( Model => Model.UniversityID )
             </label><br />
             <label>
@@ -46,10 +46,10 @@
                 <p>Приблизна оцінка вартості життя навчаючись 
                 @if (Model.budjet) { <span>на бюджеті</span> }
                 else { <span>на контракті</span> }
-                 в "@Model.UniversityName", що розташований в "@Model.StateName" та
-                @if (Model.choose == 1) { <span>проживаючи з батьками</span> }
-                @if (Model.choose == 2) { <span>знімаючи квартиру</span> }
-                @if (Model.choose == 3) { <span>проживаючи в гуртожитку</span> }
+                 в "@Model.UniversityName", що розташований в "@Model.StateName" якщо
+                @if (Model.choose == 1) { <span>проживати з батьками</span> }
+                @if (Model.choose == 2) { <span>знімати квартиру</span> }
+                @if (Model.choose == 3) { <span>проживати в гуртожитку</span> }
                 :</p>
             </td>
         </tr>
