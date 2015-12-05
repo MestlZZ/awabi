@@ -23,16 +23,16 @@
     }
    .editor-label {
         display:inline;
-        padding: 0px 10px 0px 0px;
     }
    .editor-field{
        display:inline;
    }
    label{
-       margin-top: 10px !important;
        text-overflow: ellipsis;
        white-space: nowrap;
        overflow: hidden;
+       vertical-align:middle;
+       padding-bottom:5px;
    }
    .editor-label:nth-child(n)::before{
        
@@ -77,7 +77,7 @@ label {
     word-wrap: break-word;
     font-family:Georgia, 'Times New Roman', Times, serif;
     font-weight:200 !important;
-    font-size:13pt;
+    font-size:18px;
 }
 input[type=submit]{
     margin:20px;
@@ -169,9 +169,10 @@ input[type=submit]:focus{
 }
 
 .text-box{
-    margin: 4px 8px 7px 0;
+    font-size:20px;
+    margin: 20px 8px 7px 0;
     min-height: 40px;
-    padding-left: 20px;
+    padding-left: 6px;
     width: 100%;
     border: 1px solid #808080;
 }
