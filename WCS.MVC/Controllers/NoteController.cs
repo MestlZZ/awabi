@@ -12,29 +12,34 @@ namespace WCS.MVC.Controllers
     {
         public ActionResult StudentPage()
         {
+            ViewBag.Title = "Відправка форми";
             return View();
         }
         [HttpPost]
-        public ActionResult StudentPage( Note note )
+        public ActionResult StudentPage(Note note)
         {
-            if(ModelState.IsValid)
+            ViewBag.Title = "Відправка форми";
+            if (ModelState.IsValid)
             {
-                NotesBusiness.Add( note );
+                NotesBusiness.Add(note);
             }
             return View();
         }
         public ActionResult ListPage()
         {
+            ViewBag.Title = "Список записів";
             var model = NotesBusiness.GetList();
-            return View( model );
+            return View(model);
         }
-        public ActionResult DetailedPage( string id )
+        public ActionResult DetailedPage(string id)
         {
-            return View( NotesBusiness.GetNote( id ));
+            ViewBag.Title = "Детальна інформація";
+            return View(NotesBusiness.GetNote(id));
         }
         [HttpGet]
-        public ActionResult ComputePage( string UniversityID = null, int radio = 0, bool chose = false )
+        public ActionResult ComputePage(string UniversityID = null, int radio = 0, bool chose = false)
         {
+            ViewBag.Title = "Розрахунок для абітурієнта";
             if (radio == 0 || UniversityBusiness.GetUniversity(UniversityID) == null)
             {
                 return View();
@@ -42,8 +47,8 @@ namespace WCS.MVC.Controllers
             else
             {
                 UniversityInfo univer;
-                univer = UniversityBusiness.GetInfo( UniversityID, chose, radio );
-                return View( univer );
+                univer = UniversityBusiness.GetInfo(UniversityID, chose, radio);
+                return View(univer);
             }
         }
         public ActionResult Univers()
@@ -57,12 +62,12 @@ namespace WCS.MVC.Controllers
             this.ViewData.Model = model;
             this.ViewData.ModelMetadata = this.ControllerContext.ParentActionViewContext.ViewData.ModelMetadata;
 
-            return View( "DropDown" );
+            return View("DropDown");
         }
-        public ActionResult DeleteNote( string id )
+        public ActionResult DeleteNote(string id)
         {
-            NotesBusiness.DelteNote( id );
-            return RedirectToRoute( "List" );
+            NotesBusiness.DeleteNote(id);
+            return RedirectToRoute("List");
         }
     }
 }

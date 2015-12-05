@@ -4,10 +4,8 @@
             this.wrapper = $("<span>")
               .addClass("custom-combobox")
               .insertAfter(this.element);
-
             this.element.hide();
             this._createAutocomplete();
-            this._createShowAllButton();
         },
 
         _createAutocomplete: function () {
@@ -38,39 +36,6 @@
 
                 autocompletechange: "_removeIfInvalid"
             });
-        },
-
-        _createShowAllButton: function () {
-            var input = this.input,
-              wasOpen = false;
-
-            $("<a>")
-              .attr("tabIndex", -1)
-              .attr("title", "Show All Items")
-              .tooltip()
-              .appendTo(this.wrapper)
-              .button({
-                  icons: {
-                      primary: "ui-icon-triangle-1-s"
-                  },
-                  text: false
-              })
-              .removeClass("ui-corner-all")
-              .addClass("custom-combobox-toggle ui-corner-right")
-              .mousedown(function () {
-                  wasOpen = input.autocomplete("widget").is(":visible");
-              })
-              .click(function () {
-                  input.focus();
-
-                  // Close if already visible
-                  if (wasOpen) {
-                      return;
-                  }
-
-                  // Pass empty string as value to search for, displaying all results
-                  input.autocomplete("search", "");
-              });
         },
 
         _source: function (request, response) {
@@ -108,16 +73,7 @@
             if (valid) {
                 return;
             }
-
             // Remove invalid value
-            this.input
-              .val("")
-              .attr("title", value + " didn't match any item")
-              .tooltip("open");
-            this.element.val("");
-            this._delay(function () {
-                this.input.tooltip("close").attr("title", "");
-            }, 500);
             this.input.autocomplete("instance").term = "";
         },
 
@@ -130,5 +86,5 @@
 
 $(function () {
     $("#UniversityID").combobox();
-   // $('input.ui-autocomplete-input').css('width', '300px')
+    //$('input.ui-autocomplete-input').css('width', '300px')
 });

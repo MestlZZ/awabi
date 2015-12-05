@@ -13,14 +13,19 @@ namespace WCS.MVC
     {
         public ActionResult Index()
         {
+            ViewBag.Title = "Головна сторінка";
             return View();
         }
+
         public ActionResult AboutUsPage()
         {
+            ViewBag.Title = "Про нас";
             return View();
         }
+
         public ActionResult SearchPage()
         {
+            ViewBag.Title = "Пошук";
             return View();
         }
     }

@@ -22,5 +22,11 @@
             else error_obj.hide();
         }
     });
+    $.validator.addClassRules({
+        'ui-autocomplete-input': {
+            required: true,
+            minlength: 10
+        }
+    });
     $("form").validate();
 });
