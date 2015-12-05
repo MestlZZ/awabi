@@ -15,15 +15,9 @@ namespace WCS.MVC
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Abiturient",
-                url: "abiturient",
-                defaults: new { controller = "Note", action = "AbiturientPage" }
-            );
-
-            routes.MapRoute(
                 name: "Student",
                 url: "student",
-                defaults: new { controller = "Note", action = "StudentPage" }
+                defaults: new { controller = "Note", action = "StudentPage", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
