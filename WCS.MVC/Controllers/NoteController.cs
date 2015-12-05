@@ -36,15 +36,26 @@ namespace WCS.MVC.Controllers
         {
             return View( NotesBusiness.GetNote( id ));
         }
-        public ActionResult ComputePage()
+        [HttpGet]
+        public ActionResult ComputePage( string UniversityID = null, int radio = 0, bool chose = false )
         {
+            if(radio == 0 || UniversityID == null)
+            {
+                Note note = new Note();
+                note = null;
+                return View( note );
+            }
+            else
+            {
+
+            }
             return View();
         }
         public ActionResult Univers()
         {
             string selectedGenreId = this.ControllerContext.ParentActionViewContext.ViewData.Model as string;
 
-            var univers = NotesBusiness.GetUniversityList();
+            var univers = UniversityBusiness.GetUniversityList();
 
             var model = new SelectList(univers, "UniversityId", "Name", selectedGenreId);
 

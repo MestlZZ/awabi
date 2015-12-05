@@ -61,6 +61,8 @@
   <ItemGroup>
     <Compile Include="NotesBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StateBusiness.cs" />
+    <Compile Include="UniversityBusiness.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WCS.Database\WCS.Databases.csproj">

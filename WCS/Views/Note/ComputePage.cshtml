@@ -1,8 +1,33 @@
-﻿@{
+﻿@model WCS.Models.University
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div style="text-align:center;">
     <h1>Cторінка підрахунку</h1>
+    @if (Model == null)
+    {
+        <form method="get" style="margin: 0px 0">
+            @Html.EditorFor( Model => Model.UniversityID )<br />
+            <label>
+                Бюджет:
+                <input type="checkbox" name="chose" value="true" />
+            </label><br />
+            <label>
+                Проживаю з батьками:
+                <input type="radio" name="radio" value="1" required="required"/>
+            </label><br />
+            <label>
+                Знімаю квартиру:
+                <input type="radio" name="radio" value="2" />
+            </label><br />
+            <label>
+                Проживаю в гуртожитку:
+                <input type="radio" name="radio" value="3" />
+            </label><br />
+            <input type="submit" value="Дізнатися результат">
+        </form>
+    }else
+    {
     <table align="center" width="70%" style="text-align:center; border: 2px solid #B0B0B0">
         <tr>
             <td colspan="2">
@@ -59,4 +84,5 @@
             </td>
         </tr>
     </table>
+    }
 </div>

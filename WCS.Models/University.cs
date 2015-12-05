@@ -10,8 +10,11 @@ namespace WCS.Models
     public class University
     {
         /// [DatabaseGenerated(DatabaseGeneratedOption.Identity)] if it will have int type
-        [Key]
-        [Display(Name = "ID університету")]
+        [UIHint( "Search_Univer" )]
+        [DisplayFormat( NullDisplayText = "" )]
+        [DataType( DataType.Currency )]
+        [Required( ErrorMessage = "Поле не повинно бути порожнім!" )]
+        [Display( Name = "Учбовий заклад" )]
         [ScaffoldColumn( false )]
         public string UniversityID { set; get; }
 
