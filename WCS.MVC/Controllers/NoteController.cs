@@ -10,21 +10,17 @@ namespace WCS.MVC.Controllers
 {
     public class NoteController : Controller
     {
-        public ActionResult AbiturientPage()
+        public ActionResult StudentPage()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult AbiturientPage( Note note )
+        public ActionResult StudentPage( Note note )
         {
             if(ModelState.IsValid)
             {
                 NotesBusiness.Add( note );
             }
-            return View();
-        }
-        public ActionResult StudentPage()
-        {
             return View();
         }
         public ActionResult ListPage()

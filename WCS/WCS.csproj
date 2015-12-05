@@ -192,8 +192,7 @@
     <Content Include="Views\web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Note\AbiturientPage.cshtml" />
-    <Content Include="Views\Note\StudentPage.cshtml" />
+    <Content Include="Views\Note\StudenttPage.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
