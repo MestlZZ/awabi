@@ -174,5 +174,37 @@ namespace WCS.Business
             Notes db = new Notes();
             db.Delete( id );
         }
+
+        public static IList<Note> GetListFromUniversity( string univerID )
+        {
+            Notes db = new Notes();
+            var notes = db.GetList();
+            System.Collections.Generic.List<Note> uNotes = new System.Collections.Generic.List<Note>();
+            foreach (var note in notes)
+            {
+                if(note.UniversityID == univerID)
+                {
+                    uNotes.Add( note );
+                }
+            }
+            return uNotes;
+        }
+
+        public static IList<Note> GetListFromState( string stateID )
+        {
+            Notes db = new Notes();
+            var notes = db.GetList();
+            System.Collections.Generic.List<Note> uNotes = new System.Collections.Generic.List<Note>();
+            University univer;
+            foreach (var note in notes)
+            {
+                univer = UniversityBusiness.GetUniversity( note.UniversityID );
+                if (univer.StateID == stateID)
+                {
+                    uNotes.Add( note );
+                }
+            }
+            return uNotes;
+        }
     }
 }
