@@ -12,11 +12,13 @@ namespace WCS.MVC.Controllers
     {
         public ActionResult StudentPage()
         {
+            ViewBag.Title = "Відправка форми";
             return View();
         }
         [HttpPost]
         public ActionResult StudentPage( Note note )
         {
+            ViewBag.Title = "Відправка форми";
             if(ModelState.IsValid)
             {
                 NotesBusiness.Add( note );
@@ -25,16 +27,19 @@ namespace WCS.MVC.Controllers
         }
         public ActionResult ListPage()
         {
+            ViewBag.Title = "Список записів";
             var model = NotesBusiness.GetList();
             return View( model );
         }
         public ActionResult DetailedPage( string id )
         {
+            ViewBag.Title = "Детальна інформація";
             return View( NotesBusiness.GetNote( id ));
         }
         [HttpGet]
         public ActionResult ComputePage( string UniversityID = null, int radio = 0, bool chose = false )
         {
+            ViewBag.Title = "Розрахунок для абітурієнта";
             if (radio == 0 || UniversityBusiness.GetUniversity(UniversityID) == null)
             {
                 return View();
