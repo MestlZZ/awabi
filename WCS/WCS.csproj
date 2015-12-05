@@ -147,22 +147,20 @@
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\WebCSharp %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\WebCSharp.pubxml" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.6.4.js" />
-    <Content Include="Scripts\jquery-1.6.4.min.js" />
+    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.4.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\jquery-migrate-1.2.1.js" />
+    <Content Include="Scripts\jquery-migrate-1.2.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.map" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.bootstrap.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.bootstrap.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\SelectUniversityID.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -191,7 +189,6 @@
     <Content Include="Views\web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Note\AbiturientPage.cshtml" />
     <Content Include="Views\Note\StudentPage.cshtml" />
   </ItemGroup>
