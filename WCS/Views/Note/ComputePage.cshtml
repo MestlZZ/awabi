@@ -7,7 +7,10 @@
     @if (Model == null)
     {
         <form method="get" style="margin: 0px 0">
-            @Html.EditorFor( Model => Model.UniversityID )<br />
+            <label>
+            Оберіть університет(достатньо вписати 3 символи)<br />
+            @Html.EditorFor( Model => Model.UniversityID )
+            </label><br />
             <label>
                 Бюджет:
                 <input type="checkbox" name="chose" value="true" />
@@ -27,11 +30,12 @@
             <input type="submit" value="Дізнатися результат">
         </form>
     }else
-    {
+    {if (!ViewBag.isNaN)
+        {
     <table align="center" width="70%" style="text-align:center; border: 2px solid #B0B0B0">
         <tr>
             <td colspan="2">
-                <p>Приблизна оцінка вартості навчання та проживання в @Model.Name</p>
+                <p>Приблизна оцінка вартості навчання та проживання в "@Model.Name":</p>
             </td>
         </tr>
         <tr>
@@ -75,7 +79,14 @@
         </tr>
         <tr>
             <td colspan="2">
-                <p>Навчаючись в цьому університеті ви будете витрачати приблизно: @ViewBag.sum ₴</p>
+                <p>Навчаючись в цьому університеті ви будете @if (ViewBag.sum > 0)
+                {
+                    <span>витрачати приблизно: @ViewBag.sum₴</span>
+                }
+                else
+                {
+                    <span>отримувати приблизно: @(-ViewBag.sum)₴</span>
+                }</p>
                 <p>Дякую за використання нашого сервісу!</p>
             </td>
         </tr>
@@ -85,5 +96,11 @@
             </td>
         </tr>
     </table>
+        }
+        else
+        {
+            <p>Для цього університету ще не додано жодної інформації!</p>
+            <p>Допоможіть нам її зібрати! @Html.ActionLink( "Заповніть форму", "AbiturientPage", "Note", null, null )</p>
+        }
     }
 </div>

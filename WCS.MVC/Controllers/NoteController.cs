@@ -48,7 +48,9 @@ namespace WCS.MVC.Controllers
             else
             {
                 univer = UniversityBusiness.GetUniversity( UniversityID );
-                ViewBag.sum =  NotesBusiness.GetAverageNoteForUniversity( UniversityID, chose, radio );
+                double sum = NotesBusiness.GetAverageNoteForUniversity( UniversityID, chose, radio );
+                ViewBag.sum = sum;
+                ViewBag.isNaN = Double.IsNaN( sum );
                 return View( univer );
             }
         }
