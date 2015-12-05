@@ -3,6 +3,13 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .cost{
+        font-size:17px;
+        color:red;
+        font-weight:bold;
+    }
+</style>
 <div style="text-align:center;">
     <h1>Cторінка підрахунку</h1>
     @if (Model == null)
@@ -36,19 +43,59 @@
     <table align="center" width="70%" style="text-align:center; border: 2px solid #B0B0B0">
         <tr>
             <td colspan="2">
-                <p>Приблизна оцінка вартості навчання та проживання в "@Model.UniversityName":</p>
+                <p>Приблизна оцінка вартості життя навчаючись 
+                @if (Model.budjet) { <span>на бюджеті</span> }
+                else { <span>на контракті</span> }
+                 в "@Model.UniversityName", що розташований в "@Model.StateName" та
+                @if (Model.choose == 1) { <span>проживаючи з батьками</span> }
+                @if (Model.choose == 2) { <span>знімаючи квартиру</span> }
+                @if (Model.choose == 3) { <span>проживаючи в гуртожитку</span> }
+                :</p>
             </td>
         </tr>
         <tr>
             <td colspan="2">
-                <p>Навчаючись в цьому університеті ви будете @if (Model.Result > 0)
+                <p>
+                    @if (Model.budjet)
+                    { <span>Стипендія: <span >@Model.Award₴</span></span> }
+                    else
+                    { <span>Плата за навчання: <span >@Model.TaitionFee₴</span></span> }
+                </p>
+                @if (Model.choose == 1)
                 {
-                    <span>витрачати приблизно: @Model.Result₴</span>
+                    <p>
+                        Приблизні витрати при проживанні з батьками (в місяць): <span >@Model.ExpensesWithFamily₴</span>
+</p> 
+                }
+                @if (Model.choose == 2)
+                {
+                    <p>
+                        Приблизні витрати знімаючи квартиру (в місяць): <span>@Model.ExpensesWithoutFamily₴</span>
+</p>
+                    <p>
+                        Місячна плата за квартиру / кімнату: <span >@Model.RentsWithoutFamily₴</span>
+</p>
+                }
+                @if (Model.choose == 3)
+                {
+                    <p>
+                        Приблизні витрати проживаючи в гуртожитку (в місяць): <span>@Model.ExpensesDormitory₴</span>
+</p>
+                    <p>
+                        Місячна плата за кімнату в гуртожитку: <span >@Model.RentsDormitory₴</span>
+</p>
+                }
+                <p>Отже в загальному ви будете 
+                @if (Model.Result > 0)
+                {
+                    <span>втрачати приблизно <span class="cost">@Model.Result₴</span></span>
                 }
                 else
                 {
-                    <span>отримувати приблизно: @(-@Model.Result)₴</span>
-                }</p>
+                    <span>отримувати приблизно <span class="cost">@(-@Model.Result)₴</span></span>
+                }
+                в місяць.
+                @if (Model.budjet) { <span>(Враховуючи стипендію)</span> }</p>
                 <p>Дякую за використання нашого сервісу!</p>
             </td>
         </tr>

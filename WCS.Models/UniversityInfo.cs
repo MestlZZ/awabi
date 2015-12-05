@@ -18,6 +18,8 @@ namespace WCS.Models
         public string UniversityID { set; get; }
 
         public bool IsNaN { get; set; }
+        public bool budjet { get; set; }
+        public int choose { get; set; }
         public string UniversityName { get; set; }
         public string StateName { get; set; }
         public double Award { get; set; }
