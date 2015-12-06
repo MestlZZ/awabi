@@ -86,5 +86,10 @@
 
 $(function () {
     $("#UniversityID").combobox();
-    //$('input.ui-autocomplete-input').css('width', '300px')
+    var this_input = $(".ui-autocomplete-input");
+    this_input.attr("data-placement","right");
+    this_input.attr("data-original-title", "Почніть вводити назву, а потім виберіть...");
+    $("#UniversityID").rules('add', {
+        required: true
+    });
 });

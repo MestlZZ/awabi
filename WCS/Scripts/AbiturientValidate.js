@@ -12,9 +12,11 @@
         $(this_input).attr("data-toggle", "tooltip");
         if ($(window).width() > 500)
             $(this_input).attr("data-placement", "right");
+        else
+            $(this_input).attr("data-placement", "top");
     });
     $('[data-toggle="tooltip"]').tooltip();
-    $(".editor-field").bind("DOMSubtreeModified", function (index) {
+    $(".editor-field").on("DOMSubtreeModified", function (index) {
         var error_obj = $(this).children(".field-validation-error");
         if (error_obj.text()) {
             $(this).children(".text-box").attr("data-original-title", error_obj.text());
@@ -29,4 +31,10 @@
         }
     });
     $("form").validate();
+    /*$("input[name=submit_go]").on("click", function () {
+        if ($("#UniversityID").val() == "") {
+            $(".ui-autocomplete-input").val() = "";
+        }
+        $("form").valid();
+    });*/
 });
