@@ -10,21 +10,29 @@ namespace WCS.MVC.Controllers
 {
     public class NoteController : Controller
     {
-        public ActionResult StudentPage( string UniversityID = null )
+        [HttpGet]
+        public ActionResult StudentPage( string UniversityID = null, int radio = 0, bool chose = false )
         {
             ViewBag.Title = "Відправка форми";
-            Note not = new Note();
-            not.UniversityID = UniversityID;
-            return View( not );
+            UniversityInfo univ = new UniversityInfo();
+            univ.budjet = chose;
+            univ.choose = radio;
+            univ.UniversityID = UniversityID;
+            if (radio != 0)
+                ViewBag.Model2 = univ;
+            else
+                ViewBag.Model2 = null;
+            return View();
         }
         [HttpPost]
         public ActionResult StudentPage(Note note)
         {
             ViewBag.Title = "Відправка форми";
-            if (ModelState.IsValid)
-            {
-                NotesBusiness.Add(note);
-            }
+            if(note.ExpensesDormitory != 0 || note.ExpensesWithFamily !=0 || note.ExpensesWithoutFamily !=0 )
+                if (ModelState.IsValid)
+                {
+                    NotesBusiness.Add(note);
+                }
             return View();
         }
         public ActionResult ListPage()
