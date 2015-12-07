@@ -2,8 +2,65 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<style>
+    .cost{
+        font-weight:bold;
+        font-size: larger;
+    }
+    .red{
+        color:red;
+    }
+</style>
 <div style="text-align:center;">
     <h1>Деталі</h1>
-    @Html.DisplayForModel()
 </div>
+<table align="center">
+    <thead>
+        <tr>
+            <td>Поле</td>
+            <td>Значення</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Назва навчального закладу</td>
+            <td>@Model.UniversityName</td>
+        </tr>
+        <tr>
+            <td>Область / Місто</td>
+            <td>@Model.StateName</td>
+        </tr>
+        <tr>
+            <td>Стипендія (Бюджет)</td>
+            <td class="cost">@Model.Award₴</td>
+        </tr>
+        <tr>
+            <td>Плата за навчання (Контракт)</td>
+            <td class="cost">@Model.TaitionFee₴</td>
+        </tr>
+        <tr>
+            <td>Плата за кімнату в гуртожитку</td>
+            <td class="cost">@Model.RentsDormitory₴</td>
+        </tr>
+        <tr>
+            <td>Плата за зйом квартири</td>
+            <td class="cost">@Model.RentsWithoutFamily₴</td>
+        </tr>
+        <tr>
+            <td>Додаткові витрати (проживаючи з батьками)</td>
+            <td class="cost">@Model.ExpensesWithFamily₴</td>
+        </tr>
+        <tr>
+            <td>Додаткові витрати (проживаючи в гуртожитку)</td>
+            <td class="cost">@Model.ExpensesDormitory₴</td>
+        </tr>
+        <tr>
+            <td>Додаткові витрати (знімаючи квартиру)</td>
+            <td class="cost">@Model.ExpensesWithoutFamily₴</td>
+        </tr>
+        <tr>
+            <td>Загальна вартість університету<br />(Не показує вартість життя)</td>
+            <td class="cost red">@Model.Result₴</td>
+        </tr>
+    </tbody>
+</table>
