@@ -33,7 +33,7 @@ namespace WCS.MVC.Controllers
             var model = UniversityBusiness.GetListUniversityInfo();
             return View(model);
         }
-        public ActionResult DetailedPage( string id )
+        public ActionResult DetailedPage( string id  = null )
         {
             ViewBag.Title = "Детальна інформація";
             return View( UniversityBusiness.GetInfo( id ) );
