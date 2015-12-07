@@ -21,7 +21,7 @@ namespace WCS.Business
 
         public static string GetStateNameFromUniversity( string id )
         {
-            var univers = UniversityBusiness.GetUniversity( id );
+            var univers = UniversityBusiness.Get( id );
             var state = GetState( univers.StateID );
             return state.Name;
         }

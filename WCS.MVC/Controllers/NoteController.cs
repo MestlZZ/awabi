@@ -30,19 +30,19 @@ namespace WCS.MVC.Controllers
         public ActionResult ListPage()
         {
             ViewBag.Title = "Список записів";
-            var model = NotesBusiness.GetList();
+            var model = UniversityBusiness.GetListUniversityInfo();
             return View(model);
         }
-        public ActionResult DetailedPage(string id)
+        public ActionResult DetailedPage( string id )
         {
             ViewBag.Title = "Детальна інформація";
-            return View(NotesBusiness.GetNote(id));
+            return View( UniversityBusiness.GetInfo( id ) );
         }
         [HttpGet]
         public ActionResult ComputePage(string UniversityID = null, int radio = 0, bool chose = false)
         {
             ViewBag.Title = "Розрахунок для абітурієнта";
-            if (radio == 0 || UniversityBusiness.GetUniversity(UniversityID) == null)
+            if (radio == 0 || UniversityBusiness.Get(UniversityID) == null)
             {
                 return View();
             }
@@ -57,7 +57,7 @@ namespace WCS.MVC.Controllers
         {
             string selectedGenreId = this.ControllerContext.ParentActionViewContext.ViewData.Model as string;
 
-            var univers = UniversityBusiness.GetUniversityList();
+            var univers = UniversityBusiness.GetList();
 
             var model = new SelectList(univers, "UniversityId", "Name", selectedGenreId);
 

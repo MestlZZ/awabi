@@ -7,11 +7,11 @@
     <table>
         <thead>
             <tr>
-                <td>№ запису</td>
+                <td>ID університету</td>
                 <td>Область / Місто</td>
                 <td>Назва університету</td>
-                <td>Дата створення запису</td>
-                <td>Загальна сумма проживання</td>
+                <td>Плата за навчання</td>
+                <td>Загальна вартість життя</td>
                 <td></td>
             </tr>
         </thead>
@@ -19,12 +19,12 @@
         @foreach (var note in Model)
         {
             <tr>
-                <td>@note.Id</td>
-                <td>@StateBusiness.GetStateNameFromUniversity( note.UniversityID )</td>
-                <td>@UniversityBusiness.GetUniversityName( note.UniversityID )</td>
-                <td>@note.Date</td>
-                <td>@NotesBusiness.GetAverageNote( note.Id )</td>
-                <td>@Html.ActionLink( "Details", "DetailedPage", "Note", new { id = note.Id }, null )</td>
+                <td>@note.UniversityID</td>
+                <td>@note.StateName</td>
+                <td>@note.UniversityName</td>
+                <td><b>@note.TaitionFee₴</b></td>
+                <td><b>@note.Result₴</b></td>
+                <td>@Html.ActionLink( "Details", "DetailedPage", "Note", new { id = note.UniversityID }, null )</td>
            </tr>
         }
         </tbody>

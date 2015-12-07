@@ -187,6 +187,22 @@ namespace WCS.Business
             return sum;
         }
 
+        public static double GetAverageNoteForUniversity( string id )
+        {
+            double sum = 0;
+            var notes = GetListFromUniversity(id);
+            foreach (var note in notes)
+            {
+                    sum -= note.Award;
+                    sum += note.TaitionFee;
+                    sum += note.ExpensesWithFamily;
+                    sum += note.ExpensesWithoutFamily + note.RentsWithoutFamily;
+                    sum += note.RentsDormitory + note.ExpensesDormitory;
+            }
+            sum /= (double)notes.Count;
+            return sum;
+        }
+
         public static void Add(Note note)
         {
             Notes db = new Notes();
@@ -228,7 +244,7 @@ namespace WCS.Business
             University univer;
             foreach (var note in notes)
             {
-                univer = UniversityBusiness.GetUniversity(note.UniversityID);
+                univer = UniversityBusiness.Get(note.UniversityID);
                 if (univer.StateID == stateID)
                 {
                     uNotes.Add(note);
