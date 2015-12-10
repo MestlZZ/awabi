@@ -1,0 +1,9 @@
+﻿@model string
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="text-align:center;">
+    <h1>Відправка форми виконана успішно!</h1> 
+    @Html.ActionLink( "Подивитися детально про університет", "DetailedPage", "Note", new { id = Model }, null )
+</div>

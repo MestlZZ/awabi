@@ -33,7 +33,11 @@ namespace WCS.MVC.Controllers
                 {
                     NotesBusiness.Add(note);
                 }
-            return View();
+            return RedirectToAction("Success", new { Id = note.UniversityID } );
+        }
+        public ActionResult Success( string Id )
+        {
+            return View( new { Id } );
         }
         public ActionResult ListPage()
         {
