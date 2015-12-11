@@ -1,13 +1,4 @@
 ﻿@media (max-width: 768px){
-    #menu_button {
-        display: block;
-    }
-    .nav-content {
-        display: none;
-    }
-    #nav-fotter{
-        display: block !important;
-    }
     td{
         padding:10px;
     }
@@ -238,4 +229,7 @@ td{
      background:url('../Images/logo-medium.png');
      background-size:contain;
      transform:rotate(380deg) scaleX(1.5); 
+}
+#menu_header {
+    width:100%;
 }
