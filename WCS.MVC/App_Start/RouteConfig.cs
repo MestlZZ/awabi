@@ -28,6 +28,12 @@ namespace WCS.MVC
            );
 
             routes.MapRoute(
+               name: "Success",
+               url: "success",
+               defaults: new { controller = "Note", action = "Success", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
                name: "List",
                url: "list",
                defaults: new { controller = "Note", action = "ListPage" }
