@@ -10,8 +10,8 @@
                 <td>ID університету</td>
                 <td>Область / Місто</td>
                 <td>Назва університету</td>
-                <td>Плата за навчання</td>
-                <td>Загальна вартість життя</td>
+                <td width="15%">Плата за навчання</td>
+                <td width="15%">Загальна вартість життя</td>
                 <td></td>
             </tr>
         </thead>
@@ -22,8 +22,22 @@
                 <td>@note.UniversityID</td>
                 <td>@note.StateName</td>
                 <td>@note.UniversityName</td>
-                <td><b>@note.TaitionFee₴</b></td>
-                <td><b>@note.Result₴</b></td>
+                @if (@note.MaximalTaitionFee == note.MinimalTaitionFee)
+                {
+                    <td><b>@note.MaximalTaitionFee грн.</b></td>
+                }
+                else
+                {
+                    <td><b>@note.MinimalTaitionFee - @note.MaximalTaitionFee грн.</b></td>
+                }
+                @if (@note.MaximalResult == note.MinimalResult)
+                {
+                    <td><b>@note.MaximalResult грн.</b></td>
+                }
+                else
+                {
+                    <td><b>@note.MinimalResult - @note.MaximalResult грн.</b></td>
+                }
                 <td>@Html.ActionLink( "Details", "DetailedPage", "Note", new { id = note.UniversityID }, null )</td>
            </tr>
         }

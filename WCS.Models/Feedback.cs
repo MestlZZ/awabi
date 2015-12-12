@@ -19,20 +19,20 @@ namespace WCS.Models
 
         [Display( Name = "Ім'я" )]
         [DataType( DataType.Text )]
-        [Required( ErrorMessage = "Ви повинні вказати власне ім'я!" )]
-        [StringLength(25, MinimumLength = 2, ErrorMessage = "Ім'я не відповідає межам [2 - 25] символів")]
+        [Required( ErrorMessage = "Будь ласка, вкажіть власне ім'я!" )]
+        [StringLength(25, MinimumLength = 2, ErrorMessage = "Ім'я має бути в межаї від 2 до 25 символів")]
         public string Name { get; set; }
 
         [Display( Name = "Пошта" )]
         [DataType( DataType.EmailAddress )]
-        [Required( ErrorMessage = "Заповніть будь ласка це поле!" )]
-        [StringLength( 50, MinimumLength = 4, ErrorMessage = "Максимальна довжина пошти - 50 символів!" )]
+        [Required( ErrorMessage = "Будь ласка, заповніть це поле!" )]
+        [StringLength( 50, MinimumLength = 4, ErrorMessage = "Максимальна довжина адреси не повинно бути більше ніж 50 символів" )]
         public string Mail { get; set; }
 
         [Display( Name = "Відгук" )]
         [DataType( DataType.MultilineText )]
-        [Required( ErrorMessage = "Напишіть відгук!" )]
-        [StringLength( 1024, MinimumLength = 5, ErrorMessage = "Максимальна кількість символів для цього поля - 1024!" )]
+        [Required( ErrorMessage = "Будь ласка, напишіть відгук!" )]
+        [StringLength( 1024, MinimumLength = 5, ErrorMessage = "Довжина повідомлення повинна бути в межах від 5 до 1024 символів" )]
         public string Text { get; set; }
     }
 }

@@ -70,17 +70,172 @@ namespace WCS.Business
             db.AddList(univer);
         }
 
-        public static UniversityInfo GetInfo(string univers, bool budjet, int choose)
+        public static UniversityInfo GetInfo( string univers, bool contract, bool award, int choose )
         {
             UniversityInfo un = new UniversityInfo();
-            
+
+            var notes = NotesBusiness.GetListFromUniversity( univers );
+
+            un.Award = 820;
+            un.StateName = StateBusiness.GetStateNameFromUniversity( univers );
+            un.UniversityName = GetName( univers );
+            un.UniversityID = univers;
+            un.IsContract = contract;
+            un.Choose = choose;
+            un.IsHaveAward = award;
+
+            int ef = 0, et = 0, ra = 0, rd = 0;
+
+            un.MinimalTaitionFee = double.MaxValue;
+
+            foreach (var note in notes)
+            {
+                if (note.ExpensesFood > 0)
+                {
+                    un.ExpensesFood += note.ExpensesFood;
+                    ef++;
+                }
+
+                if (note.ExpensesTravel > 0)
+                {
+                    un.ExpensesTravel += note.ExpensesTravel;
+                    et++;
+                }
+
+                if (note.RentsApartment > 0 && choose == 2)
+                {
+                    un.RentsApartment += note.RentsApartment;
+                    ra++;
+                }
+
+                if (note.RentsDormitory > 0 && choose == 3)
+                {
+                    un.RentsDormitory += note.RentsDormitory;
+                    rd++;
+                }
+
+                if (contract)
+                {
+                    if (un.MaximalTaitionFee < note.MaximalTaitionFee)
+                        un.MaximalTaitionFee = note.MaximalTaitionFee;
+
+                    if (un.MinimalTaitionFee > note.MinimalTaitionFee)
+                        un.MinimalTaitionFee = note.MinimalTaitionFee;
+                }
+            }
+
+            if (!contract)
+                un.MinimalTaitionFee = 0;
+
+            if (ef > 0)
+                un.ExpensesFood /= (double)ef;
+            if (et > 0)
+                un.ExpensesTravel /= (double)et;
+            if (ra > 0 && choose == 2)
+                un.RentsApartment /= (double)ra;
+            if (rd > 0 && choose == 3)
+                un.RentsDormitory /= (double)rd;
+
+            un.MaximalResult = un.MinimalResult = un.RentsDormitory + un.RentsApartment + un.ExpensesTravel + un.ExpensesFood;
+
+            if (contract)
+            {
+                un.MinimalResult += un.MinimalTaitionFee;
+                un.MaximalResult += un.MaximalTaitionFee;
+            }
+
+            if (award)
+            {
+                un.MaximalResult -= un.Award;
+                un.MinimalResult -= un.Award;
+            }
+
+            RoundInfo( un );
+
+            if (Double.IsNaN( un.MaximalResult ) || Double.IsNaN( un.MinimalResult ))
+                un.IsNaN = true;
+
             return un;
         }
         public static UniversityInfo GetInfo( string univers )
         {
             UniversityInfo un = new UniversityInfo();
-            
+
+            var notes = NotesBusiness.GetListFromUniversity( univers );
+
+            un.Award = 820;
+            un.StateName = StateBusiness.GetStateNameFromUniversity( univers );
+            un.UniversityName = GetName( univers );
+            un.UniversityID = univers;
+
+            int ef = 0, et = 0, ra = 0, rd = 0;
+
+            un.MinimalTaitionFee = double.MaxValue;
+
+            foreach(var note in notes)
+            {
+                if (note.ExpensesFood > 0)
+                {
+                    un.ExpensesFood += note.ExpensesFood;
+                    ef++;
+                }
+
+                if (note.ExpensesTravel > 0)
+                {
+                    un.ExpensesTravel += note.ExpensesTravel;
+                    et++;
+                }
+
+                if (note.RentsApartment > 0)
+                {
+                    un.RentsApartment += note.RentsApartment;
+                    ra++;
+                }
+
+                if (note.RentsDormitory > 0)
+                {
+                    un.RentsDormitory += note.RentsDormitory;
+                    rd++;
+                }
+
+                if (un.MaximalTaitionFee < note.MaximalTaitionFee)
+                    un.MaximalTaitionFee = note.MaximalTaitionFee;
+
+                if (un.MinimalTaitionFee > note.MinimalTaitionFee)
+                    un.MinimalTaitionFee = note.MinimalTaitionFee;
+            }
+
+            if (ef > 0)
+                un.ExpensesFood /= (double)ef;
+            if (et > 0)
+                un.ExpensesTravel /= (double)et;
+            if (ra > 0)
+                un.RentsApartment /= (double)ra;
+            if (rd > 0)
+                un.RentsDormitory /= (double)rd;
+
+            un.MinimalResult = un.MaximalResult = un.RentsDormitory + un.RentsApartment + un.ExpensesTravel + un.ExpensesFood - un.Award;
+            un.MinimalResult += un.MinimalTaitionFee;
+            un.MaximalResult += un.MaximalTaitionFee;
+
+            RoundInfo( un );
+
+            if (Double.IsNaN( un.MaximalResult ) || Double.IsNaN( un.MinimalResult ))
+                un.IsNaN = true;
+
             return un;
+        }
+
+        public static void RoundInfo( UniversityInfo un )
+        {
+            un.MaximalTaitionFee = Math.Round( un.MaximalTaitionFee, 2 );
+            un.MaximalResult = Math.Round( un.MaximalResult, 2 );
+            un.MinimalTaitionFee = Math.Round( un.MinimalTaitionFee, 2 );
+            un.MinimalResult = Math.Round( un.MinimalResult, 2 );
+            un.RentsApartment = Math.Round( un.RentsApartment, 2 );
+            un.RentsDormitory = Math.Round( un.RentsDormitory, 2 );
+            un.ExpensesFood = Math.Round( un.ExpensesFood, 2 );
+            un.ExpensesTravel = Math.Round( un.ExpensesTravel, 2 );
         }
 
         public static IList<University> GetListWithNotes()
@@ -115,10 +270,8 @@ namespace WCS.Business
                 if (unInfo.IsNaN || 
                     Double.IsNaN(unInfo.MaximalTaitionFee) ||
                     Double.IsNaN( unInfo.MinimalTaitionFee ) ||
-                    Double.IsNaN( unInfo.Award ) ||
                     Double.IsNaN( unInfo.ExpensesTravel ) ||
-                    Double.IsNaN( unInfo.ExpensesFood ) || 
-                    Double.IsNaN( unInfo.RentsDormitory ) ||
+                    Double.IsNaN( unInfo.ExpensesFood )  ||
                     Double.IsNaN( unInfo.RentsApartment ))
                     continue;
                 universityInfo.Add( unInfo );

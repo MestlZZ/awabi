@@ -252,6 +252,8 @@
     <Content Include="Views\Note\Success.cshtml" />
     <Content Include="Views\Home\FeedbackPage.cshtml" />
     <Content Include="Views\Note\UpdateInfo.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

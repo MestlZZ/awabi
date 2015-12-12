@@ -18,7 +18,7 @@
     <thead>
         <tr>
             <td>Поле</td>
-            <td>Значення</td>
+            <td>Значення (в місяць)</td>
         </tr>
     </thead>
     <tbody>
@@ -31,36 +31,43 @@
             <td>@Model.StateName</td>
         </tr>
         <tr>
-            <td>Стипендія (Бюджет)</td>
-            <td class="cost">@Model.Award₴</td>
+            <td>Стипендія</td>
+            <td class="cost">@Model.Award грн.</td>
         </tr>
         <tr>
-            <td>Плата за навчання (Контракт)</td>
-            <td class="cost">@Model.TaitionFee₴</td>
+            <td>Максимальна плата за навчання</td>
+            <td class="cost">@Model.MaximalTaitionFee грн.</td>
         </tr>
         <tr>
-            <td>Плата за кімнату в гуртожитку</td>
-            <td class="cost">@Model.RentsDormitory₴</td>
+            <td>Мінімальна плата за навчання</td>
+            <td class="cost">@Model.MinimalTaitionFee грн.</td>
+        </tr>
+        @if (Model.RentsDormitory > 0)
+        {
+            <tr>
+                <td>Плата за кімнату в гуртожитку</td>
+                <td class="cost">@Model.RentsDormitory грн.</td>
+            </tr>
+        }
+        <tr>
+            <td>Плата за винаймання квартири</td>
+            <td class="cost">@Model.RentsApartment грн.</td>
         </tr>
         <tr>
-            <td>Плата за зйом квартири</td>
-            <td class="cost">@Model.RentsWithoutFamily₴</td>
+            <td>Витрати за проїзд</td>
+            <td class="cost">@Model.ExpensesTravel грн.</td>
         </tr>
         <tr>
-            <td>Додаткові витрати (проживаючи з батьками)</td>
-            <td class="cost">@Model.ExpensesWithFamily₴</td>
+            <td>Витрати на їжу</td>
+            <td class="cost">@Model.ExpensesFood грн.</td>
         </tr>
         <tr>
-            <td>Додаткові витрати (проживаючи в гуртожитку)</td>
-            <td class="cost">@Model.ExpensesDormitory₴</td>
+            <td>Загальна максимальна вартість навчання в університеті (лише до статистики)</td>
+            <td class="cost red">@Model.MaximalResult грн.</td>
         </tr>
         <tr>
-            <td>Додаткові витрати (знімаючи квартиру)</td>
-            <td class="cost">@Model.ExpensesWithoutFamily₴</td>
-        </tr>
-        <tr>
-            <td>Загальна вартість університету<br />(Не показує вартість життя)</td>
-            <td class="cost red">@Model.Result₴</td>
+            <td>Загальна мінімальна вартість навчання в університеті (лише до статистики)</td>
+            <td class="cost red">@Model.MinimalResult грн.</td>
         </tr>
     </tbody>
 </table>
