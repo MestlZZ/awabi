@@ -54,56 +54,12 @@
                 </thead>
                 <tbody>
                     <tr>
-                        @if (@ViewBag.Model2.budjet)
-                        {
-                            <td>Стипендія</td>
-                            <td>
-                            @Html.EditorFor( Model => Model.Award )
-                            </td>
-                        }
-                        else
-                        {
-                            <td>Плата за навчання</td>
-                            <td>
-                                @Html.EditorFor( Model => Model.TaitionFee )
-                            </td>
-                        }
+                        
                     </tr>
                     <tr>
-                        <td>Додаткові витрати(в місяць)</td>
-                            <td>
-                                @if(ViewBag.Model2.choose == 1)
-                                {
-                                    @Html.EditorFor( Model => Model.ExpensesWithFamily ) 
-                                }
-                                @if (ViewBag.Model2.choose == 2)
-                                {
-                                    @Html.EditorFor( Model => Model.ExpensesWithoutFamily )
-                                }
-                                @if (ViewBag.Model2.choose == 3)
-                                {
-                                    @Html.EditorFor( Model => Model.ExpensesDormitory )
-                                }
-                            </td>
+                        
                     </tr>
-                    @if (ViewBag.Model2.choose == 2)
-                    {
-                        <tr>
-                            <td>Плата за квартиру (в місяць)</td>
-                            <td>
-                                @Html.EditorFor( Model => Model.RentsWithoutFamily )
-                            </td>
-                        </tr>
-                    }
-                    @if (ViewBag.Model2.choose == 3)
-                    {
-                        <tr>
-                            <td>Плата за кімнату (в місяць)</td>
-                            <td>
-                                @Html.EditorFor( Model => Model.RentsDormitory )
-                            </td>
-                        </tr>
-                    }
+                    
                     <tr>
                         <td colspan="2" style="text-align:right">
                             <input type="submit" name="submit_go" />

@@ -73,134 +73,13 @@ namespace WCS.Business
         public static UniversityInfo GetInfo(string univers, bool budjet, int choose)
         {
             UniversityInfo un = new UniversityInfo();
-            un.choose = choose;
-            un.budjet = budjet;
-            un.Result = NotesBusiness.GetAverageNoteForUniversity(univers, budjet, choose);
-            un.IsNaN = Double.IsNaN(un.Result);
-            un.UniversityID = univers;
-            un.UniversityName = UniversityBusiness.GetName(univers);
-            un.StateName = StateBusiness.GetStateNameFromUniversity(univers);
-            var notes = NotesBusiness.GetListFromUniversity(univers);
-            double award = 0, fee = 0, ewf = 0, ewtf = 0, rwtf = 0, rd = 0, ed = 0;
-            if (notes.Count != 0)
-            {
-                foreach (var note in notes)
-                {
-                    if (budjet)
-                    {
-                        un.Award += note.Award;
-                        if (note.Award != 0)
-                            award++;
-                    }
-                    else
-                    {
-                        un.TaitionFee += note.TaitionFee;
-                        if (note.TaitionFee != 0)
-                            fee++;
-                    }
-                    switch (choose)
-                    {
-                        case 1:
-                            un.ExpensesWithFamily += note.ExpensesWithFamily;
-                            if (note.ExpensesWithFamily != 0)
-                                ewf++;
-                            break;
-                        case 3:
-                            un.ExpensesDormitory += note.ExpensesDormitory;
-                            if (note.ExpensesDormitory != 0)
-                                ed++;
-                            un.RentsDormitory += note.RentsDormitory;
-                            if (note.RentsDormitory != 0)
-                                rd++;
-                            break;
-                        case 2:
-                            un.ExpensesWithoutFamily += note.ExpensesWithoutFamily;
-                            if (note.ExpensesWithoutFamily != 0)
-                                ewtf++;
-                            un.RentsWithoutFamily += note.RentsWithoutFamily;
-                            if (note.RentsWithoutFamily != 0)
-                                rwtf++;
-                            break;
-                        default:
-                            break;
-                    }
-                }
-                if (budjet)
-                    un.Award /= award;
-                else
-                    un.TaitionFee /= fee;
-                switch (choose)
-                {
-                    case 1:
-                        un.ExpensesWithFamily /= ewf;
-                        break;
-                    case 3:
-                        un.ExpensesDormitory /= ed;
-                        un.RentsDormitory /= rd;
-                        break;
-                    case 2:
-                        un.ExpensesWithoutFamily /= ewtf;
-                        un.RentsWithoutFamily /= rwtf;
-                        break;
-                    default:
-                        break;
-                }
-            }
+            
             return un;
         }
         public static UniversityInfo GetInfo( string univers )
         {
             UniversityInfo un = new UniversityInfo();
-            un.Result = NotesBusiness.GetAverageNoteForUniversity( univers );
-            un.IsNaN = Double.IsNaN( un.Result );
-            un.UniversityID = univers;
-            un.UniversityName = UniversityBusiness.GetName( univers );
-            un.StateName = StateBusiness.GetStateNameFromUniversity( univers );
-            var notes = NotesBusiness.GetListFromUniversity(univers);
-            double award = 0, fee = 0, ewf = 0, ewtf = 0, rwtf = 0, rd = 0, ed = 0;
-            if (notes.Count != 0)
-            {
-                foreach (var note in notes)
-                {
-                    un.Award += note.Award;
-                    if (note.Award != 0)
-                        award++;
-                    un.TaitionFee += note.TaitionFee;
-                    if (note.TaitionFee != 0)
-                        fee++;
-
-                    un.ExpensesWithFamily += note.ExpensesWithFamily;
-                    if (note.ExpensesWithFamily != 0)
-                        ewf++;
-
-                    un.ExpensesDormitory += note.ExpensesDormitory;
-                    if (note.ExpensesDormitory != 0)
-                        ed++;
-                    un.RentsDormitory += note.RentsDormitory;
-                    if (note.RentsDormitory != 0)
-                        rd++;
-
-                    un.ExpensesWithoutFamily += note.ExpensesWithoutFamily;
-                    if (note.ExpensesWithoutFamily != 0)
-                        ewtf++;
-                    un.RentsWithoutFamily += note.RentsWithoutFamily;
-                    if (note.RentsWithoutFamily != 0)
-                        rwtf++;
-                }
-
-                un.Award /= award;
-
-                un.TaitionFee /= fee;
-
-                un.ExpensesWithFamily /= ewf;
-
-                un.ExpensesDormitory /= ed;
-                un.RentsDormitory /= rd;
-
-                un.ExpensesWithoutFamily /= ewtf;
-                un.RentsWithoutFamily /= rwtf;
-
-            }
+            
             return un;
         }
 

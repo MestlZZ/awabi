@@ -249,6 +249,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.bootstrap.min.js.map" />
     <Content Include="Views\Note\Success.cshtml" />
     <Content Include="Views\Home\FeedbackPage.cshtml" />
+    <Content Include="Views\Note\UpdateInfo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

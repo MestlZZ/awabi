@@ -30,41 +30,29 @@ namespace WCS.Models
         [Required( ErrorMessage = "Поле не повинно бути порожнім!" )]
         public double TaitionFee { set; get; }
 
-        [Display( Name = "Стипендія" )] 
-        [DataType( DataType.Currency, ErrorMessage = "Тут мають бути лише цифри!" )] 
-        [Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" )]
-        [Required( ErrorMessage = "Поле не повинно бути порожнім!" )]
-        public double Award { get; set; }
-
-        [Display( Name = "Додаткові витрати (за місяць проживання з батьками)" )] 
+        [Display( Name = "Витрати на їжу (в місяць)" )]
         [DataType( DataType.Currency, ErrorMessage = "Тут мають бути лише цифри!" )]
         [Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" )]
         [Required( ErrorMessage = "Поле не повинно бути порожнім!" )]
-        public double ExpensesWithFamily { get; set; }
+        public double ExpensesFood { get; set; }
 
-        [Display( Name = "Додаткові витрати (за місяць знімаючи квартиру)" )] 
-        [DataType( DataType.Currency, ErrorMessage = "Тут мають бути лише цифри!" )] 
+        [Display( Name = "Витрати за проїзд (в місяць)" )]
+        [DataType( DataType.Currency, ErrorMessage = "Тут мають бути лише цифри!" )]
         [Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" )]
         [Required( ErrorMessage = "Поле не повинно бути порожнім!" )]
-        public double ExpensesWithoutFamily { get; set; }
+        public double ExpensesTravel { get; set; }
 
-        [Display( Name = "Додаткові витрати (за місяць проживаючи у гуртожитку)" )] 
-        [DataType( DataType.Currency, ErrorMessage = "Тут мають бути лише цифри!" )] 
-        [Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" )]
-        [Required( ErrorMessage = "Поле не повинно бути порожнім!" )]
-        public double ExpensesDormitory { get; set; }
-
-        [Display( Name = "Плата за квартиру (у місяць)" )] 
-        [DataType( DataType.Currency, ErrorMessage = "Тут мають бути лише цифри!" )] 
-        [Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" )]
-        [Required( ErrorMessage = "Поле не повинно бути порожнім!" )]
-        public double RentsWithoutFamily { get; set; }
-
-        [Display( Name = "Плата за кімнату у гуртожитку (у місяць)" )] 
-        [DataType( DataType.Currency, ErrorMessage = "Тут мають бути лише цифри!" )] 
+        [Display( Name = "Плата за кімнату у гуртожитку (у місяць)" )]
+        [DataType( DataType.Currency, ErrorMessage = "Тут мають бути лише цифри!" )]
         [Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" )]
         [Required( ErrorMessage = "Поле не повинно бути порожнім!" )]
         public double RentsDormitory { get; set; }
+
+        [Display( Name = "Плата за квартиру (у місяць)" )]
+        [DataType( DataType.Currency, ErrorMessage = "Тут мають бути лише цифри!" )]
+        [Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" )]
+        [Required( ErrorMessage = "Поле не повинно бути порожнім!" )]
+        public double RentsApartment { get; set; }
 
         public Note ()
         {
