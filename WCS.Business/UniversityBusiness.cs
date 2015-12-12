@@ -86,22 +86,33 @@ namespace WCS.Business
 
             int ef = 0, et = 0, ra = 0, rd = 0;
 
-            un.ExpensesFood = un.ExpensesTravel = un.RentsApartment = un.RentsDormitory = un.MaximalTaitionFee = 0;
             un.MinimalTaitionFee = double.MaxValue;
 
             foreach (var note in notes)
             {
-                if (note.ExpensesFood > 0 && ef == ef++)
+                if (note.ExpensesFood > 0)
+                {
                     un.ExpensesFood += note.ExpensesFood;
+                    ef++;
+                }
 
-                if (note.ExpensesTravel > 0 && et == et++)
+                if (note.ExpensesTravel > 0)
+                {
                     un.ExpensesTravel += note.ExpensesTravel;
+                    et++;
+                }
 
-                if (note.RentsApartment > 0 && choose == 2 && ra == ra++)
+                if (note.RentsApartment > 0 && choose == 2)
+                {
                     un.RentsApartment += note.RentsApartment;
+                    ra++;
+                }
 
-                if (note.RentsDormitory > 0 && choose == 3 && rd == rd++)
+                if (note.RentsDormitory > 0 && choose == 3)
+                {
                     un.RentsDormitory += note.RentsDormitory;
+                    rd++;
+                }
 
                 if (contract)
                 {
@@ -135,14 +146,10 @@ namespace WCS.Business
                     un.MaximalResult = un.MinimalResult = un.RentsDormitory + un.RentsApartment + un.ExpensesTravel + un.ExpensesFood + un.MinimalTaitionFee;
             }
 
-            un.MaximalTaitionFee = Math.Round( un.MaximalTaitionFee, 2 );
-            un.MaximalResult = Math.Round( un.MaximalResult, 2 );
-            un.MinimalTaitionFee = Math.Round( un.MinimalTaitionFee, 2 );
-            un.MinimalResult = Math.Round( un.MinimalResult, 2 );
-            un.RentsApartment = Math.Round( un.RentsApartment, 2 );
-            un.RentsDormitory = Math.Round( un.RentsDormitory, 2 );
-            un.ExpensesFood = Math.Round( un.ExpensesFood, 2 );
-            un.ExpensesTravel = Math.Round( un.ExpensesTravel, 2 );
+            un = RoundInfo( un );
+
+            if (Double.IsNaN( un.MaximalResult ) || Double.IsNaN( un.MinimalResult ))
+                un.IsNaN = true;
 
             return un;
         }
@@ -159,22 +166,33 @@ namespace WCS.Business
 
             int ef = 0, et = 0, ra = 0, rd = 0;
 
-            un.ExpensesFood = un.ExpensesTravel = un.RentsApartment = un.RentsDormitory = un.MaximalTaitionFee = 0;
             un.MinimalTaitionFee = double.MaxValue;
 
             foreach(var note in notes)
             {
-                if (note.ExpensesFood > 0 && ef == ef++)
+                if (note.ExpensesFood > 0)
+                {
                     un.ExpensesFood += note.ExpensesFood;
+                    ef++;
+                }
 
-                if (note.ExpensesTravel > 0 && et == et++)
+                if (note.ExpensesTravel > 0)
+                {
                     un.ExpensesTravel += note.ExpensesTravel;
+                    et++;
+                }
 
-                if (note.RentsApartment > 0 && ra == ra++)
+                if (note.RentsApartment > 0)
+                {
                     un.RentsApartment += note.RentsApartment;
+                    ra++;
+                }
 
-                if (note.RentsDormitory > 0 && rd == rd++)
+                if (note.RentsDormitory > 0)
+                {
                     un.RentsDormitory += note.RentsDormitory;
+                    rd++;
+                }
 
                 if (un.MaximalTaitionFee < note.MaximalTaitionFee)
                     un.MaximalTaitionFee = note.MaximalTaitionFee;
@@ -195,6 +213,16 @@ namespace WCS.Business
             un.MinimalResult = un.RentsDormitory + un.RentsApartment + un.ExpensesTravel + un.ExpensesFood + un.MinimalTaitionFee - un.Award;
             un.MaximalResult = un.RentsDormitory + un.RentsApartment + un.ExpensesTravel + un.ExpensesFood + un.MaximalTaitionFee - un.Award;
 
+            un = RoundInfo( un );
+
+            if (Double.IsNaN( un.MaximalResult ) || Double.IsNaN( un.MinimalResult ))
+                un.IsNaN = true;
+
+            return un;
+        }
+
+        public static UniversityInfo RoundInfo( UniversityInfo un )
+        {
             un.MaximalTaitionFee = Math.Round( un.MaximalTaitionFee, 2 );
             un.MaximalResult = Math.Round( un.MaximalResult, 2 );
             un.MinimalTaitionFee = Math.Round( un.MinimalTaitionFee, 2 );
@@ -203,7 +231,6 @@ namespace WCS.Business
             un.RentsDormitory = Math.Round( un.RentsDormitory, 2 );
             un.ExpensesFood = Math.Round( un.ExpensesFood, 2 );
             un.ExpensesTravel = Math.Round( un.ExpensesTravel, 2 );
-
             return un;
         }
 

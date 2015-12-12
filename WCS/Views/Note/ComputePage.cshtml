@@ -16,31 +16,34 @@
     {
         <form method="get" style="margin: 0px 0">
             <label>
-            Оберіть університет (достатньо вписати 3 символи)<br />
-                @Html.EditorFor(Model => Model.UniversityID)
+                Оберіть університет (достатньо вписати 3 символи)<br />
+                @Html.EditorFor( Model => Model.UniversityID )
             </label><br />
             <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-primary active">
-                    <input type="checkbox" name="chose" value="true" checked/>Бюджет
+                <label class="btn btn-primary">
+                    <input type="checkbox" name="award" value="true" />Отримую стипендію
+                </label>
+                <label class="btn btn-primary">
+                    <input type="checkbox" name="contract" value="true" />На контракті
                 </label>
             </div>
             <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-primary active">
-                    <input type="radio" name="radio" value="1" required="required" />Проживаю з батьками
+                <label class="btn btn-primary">
+                    <input type="radio" name="choose" value="1" required="required" />Проживаю з батьками
                 </label>
                 <label class="btn btn-primary">
-                    <input type="radio" name="radio" value="2" />Знімаю квартиру
+                    <input type="radio" name="choose" value="2" />Знімаю квартиру
                 </label>
                 <label class="btn btn-primary">
-                    <input type="radio" name="radio" value="3" />Проживаю в гуртожитку
+                    <input type="radio" name="choose" value="3" />Проживаю в гуртожитку
                 </label>
             </div>
-            <input type="submit" value="Дізнатися результат">
+            <input type="submit" value="Далі">
             <div class="clear"></div>
         </form>
     }
     else
-        {
+    {
         if (!Model.IsNaN)
         {
     <table align="center" width="70%" style="text-align:center; border: 2px solid #B0B0B0">
@@ -48,16 +51,22 @@
             <td colspan="2">
                         <p>
                             Приблизна оцінка вартості життя навчаючись
-                            @if (Model.budjet)
-                            { <span>на бюджеті</span> }
-                            else
+
+                            @if (Model.IsContract)
                             { <span>на контракті</span> }
-                 в "@Model.UniversityName", що розташований в "@Model.StateName" якщо
-                            @if (Model.choose == 1)
+
+                            @if (Model.IsHaveAward)
+                            { <span>та отримуючи стипендію</span> }
+
+                            в "@Model.UniversityName", що розташований в "@Model.StateName" якщо
+
+                            @if (Model.Choose == 1)
                             { <span>проживати з батьками</span> }
-                            @if (Model.choose == 2)
+
+                            @if (Model.Choose == 2)
                             { <span>знімати квартиру</span> }
-                            @if (Model.choose == 3)
+
+                            @if (Model.Choose == 3)
                             { <span>проживати в гуртожитку</span> }
                             :
                         </p>
@@ -66,10 +75,12 @@
         <tr>
             <td colspan="2">
                 <p>
-                    @if (Model.budjet)
-                    { <span>Стипендія: <span>@Model.Award₴</span></span> }
-                    else
-                    { <span>Плата за навчання: <span>@Model.TaitionFee₴</span></span> }
+                    @if (Model.IsHaveAward)
+                    { <span>Стипендія: <span>@Model.Award грн.</span></span> }
+                    @if (Model.IsContract)
+                    {
+                         <span>Плата за навчання: <span>@Model.MaximalTaitionFee грн.</span></span> 
+                    }
                 </p>
                 @if (Model.choose == 1)
                 {

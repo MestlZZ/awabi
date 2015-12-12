@@ -11,13 +11,12 @@ namespace WCS.MVC.Controllers
     public class NoteController : Controller
     {
         [HttpGet]
-        public ActionResult StudentPage( string UniversityID = null, int choose = 0, bool contract = false, bool award = false )
+        public ActionResult StudentPage( string UniversityID = null, int choose = 0, bool contract = false)
         {
             ViewBag.Title = "Відправка форми";
             UniversityInfo univ = new UniversityInfo();
             univ.IsContract = contract;
             univ.Choose = choose;
-            univ.IsHaveAward = award;
             univ.UniversityID = UniversityID;
             if (choose != 0)
                 ViewBag.Model2 = univ;
