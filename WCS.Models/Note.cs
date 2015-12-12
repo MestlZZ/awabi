@@ -24,11 +24,17 @@ namespace WCS.Models
         [ScaffoldColumn( false )]
         public DateTime Date { private set; get; }
 
-        [Display( Name = "Плата за навчання" )]
+        [Display( Name = "Максимальна плата за навчання" )]
         [DataType( DataType.Currency, ErrorMessage = "Тут мають бути лише цифри!" )] 
         [Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" )]
         [Required( ErrorMessage = "Поле не повинно бути порожнім!" )]
-        public double TaitionFee { set; get; }
+        public double MaximalTaitionFee { set; get; }
+
+        [Display( Name = "Мінімальна плата за навчання" )]
+        [DataType( DataType.Currency, ErrorMessage = "Тут мають бути лише цифри!" )]
+        [Range( 0.0, 50000.0, ErrorMessage = "Неприпустиме значення" )]
+        [Required( ErrorMessage = "Поле не повинно бути порожнім!" )]
+        public double MinimalTaitionFee { set; get; }
 
         [Display( Name = "Витрати на їжу (в місяць)" )]
         [DataType( DataType.Currency, ErrorMessage = "Тут мають бути лише цифри!" )]

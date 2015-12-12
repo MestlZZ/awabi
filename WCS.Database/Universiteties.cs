@@ -11,6 +11,7 @@ namespace WCS.Databases
     public class Universiteties
     {
         NoteContext db = new NoteContext();
+
         public University Get( string Id )
         {
             if (Id == null)
@@ -20,15 +21,18 @@ namespace WCS.Databases
             University university = db.Universities.Find(Id);
             return university;
         }
+
         public IList<University> GetList()
         {
             return db.Universities.ToList();
         }
+
         public void AddList( IList<University> univers )
         {
             db.Universities.AddRange( univers );
             db.SaveChanges();
         }
+
         public void Update( University univers )
         {
             if (univers == null)

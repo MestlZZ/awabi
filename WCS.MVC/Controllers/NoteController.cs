@@ -15,8 +15,8 @@ namespace WCS.MVC.Controllers
         {
             ViewBag.Title = "Відправка форми";
             UniversityInfo univ = new UniversityInfo();
-            univ.budjet = chose;
-            univ.choose = radio;
+            univ.Contract = chose;
+            univ.Choose = radio;
             univ.UniversityID = UniversityID;
             if (radio != 0)
                 ViewBag.Model2 = univ;

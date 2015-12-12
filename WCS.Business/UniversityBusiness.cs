@@ -113,13 +113,13 @@ namespace WCS.Business
                     continue;
                 unInfo = GetInfo( univer.UniversityID );
                 if (unInfo.IsNaN || 
-                    Double.IsNaN(unInfo.TaitionFee) || 
+                    Double.IsNaN(unInfo.MaximalTaitionFee) ||
+                    Double.IsNaN( unInfo.MinimalTaitionFee ) ||
                     Double.IsNaN( unInfo.Award ) ||
-                    Double.IsNaN( unInfo.ExpensesDormitory ) || 
-                    Double.IsNaN( unInfo.ExpensesWithFamily ) ||
-                    Double.IsNaN( unInfo.ExpensesWithoutFamily ) || 
+                    Double.IsNaN( unInfo.ExpensesTravel ) ||
+                    Double.IsNaN( unInfo.ExpensesFood ) || 
                     Double.IsNaN( unInfo.RentsDormitory ) ||
-                    Double.IsNaN( unInfo.RentsWithoutFamily ))
+                    Double.IsNaN( unInfo.RentsApartment ))
                     continue;
                 universityInfo.Add( unInfo );
             }
