@@ -37,7 +37,8 @@ namespace WCS.MVC.Controllers
         }
         public ActionResult Success( string Id )
         {
-            return View( new { Id } );
+            var model = UniversityBusiness.Get( Id );
+            return View( model );
         }
         public ActionResult ListPage()
         {
