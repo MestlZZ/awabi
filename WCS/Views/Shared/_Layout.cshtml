@@ -21,9 +21,12 @@
         $(function () {
            var menu_urls = $(".nav-content").html();
            $(".navbar-nav").append(menu_urls);
+           $(document).ready(function () {
+               $('.nav-content > a[href^="/' + location.pathname.split("/")[1] + '"]').addClass('active');
+           });
         });
     </script>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top" id="top_menu">
         <div class="container">
             <div class="navbar-header" id="menu_header">
                  <a href="#"><div class="img_logo"></div></a>
