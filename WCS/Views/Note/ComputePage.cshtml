@@ -19,23 +19,24 @@
             Оберіть університет (достатньо вписати 3 символи)<br />
                 @Html.EditorFor(Model => Model.UniversityID)
             </label><br />
-            <label>
-                Бюджет:
-                <input type="checkbox" name="chose" value="true" />
-            </label><br />
-            <label>
-                Проживаю з батьками:
-                <input type="radio" name="radio" value="1" required="required" />
-            </label><br />
-            <label>
-                Знімаю квартиру:
-                <input type="radio" name="radio" value="2" />
-            </label><br />
-            <label>
-                Проживаю в гуртожитку:
-                <input type="radio" name="radio" value="3" />
-            </label><br />
+            <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-primary active">
+                    <input type="checkbox" name="chose" value="true" checked/>Бюджет
+                </label>
+            </div>
+            <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-primary active">
+                    <input type="radio" name="radio" value="1" required="required" />Проживаю з батьками
+                </label>
+                <label class="btn btn-primary">
+                    <input type="radio" name="radio" value="2" />Знімаю квартиру
+                </label>
+                <label class="btn btn-primary">
+                    <input type="radio" name="radio" value="3" />Проживаю в гуртожитку
+                </label>
+            </div>
             <input type="submit" value="Дізнатися результат">
+            <div class="clear"></div>
         </form>
     }
     else

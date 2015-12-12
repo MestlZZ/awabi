@@ -22,7 +22,7 @@
            var menu_urls = $(".nav-content").html();
            $(".navbar-nav").append(menu_urls);
            $(document).ready(function () {
-               $('.nav-content > a[href^="/' + location.pathname.split("/")[1] + '"]').addClass('active');
+               $('.nav-content > a[href^="/' + location.pathname.split("/")[1] + '"]').addClass('active_nav');
            });
         });
     </script>
@@ -40,7 +40,6 @@
                 @Html.ActionLink( "Форма студента", "StudentPage", "Note", null , new { @class = "navbar-brand" } )
                 @Html.ActionLink( "Список університетів", "ListPage", "Note", null, new { @class = "navbar-brand" } )
                 @Html.ActionLink( "Сторінка підрахунку", "ComputePage", "Note", null, new { @class = "navbar-brand" } )
-                @Html.ActionLink( "Про нас", "AboutUsPage", "Home", null, new { @class = "navbar-brand" } )
                 </span>
             </div>
             <div class="navbar-collapse collapse">
@@ -54,7 +53,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Житомирські студенти</p>
+            <p>&copy; @DateTime.Now.Year - Житомирські студенти | @Html.ActionLink( "Про нас", "AboutUsPage", "Home", null, new { @class = "btn btn-default btn-xs" } )</p>
         </footer>
     </div>
 </body>

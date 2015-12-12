@@ -4,10 +4,50 @@
 <script>
     $(function () {
         $("#top_menu").hide();
+        $('.carousel').carousel();
     });
 </script>
 <div align="center" style="text-align:center;">
-    <h1>Вітаємо на нашому сайті!</h1>
-    <p style="vertical-align:middle;">Сайт створений для розрахунку витрат на навчання у вищих учбових закладах України.</p>
+    <h1>Наші вітання!</h1>
+    <div class="alert alert-info">Ви потрапили на сайт, що допоможе вам у виборі вищого навчального закладу.</div>
+    <div class="alert alert-info">Якщо ви абітурієнт, наш ресурс допоможе вам розрахувати
+     вартість навчання у ВНЗ з урахуванням витрат на такі речі,
+    як житло, їжа та проїзд, виходячи з досвіду реальних студентів,
+    що вних навчаються.</div>
+    <div class="alert alert-info">Якщо ви студент, ви можете допомогти нам...</div>
+    <div class="alert alert-info">Крім того ви побачите статистику по всім ВНЗ нашої країни.</div>
     @Html.ActionLink( "Продовжити", "ComputePage", "Note", null, null )
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="~/Content/Images/galery/examp1.jpg" alt="...">
+                <div class="carousel-caption">
+                    <h1>У нас зібрана вся Україна!</h1>
+                </div>
+            </div>
+            <div class="item">
+                <img src="~/Content/Images/galery/examp2.jpg" alt="...">
+                <div class="carousel-caption">
+                    <h1>Відкриті для кожного!</h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Попередній</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Наступний</span>
+        </a>
+    </div>
 </div>
