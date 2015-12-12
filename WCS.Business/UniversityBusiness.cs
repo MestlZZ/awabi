@@ -70,16 +70,122 @@ namespace WCS.Business
             db.AddList(univer);
         }
 
-        public static UniversityInfo GetInfo(string univers, bool budjet, int choose)
+        public static UniversityInfo GetInfo(string univers, bool contract, bool award, int choose)
         {
             UniversityInfo un = new UniversityInfo();
-            
+
+            var notes = NotesBusiness.GetListFromUniversity( univers );
+
+            un.Award = 820;
+            un.StateName = StateBusiness.GetStateNameFromUniversity( univers );
+            un.UniversityName = GetName( univers );
+            un.UniversityID = univers;
+            un.IsContract = contract;
+            un.Choose = choose;
+            un.IsHaveAward = award;
+
+            int ef = 0, et = 0, ra = 0, rd = 0;
+
+            un.ExpensesFood = un.ExpensesTravel = un.RentsApartment = un.RentsDormitory = un.MaximalTaitionFee = 0;
+            un.MinimalTaitionFee = double.MaxValue;
+
+            foreach (var note in notes)
+            {
+                if (note.ExpensesFood > 0 && ef == ef++)
+                    un.ExpensesFood += note.ExpensesFood;
+
+                if (note.ExpensesTravel > 0 && et == et++)
+                    un.ExpensesTravel += note.ExpensesTravel;
+
+                if (note.RentsApartment > 0 && choose == 2 && ra == ra++)
+                    un.RentsApartment += note.RentsApartment;
+
+                if (note.RentsDormitory > 0 && choose == 3 && rd == rd++)
+                    un.RentsDormitory += note.RentsDormitory;
+
+                if (contract)
+                {
+                    if (un.MaximalTaitionFee < note.MaximalTaitionFee)
+                        un.MaximalTaitionFee = note.MaximalTaitionFee;
+
+                    if (un.MinimalTaitionFee > note.MinimalTaitionFee)
+                        un.MinimalTaitionFee = note.MinimalTaitionFee;
+                }
+            }
+
+            if (ef > 0)
+                un.ExpensesFood /= (double)ef;
+            if (et > 0)
+                un.ExpensesTravel /= (double)et;
+            if (ra > 0 && choose == 2)
+                un.RentsApartment /= (double)ra;
+            if (rd > 0 && choose == 3)
+                un.RentsDormitory /= (double)rd;
+
+            if (!contract)
+            {
+                un.MinimalResult = un.RentsDormitory + un.RentsApartment + un.ExpensesTravel + un.ExpensesFood + un.MinimalTaitionFee;
+                un.MaximalResult = un.RentsDormitory + un.RentsApartment + un.ExpensesTravel + un.ExpensesFood + un.MaximalTaitionFee;
+            }
+            else
+            {
+                if (award)
+                    un.MaximalResult = un.MinimalResult = un.RentsDormitory + un.RentsApartment + un.ExpensesTravel + un.ExpensesFood + un.MinimalTaitionFee - un.Award;
+                else
+                    un.MaximalResult = un.MinimalResult = un.RentsDormitory + un.RentsApartment + un.ExpensesTravel + un.ExpensesFood + un.MinimalTaitionFee;
+            }
+
             return un;
         }
         public static UniversityInfo GetInfo( string univers )
         {
             UniversityInfo un = new UniversityInfo();
-            
+
+            var notes = NotesBusiness.GetListFromUniversity( univers );
+
+            un.Award = 820;
+            un.StateName = StateBusiness.GetStateNameFromUniversity( univers );
+            un.UniversityName = GetName( univers );
+            un.UniversityID = univers;
+
+            int ef = 0, et = 0, ra = 0, rd = 0;
+
+            un.ExpensesFood = un.ExpensesTravel = un.RentsApartment = un.RentsDormitory = un.MaximalTaitionFee = 0;
+            un.MinimalTaitionFee = double.MaxValue;
+
+            foreach(var note in notes)
+            {
+                if (note.ExpensesFood > 0 && ef == ef++)
+                    un.ExpensesFood += note.ExpensesFood;
+
+                if (note.ExpensesTravel > 0 && et == et++)
+                    un.ExpensesTravel += note.ExpensesTravel;
+
+                if (note.RentsApartment > 0 && ra == ra++)
+                    un.RentsApartment += note.RentsApartment;
+
+                if (note.RentsDormitory > 0 && rd == rd++)
+                    un.RentsDormitory += note.RentsDormitory;
+
+                if (un.MaximalTaitionFee < note.MaximalTaitionFee)
+                    un.MaximalTaitionFee = note.MaximalTaitionFee;
+
+                if (un.MinimalTaitionFee > note.MinimalTaitionFee)
+                    un.MinimalTaitionFee = note.MinimalTaitionFee;
+            }
+
+            if (ef > 0)
+                un.ExpensesFood /= (double)ef;
+            if (et > 0)
+                un.ExpensesTravel /= (double)et;
+            if (ra > 0)
+                un.RentsApartment /= (double)ra;
+            if (rd > 0)
+                un.RentsDormitory /= (double)rd;
+
+            un.MinimalResult = un.RentsDormitory + un.RentsApartment + un.ExpensesTravel + un.ExpensesFood + un.MinimalTaitionFee - un.Award;
+            un.MaximalResult = un.RentsDormitory + un.RentsApartment + un.ExpensesTravel + un.ExpensesFood + un.MaximalTaitionFee - un.Award;
+
             return un;
         }
 

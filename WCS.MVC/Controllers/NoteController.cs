@@ -11,14 +11,15 @@ namespace WCS.MVC.Controllers
     public class NoteController : Controller
     {
         [HttpGet]
-        public ActionResult StudentPage( string UniversityID = null, int radio = 0, bool chose = false )
+        public ActionResult StudentPage( string UniversityID = null, int choose = 0, bool contract = false, bool award = false )
         {
             ViewBag.Title = "Відправка форми";
             UniversityInfo univ = new UniversityInfo();
-            univ.Contract = chose;
-            univ.Choose = radio;
+            univ.IsContract = contract;
+            univ.Choose = choose;
+            univ.IsHaveAward = award;
             univ.UniversityID = UniversityID;
-            if (radio != 0)
+            if (choose != 0)
                 ViewBag.Model2 = univ;
             else
                 ViewBag.Model2 = null;
@@ -73,17 +74,17 @@ namespace WCS.MVC.Controllers
         }
 
         [HttpGet]
-        public ActionResult ComputePage(string UniversityID = null, int radio = 0, bool chose = false)
+        public ActionResult ComputePage( string UniversityID = null, int choose = 0, bool contract = false, bool award = false )
         {
             ViewBag.Title = "Розрахунок для абітурієнта";
-            if (radio == 0 || UniversityBusiness.Get(UniversityID) == null)
+            if (choose == 0 || UniversityBusiness.Get(UniversityID) == null)
             {
                 return View();
             }
             else
             {
                 UniversityInfo univer;
-                univer = UniversityBusiness.GetInfo(UniversityID, chose, radio);
+                univer = UniversityBusiness.GetInfo(UniversityID, contract, award, choose);
                 return View(univer);
             }
         }
@@ -104,7 +105,7 @@ namespace WCS.MVC.Controllers
 
         public ActionResult DeleteNote(string id)
         {
-            NotesBusiness.DeleteNote(id);
+            NotesBusiness.Delete(id);
             return RedirectToRoute("List");
         }
     }

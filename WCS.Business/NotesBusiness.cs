@@ -29,13 +29,13 @@ namespace WCS.Business
             }
         }
 
-        public static Note GetNote(string id)
+        public static Note Get(string id)
         {
             Notes db = new Notes();
             return db.Get(id);
         }
 
-        public static void DeleteNote(string id)
+        public static void Delete(string id)
         {
             Notes db = new Notes();
             db.Delete(id);

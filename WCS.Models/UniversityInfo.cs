@@ -19,7 +19,9 @@ namespace WCS.Models
 
         public bool IsNaN { get; set; }
 
-        public bool Contract { get; set; }
+        public bool IsContract { get; set; }
+
+        public bool IsHaveAward { get; set; }
 
         public int Choose { get; set; }
 
@@ -41,6 +43,8 @@ namespace WCS.Models
 
         public double RentsApartment { get; set; }
 
-        public double Result { get; set; }
+        public double MaximalResult { get; set; }
+
+        public double MinimalResult { get; set; }
     }
 }
