@@ -28,5 +28,15 @@ namespace WCS.MVC
             ViewBag.Title = "Пошук";
             return View();
         }
+
+        public ActionResult FeedbackPage()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult FeedbackPage( Feedback feedback )
+        {
+            return RedirectToAction("Index");
+        }
     }
 }

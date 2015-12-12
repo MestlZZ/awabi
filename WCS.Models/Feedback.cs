@@ -18,16 +18,19 @@ namespace WCS.Models
         public DateTime Date { private set; get; }
 
         [Display( Name = "Ім'я" )]
+        [DataType( DataType.Text )]
         [Required( ErrorMessage = "Ви повинні вказати власне ім'я!" )]
         [StringLength(25, MinimumLength = 2, ErrorMessage = "Ім'я не відповідає межам [2 - 25] символів")]
         public string Name { get; set; }
 
         [Display( Name = "Пошта" )]
+        [DataType( DataType.EmailAddress )]
         [Required( ErrorMessage = "Заповніть будь ласка це поле!" )]
         [StringLength( 50, MinimumLength = 4, ErrorMessage = "Максимальна довжина пошти - 50 символів!" )]
         public string Mail { get; set; }
 
         [Display( Name = "Відгук" )]
+        [DataType( DataType.MultilineText )]
         [Required( ErrorMessage = "Напишіть відгук!" )]
         [StringLength( 1024, MinimumLength = 5, ErrorMessage = "Максимальна кількість символів для цього поля - 1024!" )]
         public string Text { get; set; }

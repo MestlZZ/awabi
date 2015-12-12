@@ -1,0 +1,10 @@
+﻿@model WCS.Models.Feedback
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div align="center">
+    <form method="post">
+        @Html.EditorForModel();
+        <input type="submit" />
+    </form>
+</div>
