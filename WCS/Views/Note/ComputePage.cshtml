@@ -79,45 +79,69 @@
                     { <span>Стипендія: <span>@Model.Award грн.</span></span> }
                     @if (Model.IsContract)
                     {
-                         <span>Плата за навчання: <span>@Model.MaximalTaitionFee грн.</span></span> 
+                         <span>Плата за навчання (в місяць): 
+                            @if (Model.MaximalTaitionFee == Model.MinimalTaitionFee)
+                            { <span>@Model.MaximalTaitionFee грн.</span> }
+                            else
+                            { <span>@Model.MinimalTaitionFee - @Model.MaximalTaitionFee грн.</span> }
+                         </span> 
                     }
                 </p>
-                @if (Model.choose == 1)
+                <p>
+                    Приблизні витрати в місяць на їжу будуть складати @Model.ExpensesFood грн., а на проїзд по місту @Model.ExpensesTravel грн. 
+                </p>
+                @if (Model.Choose == 2)
                 {
                     <p>
-                                Приблизні витрати при проживанні з батьками (в місяць): <span>@Model.ExpensesWithFamily₴</span>
-</p> 
+                                Місячна плата за квартиру / кімнату: <span>@Model.RentsApartment грн.</span>
+                    </p>
                 }
-                @if (Model.choose == 2)
+                @if (Model.Choose == 3)
                 {
                     <p>
-                        Приблизні витрати знімаючи квартиру (в місяць): <span>@Model.ExpensesWithoutFamily₴</span>
-</p>
-                    <p>
-                                Місячна плата за квартиру / кімнату: <span>@Model.RentsWithoutFamily₴</span>
-</p>
-                }
-                @if (Model.choose == 3)
-                {
-                    <p>
-                        Приблизні витрати проживаючи в гуртожитку (в місяць): <span>@Model.ExpensesDormitory₴</span>
-</p>
-                    <p>
-                                Місячна плата за кімнату в гуртожитку: <span>@Model.RentsDormitory₴</span>
-</p>
+                                Місячна плата за кімнату в гуртожитку: <span>@Model.RentsDormitory грн.</span>
+                    </p>
                 }
                         <p>
-                            Отже в загальному ви будете
-                @if (Model.Result > 0)
-                {
-                    <span>втрачати приблизно <span class="cost">@Model.Result₴</span></span>
-                }
-                else
-                {
-                    <span>отримувати приблизно <span class="cost">@(-@Model.Result)₴</span></span>
-                }
-                в місяць.
-                            @if (Model.budjet)
+                            @if (Model.MaximalResult == Model.MinimalResult)
+                            {
+                                <span>
+                                    Отже Ви будете
+                                    @if (Model.MaximalResult > 0)
+                                    {
+                                        <span>втрачати приблизно <span class="cost">@Model.MaximalResult грн.</span></span>
+                                    }
+                                    else
+                                    {
+                                        <span>отримувати приблизно <span class="cost">@(-@Model.MaximalResult)₴</span></span>
+                                    }
+                                    в місяць.
+                                </span>
+                            }
+                            else
+                            {
+                                <span>
+                                    Отже в <b><i>гіршому</i></b> випадку Ви будете
+                                    @if (Model.MaximalResult > 0)
+                                    {
+                                        <span>втрачати приблизно <span class="cost">@Model.MaximalResult грн.</span></span>
+                                    }
+                                    else
+                                    {
+                                        <span>отримувати приблизно <span class="cost">@(-@Model.MaximalResult)₴</span></span>
+                                    }
+                                    в місяць.<br />В <b><i>кращому</i></b> ж випадку Ви будете
+                                    @if (Model.MinimalResult > 0)
+                                    {
+                                        <span>втрачати приблизно <span class="cost">@Model.MinimalResult грн.</span></span>
+                                    }
+                                    else
+                                    {
+                                        <span>отримувати приблизно <span class="cost">@(-@Model.MinimalResult)₴</span></span>
+                                    }
+                                </span>
+                            }
+                            @if (Model.IsHaveAward)
                             { <span>(Враховуючи стипендію)</span> }
                         </p>
                 <p>Дякую за використання нашого сервісу!</p>

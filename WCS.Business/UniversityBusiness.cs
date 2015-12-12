@@ -124,6 +124,9 @@ namespace WCS.Business
                 }
             }
 
+            if (!contract)
+                un.MinimalTaitionFee = 0;
+
             if (ef > 0)
                 un.ExpensesFood /= (double)ef;
             if (et > 0)
@@ -133,18 +136,18 @@ namespace WCS.Business
             if (rd > 0 && choose == 3)
                 un.RentsDormitory /= (double)rd;
 
-            if (!contract)
+            un.MaximalResult = un.MinimalResult = un.RentsDormitory + un.RentsApartment + un.ExpensesTravel + un.ExpensesFood;
+
+            if (contract)
             {
-                un.MaximalResult = un.MinimalResult = un.RentsDormitory + un.RentsApartment + un.ExpensesTravel + un.ExpensesFood;
                 un.MinimalResult += un.MinimalTaitionFee;
                 un.MaximalResult += un.MaximalTaitionFee;
             }
-            else
+
+            if (award)
             {
-                if (award)
-                    un.MaximalResult = un.MinimalResult = un.RentsDormitory + un.RentsApartment + un.ExpensesTravel + un.ExpensesFood + un.MinimalTaitionFee - un.Award;
-                else
-                    un.MaximalResult = un.MinimalResult = un.RentsDormitory + un.RentsApartment + un.ExpensesTravel + un.ExpensesFood + un.MinimalTaitionFee;
+                un.MaximalResult -= un.Award;
+                un.MinimalResult -= un.Award;
             }
 
             RoundInfo( un );
