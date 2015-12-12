@@ -50,7 +50,7 @@ body {
     padding-top: 50px;
     padding-bottom: 20px;
     font-family: "OpenSans",Arial,sans-serif;
-    background:url('/Content/Images/bg_image.jpg') #ad4400 no-repeat;
+    background:url('../Images/bg_image.jpg') #ad4400 no-repeat;
     background-size:cover;
     background-position:0px 40%;
 }
