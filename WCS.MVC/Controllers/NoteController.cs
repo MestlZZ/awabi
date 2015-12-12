@@ -30,6 +30,7 @@ namespace WCS.MVC.Controllers
         public ActionResult StudentPage(Note note)
         {
             ViewBag.Title = "Відправка форми";
+            note.MinimalTaitionFee = note.MaximalTaitionFee;
             if(note.ExpensesTravel != 0 && note.ExpensesFood !=0)
                 if (ModelState.IsValid)
                 {

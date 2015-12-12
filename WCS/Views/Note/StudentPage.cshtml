@@ -23,19 +23,19 @@
                 @Html.EditorFor( Model => Model.UniversityID )
             </label><br />
             <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-primary active">
-                    <input type="checkbox" name="chose" value="true" checked />Бюджет
+                <label class="btn btn-primary">
+                    <input type="checkbox" name="contract" value="true"/>На контракті
                 </label>
             </div>
             <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-primary active">
-                    <input type="radio" name="radio" value="1" required="required" />Проживаю з батьками
+                <label class="btn btn-primary">
+                    <input type="radio" name="choose" value="1" required="required" />Проживаю з батьками
                 </label>
                 <label class="btn btn-primary">
-                    <input type="radio" name="radio" value="2" />Знімаю квартиру
+                    <input type="radio" name="choose" value="2" />Знімаю квартиру
                 </label>
                 <label class="btn btn-primary">
-                    <input type="radio" name="radio" value="3" />Проживаю в гуртожитку
+                    <input type="radio" name="choose" value="3" />Проживаю в гуртожитку
                 </label>
             </div>
             <input type="submit" value="Далі">
@@ -49,17 +49,39 @@
             <table align="center" width="70%" style="text-align:center; border: 2px solid #B0B0B0">
                 <thead>
                     <tr>
-                        <td colspan="2">Заповніть будь ласка поля</td>
+                        <td colspan="2">Заповніть будь ласка поля значеннями</td>
                     </tr>
                 </thead>
                 <tbody>
+                    @if (ViewBag.Model2.IsContract)
+                    {
+                        <tr>
+                            <td>За навчання в місяць я плачу:</td>
+                            <td>@Html.EditorFor( Model => Model.MaximalTaitionFee )</td>    
+                        </tr>
+                    }
                     <tr>
-                        
+                        <td>В місяць на їжу я витрачаю:</td>
+                        <td>@Html.EditorFor( Model => Model.ExpensesFood )</td>
                     </tr>
                     <tr>
-                        
+                        <td>В місяць на проїзд я витрачаю:</td>
+                        <td>@Html.EditorFor( Model => Model.ExpensesTravel )</td>
                     </tr>
-                    
+                    @if (ViewBag.Model2.Choose == 2)
+                    {
+                        <tr>
+                            <td>За квартиру(кімнату) в місяць я плачу:</td>
+                            <td>@Html.EditorFor( Model => Model.RentsApartment )</td>
+                        </tr>
+                    }
+                    @if (ViewBag.Model2.Choose == 3)
+                    {
+                        <tr>
+                            <td>За кімнату в гуртожитку в місяць я плачу:</td>
+                            <td>@Html.EditorFor( Model => Model.RentsDormitory )</td>
+                        </tr>
+                    }   
                     <tr>
                         <td colspan="2" style="text-align:right">
                             <input type="submit" name="submit_go" />

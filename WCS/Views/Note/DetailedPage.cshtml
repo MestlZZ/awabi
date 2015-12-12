@@ -42,10 +42,13 @@
             <td>Мінімальна плата за навчання</td>
             <td class="cost">@Model.MinimalTaitionFee грн.</td>
         </tr>
-        <tr>
-            <td>Плата за кімнату в гуртожитку</td>
-            <td class="cost">@Model.RentsDormitory грн.</td>
-        </tr>
+        @if (Model.RentsDormitory > 0)
+        {
+            <tr>
+                <td>Плата за кімнату в гуртожитку</td>
+                <td class="cost">@Model.RentsDormitory грн.</td>
+            </tr>
+        }
         <tr>
             <td>Плата за винаймання квартири</td>
             <td class="cost">@Model.RentsApartment грн.</td>

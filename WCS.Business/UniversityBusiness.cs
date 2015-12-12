@@ -70,7 +70,7 @@ namespace WCS.Business
             db.AddList(univer);
         }
 
-        public static UniversityInfo GetInfo(string univers, bool contract, bool award, int choose)
+        public static UniversityInfo GetInfo( string univers, bool contract, bool award, int choose )
         {
             UniversityInfo un = new UniversityInfo();
 
@@ -135,6 +135,15 @@ namespace WCS.Business
                     un.MaximalResult = un.MinimalResult = un.RentsDormitory + un.RentsApartment + un.ExpensesTravel + un.ExpensesFood + un.MinimalTaitionFee;
             }
 
+            un.MaximalTaitionFee = Math.Round( un.MaximalTaitionFee, 2 );
+            un.MaximalResult = Math.Round( un.MaximalResult, 2 );
+            un.MinimalTaitionFee = Math.Round( un.MinimalTaitionFee, 2 );
+            un.MinimalResult = Math.Round( un.MinimalResult, 2 );
+            un.RentsApartment = Math.Round( un.RentsApartment, 2 );
+            un.RentsDormitory = Math.Round( un.RentsDormitory, 2 );
+            un.ExpensesFood = Math.Round( un.ExpensesFood, 2 );
+            un.ExpensesTravel = Math.Round( un.ExpensesTravel, 2 );
+
             return un;
         }
         public static UniversityInfo GetInfo( string univers )
@@ -186,6 +195,15 @@ namespace WCS.Business
             un.MinimalResult = un.RentsDormitory + un.RentsApartment + un.ExpensesTravel + un.ExpensesFood + un.MinimalTaitionFee - un.Award;
             un.MaximalResult = un.RentsDormitory + un.RentsApartment + un.ExpensesTravel + un.ExpensesFood + un.MaximalTaitionFee - un.Award;
 
+            un.MaximalTaitionFee = Math.Round( un.MaximalTaitionFee, 2 );
+            un.MaximalResult = Math.Round( un.MaximalResult, 2 );
+            un.MinimalTaitionFee = Math.Round( un.MinimalTaitionFee, 2 );
+            un.MinimalResult = Math.Round( un.MinimalResult, 2 );
+            un.RentsApartment = Math.Round( un.RentsApartment, 2 );
+            un.RentsDormitory = Math.Round( un.RentsDormitory, 2 );
+            un.ExpensesFood = Math.Round( un.ExpensesFood, 2 );
+            un.ExpensesTravel = Math.Round( un.ExpensesTravel, 2 );
+
             return un;
         }
 
@@ -221,10 +239,8 @@ namespace WCS.Business
                 if (unInfo.IsNaN || 
                     Double.IsNaN(unInfo.MaximalTaitionFee) ||
                     Double.IsNaN( unInfo.MinimalTaitionFee ) ||
-                    Double.IsNaN( unInfo.Award ) ||
                     Double.IsNaN( unInfo.ExpensesTravel ) ||
-                    Double.IsNaN( unInfo.ExpensesFood ) || 
-                    Double.IsNaN( unInfo.RentsDormitory ) ||
+                    Double.IsNaN( unInfo.ExpensesFood )  ||
                     Double.IsNaN( unInfo.RentsApartment ))
                     continue;
                 universityInfo.Add( unInfo );
