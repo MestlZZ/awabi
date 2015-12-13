@@ -243,15 +243,13 @@ namespace WCS.Business
             var notes = NotesBusiness.GetList();
             System.Collections.Generic.List<University> university = new System.Collections.Generic.List<University>();
             int[] arr = new int[2000];
-            Array.Clear( arr, 0, 2000 );
             foreach(var note in notes)
             {
                 if (arr[Convert.ToInt32( note.UniversityID )] != 0)
                     continue;
                 else
                     arr[Convert.ToInt32( note.UniversityID )]++;
-                var univer = Get( note.UniversityID );
-                university.Add( univer );
+                university.Add( Get( note.UniversityID ) );
             }
             return university;
         }
@@ -277,6 +275,44 @@ namespace WCS.Business
                 universityInfo.Add( unInfo );
             }
             return universityInfo;
+        }
+
+        public static IList<UniversityInfo> GetListFiveUniversityInfo( int page = 0 )
+        {
+            var notes = NotesBusiness.GetList();
+            System.Collections.Generic.List<UniversityInfo> univers = new System.Collections.Generic.List<UniversityInfo>();
+
+            int length = notes.Count - page * 5;
+            if (length >= 5)
+                length = 5;
+            else
+                length %= 5;
+
+            int[] arr = new int[2000];
+            for(int j = page * 5; j < page * 5 + length; j++)
+            {
+                if (arr[Convert.ToInt32( notes[j].UniversityID )] != 0)
+                    continue;
+                else
+                    arr[Convert.ToInt32( notes[j].UniversityID )]++;
+
+                var unInfo = GetInfo( notes[j].UniversityID );
+
+                if (unInfo.IsNaN ||
+                    Double.IsNaN( unInfo.MaximalTaitionFee ) ||
+                    Double.IsNaN( unInfo.MinimalTaitionFee ) ||
+                    Double.IsNaN( unInfo.ExpensesTravel ) ||
+                    Double.IsNaN( unInfo.ExpensesFood ) ||
+                    Double.IsNaN( unInfo.RentsApartment ))
+                {
+                    if (length > 4 && length + 1 + page * 5 < notes.Count)
+                        length++;
+                    continue;
+                }
+                univers.Add( unInfo );
+            }
+           
+            return univers;
         }
     }
 }

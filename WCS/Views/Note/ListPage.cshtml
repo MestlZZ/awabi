@@ -1,6 +1,7 @@
 ﻿@using WCS.Business;
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    int i = 0;
 }
 <div>
     <h1>Список записів</h1>
@@ -40,7 +41,20 @@
                 }
                 <td>@Html.ActionLink( "Details", "DetailedPage", "Note", new { id = note.UniversityID }, null )</td>
            </tr>
+            i++;
         }
         </tbody>
     </table>
+    @if (i == 5)
+    {
+    <div>
+        @Html.ActionLink( "Наступна сторінка", "ListPage", "Note", new { page = ViewBag.Page + 1 }, null )
+    </div>
+    }
+    @if (ViewBag.Page > 1)
+    {
+        <div>
+            @Html.ActionLink( "Попередня сторінка", "ListPage", "Note", new { page = ViewBag.Page - 1 }, null )
+        </div>
+    }
 </div>

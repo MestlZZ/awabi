@@ -45,11 +45,26 @@ namespace WCS.MVC.Controllers
             return View( model );
         }
 
-        public ActionResult ListPage()
+        public ActionResult ListPage( int page = 1 )
         {
             ViewBag.Title = "Список записів";
-            var model = UniversityBusiness.GetListUniversityInfo();
-            return View(model);
+
+            if (page < 1)
+                page = 1;
+
+            var unInformations = UniversityBusiness.GetListFiveUniversityInfo( page - 1 );
+
+            if (unInformations == null)
+                page--;
+
+            if (page < 1)
+                return View();
+
+            unInformations = UniversityBusiness.GetListFiveUniversityInfo( page - 1 );
+
+            ViewBag.Page = page;
+
+            return View(unInformations);
         }
 
         public ActionResult DetailedPage( string id  = null )
