@@ -160,8 +160,8 @@
         }
         else
         {
-            <p>Для цього університету ще не додано жодної інформації!</p>
-            <p>Допоможіть нам її зібрати! @Html.ActionLink( "Заповніть форму", "StudentPage", "Note", new { UniversityID = Model.UniversityID }, null )</p>
+            <p style="font-size:17px">Для цього університету ще не додано жодної інформації!</p>
+            <p style="font-size:17px">Допоможіть нам її зібрати! <a class="btn btn-success" href="@Url.Action("ComputePage", "Note",  new { UniversityID = Model.UniversityID })">Заповніть форму</a></p>
         }
     }
 </div>
