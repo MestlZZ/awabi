@@ -3,41 +3,44 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<style>
-    .cost {
-        font-size: 17px;
-        color: red;
-        font-weight: bold;
-    }
-</style>
+<script src="~/Scripts/AbiturientValidate.js"></script>
+<script>
+    $(function () {
+        $("#select_div").css({ margin: "40px" });
+        $("td").css({ "vertical-align": "middle" });
+        $("thead tr").css({background: "none"});
+    });
+</script>
 <div style="text-align:center;">
-    <h1>Cторінка підрахунку</h1>
+    <h1><span class="glyphicon glyphicon-info-sign h1-icon h1-icon-info"></span>Cторінка підрахунку</h1>
     @if (Model == null)
     {
-        <form method="get" style="margin: 0px 0">
-            <label>
-                Оберіть університет (достатньо вписати 3 символи)<br />
-                @Html.EditorFor( Model => Model.UniversityID )
-            </label><br />
-            <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-primary">
+        <form method="get" class="form-center">
+            <div id="select_div">
+                @Html.EditorFor(Model => Model.UniversityID)
+            </div>
+            <div class="btn-group btn-checkbox" data-toggle="buttons">
+                <label class="btn btn-lg btn-primary">
                     <input type="checkbox" name="award" value="true" />Отримую стипендію
                 </label>
-                <label class="btn btn-primary">
-                    <input type="checkbox" name="contract" value="true" />На контракті
+
+                <label class="btn btn-lg btn-primary">
+                    <input type="checkbox" name="contract" value="false" />На контракті
                 </label>
             </div>
+            <div class="clear"></div>
             <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-primary">
+                <label class="btn btn-lg btn-primary">
                     <input type="radio" name="choose" value="1" required="required" />Проживаю з батьками
                 </label>
-                <label class="btn btn-primary">
+                <label class="btn btn-lg btn-primary">
                     <input type="radio" name="choose" value="2" />Знімаю квартиру
                 </label>
-                <label class="btn btn-primary">
+                <label class="btn btn-lg btn-primary">
                     <input type="radio" name="choose" value="3" />Проживаю в гуртожитку
                 </label>
             </div>
+            <div class="clear"></div>
             <input type="submit" value="Далі">
             <div class="clear"></div>
         </form>
@@ -46,7 +49,8 @@
     {
         if (!Model.IsNaN)
         {
-    <table align="center" width="70%" style="text-align:center; border: 2px solid #B0B0B0">
+    <table class="table" style="text-align:center;font-size:16px;">
+        <thead>
         <tr>
             <td colspan="2">
                         <p>
@@ -72,86 +76,91 @@
                         </p>
             </td>
         </tr>
-        <tr>
-            <td colspan="2">
-                <p>
-                    @if (Model.IsHaveAward)
+        </thead>
+        <tbody>
+            <tr class="info">
+                <td colspan="2">
+                    <p>
+                        @if (Model.IsHaveAward)
                     { <span>Стипендія: <span>@Model.Award грн.</span></span> }
-                    @if (Model.IsContract)
+                        @if (Model.IsContract)
                     {
-                         <span>Плата за навчання (в місяць): 
-                            @if (Model.MaximalTaitionFee == Model.MinimalTaitionFee)
-                            { <span>@Model.MaximalTaitionFee грн.</span> }
-                            else
-                            { <span>@Model.MinimalTaitionFee - @Model.MaximalTaitionFee грн.</span> }
-                         </span> 
-                    }
-                </p>
-                <p>
-                    Приблизні витрати в місяць на їжу будуть складати @Model.ExpensesFood грн., а на проїзд по місту @Model.ExpensesTravel грн. 
-                </p>
-                @if (Model.Choose == 2)
-                {
-                    <p>
-                                Місячна плата за квартиру / кімнату: <span>@Model.RentsApartment грн.</span>
+                            <span>
+                                Плата за навчання (щомісяця):
+                                @if (Model.MaximalTaitionFee == Model.MinimalTaitionFee)
+                                { <span>@Model.MaximalTaitionFee грн.</span> }
+                                else
+                                { <span>@Model.MinimalTaitionFee - @Model.MaximalTaitionFee грн.</span> }
+                            </span>
+                        }
                     </p>
-                }
-                @if (Model.Choose == 3)
-                {
                     <p>
-                                Місячна плата за кімнату в гуртожитку: <span>@Model.RentsDormitory грн.</span>
+                        Приблизні витрати щомісяця на їжу будуть складати @Model.ExpensesFood грн., а на проїзд по місту @Model.ExpensesTravel грн.
                     </p>
-                }
+                    @if (Model.Choose == 2)
+                    {
                         <p>
-                            @if (Model.MaximalResult == Model.MinimalResult)
-                            {
-                                <span>
-                                    Отже Ви будете
-                                    @if (Model.MaximalResult > 0)
-                                    {
-                                        <span>втрачати приблизно <span class="cost">@Model.MaximalResult грн.</span></span>
-                                    }
-                                    else
-                                    {
-                                        <span>отримувати приблизно <span class="cost">@(-@Model.MaximalResult)₴</span></span>
-                                    }
-                                    в місяць.
-                                </span>
-                            }
-                            else
-                            {
-                                <span>
-                                    Отже в <b><i>гіршому</i></b> випадку Ви будете
-                                    @if (Model.MaximalResult > 0)
-                                    {
-                                        <span>втрачати приблизно <span class="cost">@Model.MaximalResult грн.</span></span>
-                                    }
-                                    else
-                                    {
-                                        <span>отримувати приблизно <span class="cost">@(-@Model.MaximalResult)₴</span></span>
-                                    }
-                                    в місяць.<br />В <b><i>кращому</i></b> ж випадку Ви будете
-                                    @if (Model.MinimalResult > 0)
-                                    {
-                                        <span>втрачати приблизно <span class="cost">@Model.MinimalResult грн.</span></span>
-                                    }
-                                    else
-                                    {
-                                        <span>отримувати приблизно <span class="cost">@(-@Model.MinimalResult)₴</span></span>
-                                    }
-                                </span>
-                            }
-                            @if (Model.IsHaveAward)
-                            { <span>(Враховуючи стипендію)</span> }
+                            Щомісячна плата за квартиру / кімнату: <span>@Model.RentsApartment грн.</span>
                         </p>
-                <p>Дякую за використання нашого сервісу!</p>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" style="text-align:right">
-                Кнопки шеринга в сетях
-            </td>
-        </tr>
+                    }
+                    @if (Model.Choose == 3)
+                    {
+                        <p>
+                            Щомісячна плата за кімнату в гуртожитку: <span>@Model.RentsDormitory грн.</span>
+                        </p>
+                    }
+                    <p>
+                        @if (Model.MaximalResult == Model.MinimalResult)
+                        {
+                            <span>
+                                Отже, Ви будете
+                                @if (Model.MaximalResult > 0)
+                                {
+                                    <span>втрачати приблизно <span class="cost">@Model.MaximalResult грн.</span></span>
+                                }
+                                else
+                                {
+                                    <span>отримувати приблизно <span class="cost">@(-@Model.MaximalResult)₴</span></span>
+                                }
+                                в місяць.
+                            </span>
+                        }
+                        else
+                        {
+                            <span>
+                                Отже, в <b><i>гіршому</i></b> випадку Ви будете
+                                @if (Model.MaximalResult > 0)
+                                {
+                                    <span>втрачати приблизно <span class="cost">@Model.MaximalResult грн.</span></span>
+                                }
+                                else
+                                {
+                                    <span>отримувати приблизно <span class="cost">@(-@Model.MaximalResult)₴</span></span>
+                                }
+                                в місяць.<br />У <b><i>кращому</i></b> ж випадку Ви будете
+                                @if (Model.MinimalResult > 0)
+                                {
+                                    <span>втрачати приблизно <span class="cost">@Model.MinimalResult грн.</span></span>
+                                }
+                                else
+                                {
+                                    <span>отримувати приблизно <span class="cost">@(-@Model.MinimalResult)₴</span></span>
+                                }
+                            </span>
+                        }
+                        @if (Model.IsHaveAward)
+                        { <span>(Враховуючи стипендію)</span> }
+                    </p>
+                    <p>Дякуємо за використання нашого сервісу!</p>
+                </td>
+            </tr>
+            <tr style="background:none;">
+                <td colspan="2" style="text-align:right">
+                    Кнопки шеринга в сетях
+                </td>
+            </tr>
+        </tbody>
+
     </table>
         }
         else

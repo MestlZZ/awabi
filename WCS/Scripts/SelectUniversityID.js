@@ -87,8 +87,15 @@
 $(function () {
     $("#UniversityID").combobox();
     var this_input = $(".ui-autocomplete-input");
-    this_input.attr("data-placement","right");
-    this_input.attr("data-original-title", "Почніть вводити назву, а потім виберіть...");
+    this_input.popover({
+        content: "Оберіть Ваш університет (достатньо вписати перші 3 символи)",
+        placement: "right",
+        title: "Допомога",
+        trigger: "manual",
+        template: '<div class="popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
+    });
+    this_input.attr("placeholder", "Жит...");
+    this_input.popover('show');
     $("#UniversityID").rules('add', {
         required: true
     });

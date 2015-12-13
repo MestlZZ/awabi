@@ -3,50 +3,47 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <script src="~/Scripts/AbiturientValidate.js"></script>
-<style>
-    .cost {
-        font-size: 17px;
-        color: red;
-        font-weight: bold;
-    }
-    tbody > tr > td{
-        font-weight:bold;
-    }
-</style>
-<div style="text-align:center;">
-    <h1>Форма студента</h1>
+<script>
+    $(function () {
+        $("#select_div").css({ margin: "40px" });
+        $("td").css({ "vertical-align": "middle" });
+        $("tr").css({ "background" : "none"});
+    });
+</script>
+    <h1><span class="glyphicon glyphicon-education h1-icon"></span>Форма студента</h1>
     @if (ViewBag.Model2 == null)
     {
-        <form method="get" style="margin: 0px 0">
-            <label>
-                Оберіть університет (достатньо вписати 3 символи)<br />
+        <form method="get" class="form-center">
+            <div id="select_div">
                 @Html.EditorFor( Model => Model.UniversityID )
-            </label><br />
-            <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-primary">
+            </div>
+            <div class="btn-group btn-checkbox" data-toggle="buttons">
+                <label class="btn btn-lg btn-primary">
                     <input type="checkbox" name="contract" value="true"/>На контракті
                 </label>
             </div>
+            <div class="clear"></div>
             <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-primary">
+                <label class="btn btn-lg btn-primary">
                     <input type="radio" name="choose" value="1" required="required" />Проживаю з батьками
                 </label>
-                <label class="btn btn-primary">
+                <label class="btn btn-lg btn-primary">
                     <input type="radio" name="choose" value="2" />Знімаю квартиру
                 </label>
-                <label class="btn btn-primary">
+                <label class="btn btn-lg btn-primary">
                     <input type="radio" name="choose" value="3" />Проживаю в гуртожитку
                 </label>
             </div>
+            <div class="clear"></div>
             <input type="submit" value="Далі">
             <div class="clear"></div>
         </form>
     }
     else
     {
-        <form method="post" style="margin: 0px 0">
+        <form method="post">
             <input type="text" name="UniversityID" value="@ViewBag.Model2.UniversityID" hidden="hidden"/>
-            <table align="center" width="70%" style="text-align:center; border: 2px solid #B0B0B0">
+            <table class="table" style="text-align:center;">
                 <thead>
                     <tr>
                         <td colspan="2">Заповніть будь ласка поля значеннями</td>
@@ -82,13 +79,9 @@
                             <td>@Html.EditorFor( Model => Model.RentsDormitory )</td>
                         </tr>
                     }   
-                    <tr>
-                        <td colspan="2" style="text-align:right">
-                            <input type="submit" name="submit_go" />
-                        </td>
-                    </tr>
                 </tbody>
             </table>
+            <input type="submit" name="submit_go" />
+            <div class="clear"></div>
         </form>
     }
-</div>

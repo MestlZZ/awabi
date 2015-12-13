@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div style="text-align:center;">
-    <h1>Відправка форми виконана успішно!</h1> 
-    @Html.ActionLink( "Подивитися детально про університет", "DetailedPage", "Note", new { id = Model.UniversityID }, null )
+<div class="text-center">
+    <h1><span class="glyphicon glyphicon-ok-sign h1-icon h1-icon-succes"></span>Відправка форми виконана успішно!</h1> 
+    @Html.ActionLink("Подивитися детально про університет", "DetailedPage", "Note", new { id = Model.UniversityID }, new { @class = "btn btn-lg btn-info succes-info" })
 </div>

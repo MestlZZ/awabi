@@ -2,6 +2,9 @@
     td{
         padding:10px;
     }
+    .popover{
+        /*width:auto !important;*/
+    }
 }
 @media (max-width: 1024px){
     .nav-content > a {
@@ -47,7 +50,7 @@ body {
     padding-top: 50px;
     padding-bottom: 20px;
     font-family: "OpenSans",Arial,sans-serif;
-    background:url('../Images/bg_image.jpg') #ad4400 no-repeat;
+    background:url('../Images/bg_image.jpg') #C2723F no-repeat;
     background-size:cover;
     background-position:0px 40%;
 }
@@ -320,4 +323,36 @@ tr:nth-child(2n) {
 }
 .list-fotter {
     text-align:center;
+}
+.cost{
+    font-weight:bold;
+    font-size: larger;
+}
+.red{
+    color:red;
+}
+.form-center{
+    margin: 0 auto;
+    text-align:center;
+}
+.btn-checkbox{
+    margin:40px;
+}
+.popover{
+    width:250px;
+    z-index:3;
+}
+.h1-icon{
+    opacity:0.5;
+    margin-right:20px;
+    font-size:50px;
+}
+.h1-icon-succes{
+    color:#449D44; /*icon*/
+}
+.succes-info{
+    margin:50px; /*button*/
+}
+.h1-icon-info{
+    color:#286090;
 }
