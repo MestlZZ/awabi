@@ -256,4 +256,59 @@ td{
 }
 .nav-content > a {
     margin-left:0 !important;
-}   
+}
+.sub_info {
+    font-size:22px;
+    border-radius:10px;
+    margin-bottom:90px;
+}
+.arrow_infos {
+    font-size:20px;
+    border-left:4px solid #12bf00;
+    text-align:left;
+}
+.arrow_infos > span{
+    color:#2189f3;
+    font-variant:small-caps;
+}
+.arrows {
+    width:200px;
+    height:200px;
+    background-size:contain !important;
+    background-repeat:no-repeat !important;
+}
+.left_arrow{
+    background:url(../Images/left-arrow.svg);
+    transform:rotate(60deg);
+    margin-top:-200px;
+    margin-left:2px;
+}
+.left_arrow_info {
+    width:500px;
+    margin-left:50px;
+}
+.right_arrow{
+    background:url(../Images/right-arrow.svg);
+    transform:rotate(-150deg);
+    margin-top:100px;
+    margin-right: -66px;
+    float:right;
+}
+.right_arrow_info {
+    width:500px;
+    float:right;
+}
+.statistic{
+    margin: 90px 0px;    
+    font-size:20px;
+}
+.statistic > div:first-of-type {
+    font-size:75px;
+    opacity:0.6;
+    transition-duration:0.5s;
+}
+.statistic > div:first-of-type:hover {
+    font-size:85px;
+    opacity:1;
+    cursor:pointer;
+}

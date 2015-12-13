@@ -8,15 +8,25 @@
 </script>
 <div align="center" style="text-align:center;">
     <h1>Наші вітання!</h1>
-    <div class="alert alert-info">Ви потрапили на сайт, що допоможе вам у виборі вищого навчального закладу.</div>
-    <div class="alert alert-info">Якщо ви абітурієнт, наш ресурс допоможе вам розрахувати
-     вартість навчання у ВНЗ з урахуванням витрат на такі речі,
+    <div class="center-block sub_info">
+        <span>Ви потрапили на сайт, що допоможе вам у виборі вищого навчального закладу.</span>
+    </div>   
+    <div class="arrows right_arrow"></div>
+    <div class="alert alert-info arrow_infos right_arrow_info">Якщо Ви <span>абітурієнт</span> або <span>учень</span>, наш ресурс допоможе 
+    Вам <a class="btn btn-success" href="@Url.Action("ComputePage", "Note")">розрахувати вартість навчання</a> у ВНЗ з урахуванням витрат на такі речі,
     як житло, їжа та проїзд, виходячи з досвіду реальних студентів,
-    що вних навчаються.</div>
-    <div class="alert alert-info">Якщо ви студент, ви можете допомогти нам...</div>
-    <div class="alert alert-info">Крім того ви побачите статистику по всім ВНЗ нашої країни.</div>
-    @Html.ActionLink( "Продовжити", "ComputePage", "Note", null, null )
-    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    які у них навчаються.
+</div>
+    <div class="clear"></div>
+    <div class="arrows left_arrow"></div>
+    <div class="alert alert-info arrow_infos left_arrow_info">Якщо Ви <span>студент</span>, Ви можете допомогти нам, заповнивши <a class="btn btn-success" href="@Url.Action("StudentPage", "Note")">форму студента</a></div>
+    <hr/>
+    <div class="statistic">
+        <div class="glyphicon glyphicon-stats"></div>
+        <div>Крім того Ви побачите статистику по всім ВНЗ нашої країни!</div>
+    </div>
+    <hr />
+    <div id="carousel-generic" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
