@@ -10,6 +10,7 @@ namespace WCS.MVC
     {
         public ActionResult PageNotFound()
         {
+            ViewBag.Title = "Помилка 404";
             Response.StatusCode = 404;
             return View();
         }
