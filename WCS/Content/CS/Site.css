@@ -317,3 +317,7 @@ td{
     opacity:1;
     cursor:pointer;
 }
+.caption-local {
+    background:rgba(0, 0, 0, 0.5);
+    border-radius:4em 0px 4em 0px;
+}
