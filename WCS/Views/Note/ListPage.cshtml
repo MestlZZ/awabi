@@ -55,6 +55,7 @@
     {
             @Html.ActionLink(" ", "ListPage", "Note", new { page = ViewBag.Page - 1 }, new { @class = "glyphicon glyphicon-menu-left btn btn-info btn-list" })
     }
+    <span>Сторінка №@ViewBag.Page</span>
     @if (i == 5)
     {
             @Html.ActionLink(" ", "ListPage", "Note", new { page = ViewBag.Page + 1 }, new { @class = "glyphicon glyphicon-menu-right btn btn-info btn-list" })
