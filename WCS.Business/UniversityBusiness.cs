@@ -253,6 +253,21 @@ namespace WCS.Business
             }
             return university;
         }
+        public static IList<University> GetListWithNotes( out int[] arr )
+        {
+            var notes = NotesBusiness.GetList();
+            System.Collections.Generic.List<University> university = new System.Collections.Generic.List<University>();
+            arr = new int[2000];
+            foreach (var note in notes)
+            {
+                if (arr[Convert.ToInt32( note.UniversityID )]++ != 0)
+                    continue;
+                else
+                    arr[Convert.ToInt32( note.UniversityID )]++;
+                university.Add( Get( note.UniversityID ) );
+            }
+            return university;
+        }
 
         public static IList<UniversityInfo> GetListUniversityInfo()
         {
