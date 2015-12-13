@@ -3,9 +3,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     int i = 0;
 }
+<script>
+    $(function () {
+        $("body").css({"min-width" : "630px"});
+    });
+</script>
 <div>
     <h1>Список записів</h1>
-    <table>
+    <table class="table">
         <thead>
             <tr>
                 <td>ID університету</td>
@@ -45,16 +50,14 @@
         }
         </tbody>
     </table>
-    @if (i == 5)
-    {
-    <div>
-        @Html.ActionLink( "Наступна сторінка", "ListPage", "Note", new { page = ViewBag.Page + 1 }, null )
-    </div>
-    }
+    <div class="list-fotter">
     @if (ViewBag.Page > 1)
     {
-        <div>
-            @Html.ActionLink( "Попередня сторінка", "ListPage", "Note", new { page = ViewBag.Page - 1 }, null )
-        </div>
+            @Html.ActionLink(" ", "ListPage", "Note", new { page = ViewBag.Page - 1 }, new { @class = "glyphicon glyphicon-menu-left btn btn-info btn-list" })
     }
+    @if (i == 5)
+    {
+            @Html.ActionLink(" ", "ListPage", "Note", new { page = ViewBag.Page + 1 }, new { @class = "glyphicon glyphicon-menu-right btn btn-info btn-list" })
+    }
+    </div>
 </div>
