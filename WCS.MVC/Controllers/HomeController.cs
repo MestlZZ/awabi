@@ -45,8 +45,9 @@ namespace WCS.MVC
                 Feedbacks db = new Feedbacks();
                 feedback.Id = db.GetLastId() + 1;
                 db.Add( feedback );
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+            return View();
         }
     }
 }

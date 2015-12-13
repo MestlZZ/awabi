@@ -41,13 +41,14 @@ namespace WCS.MVC.Controllers
 
         public ActionResult Success( string Id )
         {
+            ViewBag.Title = "Успішно";
             var model = UniversityBusiness.Get( Id );
             return View( model );
         }
 
         public ActionResult ListPage( int page = 1 )
         {
-            ViewBag.Title = "Список записів";
+            ViewBag.Title = "Список університетів";
 
             if (page < 1)
                 page = 1;
