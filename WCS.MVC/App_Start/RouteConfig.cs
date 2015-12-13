@@ -16,46 +16,52 @@ namespace WCS.MVC
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "About",
+                url: "about",
+                defaults: new { controller = "Home", action = "AboutUsPage"}
+            );
+
+            routes.MapRoute(
+                name: "List",
+                url: "list",
+                defaults: new { controller = "Note", action = "ListPage" }
+            );
+
+            routes.MapRoute(
+                name: "Feedback",
+                url: "feedback",
+                defaults: new { controller = "Home", action = "FeedbackPage" }
+            );
+
+            routes.MapRoute(
                 name: "Student",
                 url: "student",
                 defaults: new { controller = "Note", action = "StudentPage", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
-               name: "About",
-               url: "about",
-               defaults: new { controller = "Home", action = "AboutUsPage"}
-           );
+                name: "Success",
+                url: "success",
+                defaults: new { controller = "Note", action = "Success", id = UrlParameter.Optional }
+            );
 
             routes.MapRoute(
-               name: "Success",
-               url: "success",
-               defaults: new { controller = "Note", action = "Success", id = UrlParameter.Optional }
-           );
+                name: "Detailed",
+                url: "details",
+                defaults: new { controller = "Note", action = "DetailedPage", id = UrlParameter.Optional }
+            );
 
             routes.MapRoute(
-               name: "List",
-               url: "list",
-               defaults: new { controller = "Note", action = "ListPage" }
-           );
+                name: "Compute",
+                url: "info",
+                defaults: new { controller = "Note", action = "ComputePage", id = UrlParameter.Optional }
+            );
 
             routes.MapRoute(
-               name: "Detailed",
-               url: "details",
-               defaults: new { controller = "Note", action = "DetailedPage", id = UrlParameter.Optional }
-           );
-
-            routes.MapRoute(
-               name: "Compute",
-               url: "info",
-               defaults: new { controller = "Note", action = "ComputePage", id = UrlParameter.Optional }
-           );
-
-            routes.MapRoute(
-               name: "Search",
-               url: "search",
-               defaults: new { controller = "Home", action = "SearchPage", id = UrlParameter.Optional }
-           );
+                name: "Search",
+                url: "search",
+                defaults: new { controller = "Home", action = "SearchPage", id = UrlParameter.Optional }
+            );
 
             routes.MapRoute(
                 name: "Error",
