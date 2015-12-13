@@ -4,8 +4,24 @@
 }
 <script src="~/Scripts/AbiturientValidate.js"></script>
 <div class="center-block text-center">
+    <h1><span class="glyphicon glyphicon-info-sign h1-icon h1-icon-info"></span>Залишити відгук</h1>
     <form method="post">
-        @Html.EditorForModel();
-        <input type="submit" />
-    </form>
+       
+        <div>
+            <div style="display:inline-block"><p style="font-size:20px;width:150px;">Ваше ім'я</p></div>
+            <div style="display:inline-block">@Html.EditorFor( Model => Model.Name )</div>
+        </div>
+        <div>
+            <div style="display:inline-block"><p style="font-size:20px;width:150px;">Ваша адреса</p></div>
+            <div style="display:inline-block">@Html.EditorFor( Model => Model.Mail )</div>
+        </div>
+        <div>
+            <div style="display:inline-block"><p style="display: table; font-size:20px; width:150px; vertical-align:top;">Ваш відгук</p></div>
+            <div style="display:inline-block">@Html.EditorFor( Model => Model.Text )</div>
+        </div>
+
+            <div class="clear"></div>
+            <input type="submit" value="Залишити відгук" />
+            <div class="clear"></div>
+</form>
 </div>
