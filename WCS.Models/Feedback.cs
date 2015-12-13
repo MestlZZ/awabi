@@ -34,5 +34,10 @@ namespace WCS.Models
         [Required( ErrorMessage = "Будь ласка, напишіть відгук!" )]
         [StringLength( 1024, MinimumLength = 5, ErrorMessage = "Довжина повідомлення повинна бути в межах від 5 до 1024 символів" )]
         public string Text { get; set; }
+
+        public Feedback()
+        {
+            Date = DateTime.UtcNow;
+        }
     }
 }

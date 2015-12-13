@@ -1,7 +1,47 @@
-﻿
-@{
+﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div style="text-align:center;">
-    <h1>Трішки про розробників</h1>
+<style>
+    div.image{
+        width: auto;
+        padding: 2px;
+    }
+    div.info{
+        width: auto;
+        padding: 2px;
+    }
+    image.image{
+        width:100%;
+    }
+</style>
+<div>
+    <h1>Трішки про розробників:</h1>
+    <div>
+        <div class="image"  style="display:inline-block;">
+            <img class="image" src="~/Content/Images/jaroslav.jpg" />
+        </div>
+        <div class="info"  style="display:inline-block; text-align:left;  vertical-align:top">
+            <p><b>Front-end Developer</b></p>
+            <p>Ім'я: Ячменьов Ярослав</p>
+            <p>Вік: NaN</p>
+            <p>Навчається в: ЖДТУ</p>
+            <p>Сімейний стан: в розробці...</p>
+            <p>Про себе:</p>
+            <p></p>
+        </div>
+    </div>
+    <div style="text-align:right;">
+        <div class="info" style="display:inline-block;  vertical-align:top">
+            <p><b>Technical leader</b></p>
+            <p>Ім'я: Герасимов Богдан</p>
+            <p>Вік: null</p>
+            <p>Навчається в: ЖДТУ</p>
+            <p>Сімейний стан: #ИМЯ?</p>
+            <p>Про себе:</p>
+            <p></p>
+        </div>
+        <div class="image" style="display:inline-block;">
+            <img class="image" src="~/Content/Images/bohdan.jpg" />
+        </div>
+    </div>
 </div>
