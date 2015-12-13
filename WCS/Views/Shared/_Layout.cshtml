@@ -24,7 +24,7 @@
            $(document).ready(function () {
                var l = location;
                if (l.pathname == '/') $('.nav-content > a[href="' + l.pathname + '"]').addClass('active_nav');
-               else $('.nav-content > a[href*="/'+l.pathname.split("/")[1] + '"]').addClass('active_nav');
+               else $('.nav-content > a[href^="/'+l.pathname.split("/")[1] + '"]').addClass('active_nav');
            });
         });
     </script>
