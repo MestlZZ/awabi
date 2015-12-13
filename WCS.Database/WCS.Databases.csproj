@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Feedbacks.cs" />
     <Compile Include="Universiteties.cs" />
     <Compile Include="States.cs" />
     <Compile Include="Notes.cs" />
