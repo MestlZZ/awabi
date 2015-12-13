@@ -104,7 +104,10 @@
     <Content Include="Content\CS\dist\css\bootstrap.css" />
     <Content Include="Content\CS\Site.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Images\bohdan.jpg" />
     <Content Include="Content\Images\favicon.png" />
+    <Content Include="Content\Images\jaroslav.jpg" />
+    <Content Include="Content\Images\other.jpg" />
     <Content Include="Content\Images\right-arrow.svg" />
     <Content Include="Content\Images\left-arrow.svg" />
     <Content Include="Content\Images\bg_image.jpg" />
