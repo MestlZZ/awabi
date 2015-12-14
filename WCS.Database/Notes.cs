@@ -37,6 +37,12 @@ namespace WCS.Databases
             }
             return indexs;
         }
+
+        public Note IsInBase( Note note )
+        {
+            return db.Notes.Find( note );
+        }
+
         public void Save( Note note )
         {
             if (note == null)
@@ -70,6 +76,18 @@ namespace WCS.Databases
                 return;
             db.Entry( note ).State = EntityState.Modified;
             db.SaveChanges();
+        }
+
+        public void WorkWithNote()
+        {
+            var notes = GetList();
+            foreach (var note in notes)
+            {
+                db.Notes.Remove( note );
+                note.MaximalTaitionFee /= 12.0;
+                note.MinimalTaitionFee /= 12.0;
+                db.Notes.Add( note );                
+            }
         }
     }
 }

@@ -33,7 +33,8 @@ namespace WCS.MVC.Controllers
             if(note.ExpensesTravel != 0 && note.ExpensesFood !=0)
                 if (ModelState.IsValid)
                 {
-                    NotesBusiness.Add(note);
+                    if(NotesBusiness.IsInBase( note ) == false)
+                        NotesBusiness.Add(note);
                     return RedirectToAction( "Success", new { Id = note.UniversityID } );
                 }
             return View();

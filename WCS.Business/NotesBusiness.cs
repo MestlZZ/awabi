@@ -73,6 +73,24 @@ namespace WCS.Business
             return uNotes;
         }
 
+        public static bool IsInBase( Note note )
+        {
+            IList<UniversityInfo> univers = UniversityBusiness.GetListUniversityInfo( note.UniversityID );
+            if (univers.Count > 0)
+                return true;
+            return false;
+        }
 
+        public static void WorkWithNote()
+        {
+            Notes db = new Notes();
+            var notes = GetList();
+            foreach (var note in notes)
+            {
+                note.MaximalTaitionFee = Math.Round( note.MaximalTaitionFee, 2 );
+                note.MinimalTaitionFee = Math.Round( note.MinimalTaitionFee, 2 );
+                db.Update(note);
+            }
+        }
     }
 }

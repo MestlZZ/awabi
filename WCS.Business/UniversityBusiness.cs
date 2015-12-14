@@ -292,6 +292,36 @@ namespace WCS.Business
             return universityInfo;
         }
 
+        public static IList<UniversityInfo> GetListUniversityInfo( string UniversityID )
+        {
+            var notes = NotesBusiness.GetList();
+            System.Collections.Generic.List<UniversityInfo> univers = new System.Collections.Generic.List<UniversityInfo>();
+
+            int[] arr = new int[2000];
+            for (int j = 0; j < notes.Count; j++)
+            {
+                if (arr[Convert.ToInt32( notes[j].UniversityID )] != 0)
+                    continue;
+                else
+                    arr[Convert.ToInt32( notes[j].UniversityID )]++;
+
+                var unInfo = GetInfo( notes[j].UniversityID );
+
+                if (UniversityID != unInfo.UniversityID || unInfo.IsNaN ||
+                    Double.IsNaN( unInfo.MaximalTaitionFee ) ||
+                    Double.IsNaN( unInfo.MinimalTaitionFee ) ||
+                    Double.IsNaN( unInfo.ExpensesTravel ) ||
+                    Double.IsNaN( unInfo.ExpensesFood ) ||
+                    Double.IsNaN( unInfo.RentsApartment ))
+                {
+                    continue;
+                }
+                univers.Add( unInfo );
+            }
+
+            return univers;
+        }
+
         public static IList<UniversityInfo> GetListFiveUniversityInfo( int page = 0 )
         {
             var notes = NotesBusiness.GetList();
