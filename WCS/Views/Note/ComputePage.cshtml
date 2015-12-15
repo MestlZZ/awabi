@@ -156,7 +156,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <p style="font-size:17px">Дивні дані? -> <a class="btn btn-success" href="@Url.Action("MailSuccess", "Note",  new { id = Model.UniversityID })">Тисни сюди!</a></p>
+                    <p style="font-size:17px">Хибні дані? -> <a class="btn btn-success" href="@Url.Action("MailSuccess", "Note",  new { id = Model.UniversityID })">Тисни сюди!</a></p>
                 </td>
             </tr>
         </tbody>
@@ -166,7 +166,7 @@
         else
         {
             <p style="font-size:17px">Для цього університету ще не додано жодної інформації!</p>
-            <p style="font-size:17px">Допоможіть нам її зібрати! <a class="btn btn-success" href="@Url.Action("ComputePage", "Note",  new { UniversityID = Model.UniversityID })">Заповніть форму</a></p>
+            <p style="font-size:17px">Допоможіть нам її зібрати! <a class="btn btn-success" href="@Url.Action("StudentPage", "Note",  new { UniversityID = Model.UniversityID })">Заповніть форму</a></p>
         }
     }
 </div>

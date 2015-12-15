@@ -140,7 +140,7 @@ namespace WCS.MVC.Controllers
         public ActionResult ComputePage( string UniversityID = null, int choose = 0, bool contract = false, bool award = false )
         {
             ViewBag.Title = "Розрахунок для абітурієнта";
-            if (choose == 0 || UniversityBusiness.Get(UniversityID) == null)
+            if (choose == 0 || UniversityBusiness.Get(UniversityID) == null || (contract == award && award == true))
             {
                 return View();
             }
