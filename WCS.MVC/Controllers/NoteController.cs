@@ -5,6 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 using WCS.Models;
 using WCS.Business;
+using System.Net.Mail;
+using System.Net;
+using System.Text;
+using WCS.Databases;
 
 namespace WCS.MVC.Controllers
 {
@@ -45,6 +49,48 @@ namespace WCS.MVC.Controllers
             ViewBag.Title = "Успішно";
             var model = UniversityBusiness.Get( Id );
             return View( model );
+        }
+
+        public ActionResult MailSuccess( string Id )
+        {
+            ViewBag.Title = "Відправлено";
+            var body = new StringBuilder();
+            body.AppendFormat( "Посмотри пожалуйста университет с id: {0}", Id );
+            Feedback feedback = new Feedback();
+            feedback.Mail = "admin@awabi.com";
+            feedback.Name = "Admin";
+            feedback.Text = body.ToString();
+            Feedbacks db = new Feedbacks();
+            feedback.Id = db.GetLastId() + 1;
+            db.Add( feedback );
+            return View();
+        }
+
+        public void SendMail( string smtpServer, string from, string password, string mailto, string caption, string message, string attachFile = null )
+        {
+            try
+            {
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress( from );
+                mail.To.Add( new MailAddress( mailto ) );
+                mail.Subject = caption;
+                mail.Body = message;
+                if (!string.IsNullOrEmpty( attachFile ))
+                    mail.Attachments.Add( new Attachment( attachFile ) );
+                SmtpClient client = new SmtpClient();
+                client.Host = smtpServer;
+                client.Port = 587;
+                client.EnableSsl = true;
+                client.Credentials = new NetworkCredential( from.Split( '@' )[0], password );
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = false;
+                client.Send( mail );
+                mail.Dispose();
+            }
+            catch (Exception e)
+            {
+                throw new Exception( "Mail.Send: " + e.Message );
+            }
         }
 
         public ActionResult ListPage( int page = 1 )

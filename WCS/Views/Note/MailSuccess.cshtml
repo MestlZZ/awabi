@@ -1,0 +1,10 @@
+﻿@model WCS.Models.University
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center">
+    <h1><span class="glyphicon glyphicon-ok-sign h1-icon h1-icon-succes"></span>Відправка повідомлення виконана успішно!</h1> 
+    <p>Дякую за ваше повідомлення! Ми виправимо інфорацію найближчим часом.</p>
+    @Html.ActionLink("Повернутися на головну", "Index", "Home", null , new { @class = "btn btn-lg btn-info succes-info" })
+</div>
